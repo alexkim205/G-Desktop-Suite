@@ -1,35 +1,9 @@
-const {
-  remote
-} = require('electron')
-
-const {
-  Menu,
-  BrowserWindow
-} = remote
-
 const url = require('url')
-
+const {remote} = require('electron')
+const {BrowserWindow, Menu, app} = remote
 const thisWindow = remote.getCurrentWindow()
 
-const template = [{
-    label: 'Google Drive',
-    submenu: [{
-      label: 'System Preferences',
-      click() {
-        require('electron').shell.openExternal('https://electronjs.org')
-      }
-    }]
-  }
-
-]
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
-
-dimensions = thisWindow.webContents.getOwnerBrowserWindow().getBounds()
-
-// $('body').height(dimensions.height)
-
-console.log(dimensions)
+require('../javascripts/menu')
 
 const $webview = $('webview')
 
@@ -39,6 +13,10 @@ function createWindow(e) {
   goToURL = e.originalEvent.url
 
   e.preventDefault()
+  
+  if (goToURL === "about:blank") {
+    return;
+  }
 
   childwin = new BrowserWindow({
     width: 1300,

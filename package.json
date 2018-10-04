@@ -1,7 +1,7 @@
 {
-  "name": "google_drive_desktop",
+  "name": "Google Drive Electron",
   "version": "1.0.0",
-  "description": "Use Google Drive like an office suite. A Google Drive desktop app made using ElectronJS.",
+  "description": "A Google Drive desktop app made with Electron.",
   "main": "app.js",
   "scripts": {
     "start": "gulp build && electron ."
@@ -11,7 +11,7 @@
     "drive"
   ],
   "author": "Alex Gyujin Kim",
-  "license": "ISC",
+  "license": "MIT",
   "files": [
     "build",
     "node_modules"
@@ -19,9 +19,8 @@
   "devDependencies": {
     "browser-sync": "^2.24.7",
     "del": "^3.0.0",
-    "electron": "^3.0.2",
     "gulp": "^4.0.0",
-    "gulp-concat": "^2.6.1",
+    "gulp-babel": "^8.0.0",
     "gulp-csso": "^3.0.1",
     "gulp-minify": "^3.1.0",
     "gulp-pug": "^4.0.1",
@@ -33,6 +32,8 @@
     "gulp-sourcemaps": "^2.6.4"
   },
   "dependencies": {
+    "about-window": "^1.12.1",
+    "electron": "^3.0.2",
     "jquery": "^3.3.1"
   }
 }

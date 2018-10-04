@@ -4,7 +4,6 @@ var pug = require('gulp-pug');
 var sass = require('gulp-sass');
 var minifyCSS = require('gulp-csso');
 var minifyJS = require('gulp-minify')
-var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace')
 var sourcemaps = require('gulp-sourcemaps');
@@ -31,9 +30,9 @@ const clean = () => del(['build']);
 function js() {
   return gulp.src(paths.javascripts.src)
     .pipe(sourcemaps.init())
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest(paths.javascripts.dest))
-    .pipe(minifyJS())
+    .pipe(minifyJS({
+      ext:{min:'.js'}
+    }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.javascripts.dest))
 }

@@ -1,6 +1,7 @@
 const {
   app,
-  BrowserWindow
+  BrowserWindow,
+  globalShortcut
 } = require('electron')
 
 const url = require('url')
@@ -33,7 +34,7 @@ function createMainWindow() {
     protocol: 'file',
     pathname: `${__dirname}/build/templates/index.html`,
     slashes: true,
-    search:  Object.keys(windowSettings).map(key => key + '=' + encodeURIComponent(windowSettings[key])).join('&')
+    search: Object.keys(windowSettings).map(key => key + '=' + encodeURIComponent(windowSettings[key])).join('&')
   }))
 
   win.once('ready-to-show', () => {
@@ -58,10 +59,12 @@ function createMainWindow() {
 // Some APIs can only be used after this event occurs.
 app.on('ready', async () => {
   createMainWindow()
+
 })
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
+  console.log('windows all closed')
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
@@ -79,3 +82,16 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+app.on('ready', () => {
+  globalShortcut.register('CommandOrControl+Q', () => {
+    console.log('CommandOrControl+Q is pressed')
+    win.close()
+    app.quit()
+    console.log("closed")
+  })
+})
+
+app.on('will-quit', () => {
+  console.log('will quit')
+})
