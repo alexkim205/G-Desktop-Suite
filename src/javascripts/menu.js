@@ -6,6 +6,7 @@ var template = [{
     submenu: [{
         label: "About Google Drive Desktop",
         click: () => openAboutWindow({
+          product_name: "Google Drive Electron",
           icon_path: `${__dirname}/../../static/gd.png`,
           copyright: 'Copyright (c) 2018 Alex Kim',
           package_json_dir: `${__dirname}/../../`,

@@ -1,5 +1,5 @@
 {
-  "name": "Google Drive Electron",
+  "name": "gdelectron",
   "version": "1.0.0",
   "description": "A Google Drive desktop app made with Electron.",
   "main": "app.js",
