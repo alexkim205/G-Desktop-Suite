@@ -1,0 +1,18 @@
+{
+  "name": "google_drive",
+  "version": "1.0.0",
+  "description": "Use Google Drive like an office suite. A Google Drive desktop app made using ElectronJS.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "google",
+    "drive"
+  ],
+  "author": "Alex Gyujin Kim",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^3.0.2"
+  }
+}
