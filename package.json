@@ -1,5 +1,5 @@
 {
-  "name": "google_drive",
+  "name": "google_drive_desktop",
   "version": "1.0.0",
   "description": "Use Google Drive like an office suite. A Google Drive desktop app made using ElectronJS.",
   "main": "main.js",
