@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Google Drive
+    style
+      include ../stylesheets/index.scss
+    
+    
+  body
+    h1.loader Loading Google Drivedd
+
+    webview.hide(preload='./preload.js', src='https://drive.google.com/drive/')
+
+    script(async, id="__bs_script__", src="http://localhost:3000/browser-sync/browser-sync-client.js?v=2.24.7")
+    script.
+      let $ = require('jquery')
+      require('../javascripts/app-min')

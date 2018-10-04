@@ -12,17 +12,26 @@
   ],
   "author": "Alex Gyujin Kim",
   "license": "ISC",
+  "files": [
+    "build",
+    "node_modules"
+  ],
   "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "del": "^3.0.0",
     "electron": "^3.0.2",
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
+    "gulp-minify": "^3.1.0",
     "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-run": "^1.7.1",
+    "gulp-run-electron": "^3.0.2",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4"
   },
   "dependencies": {
-    "electron-reload": "^1.2.5",
     "jquery": "^3.3.1"
   }
 }

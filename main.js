@@ -3,9 +3,6 @@ const {
   BrowserWindow
 } = require('electron')
 
-// Hot Reloading
-require('electron-reload')(__dirname) 
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
@@ -13,19 +10,18 @@ let win
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    // width: 800,
+    // width: 800,s
     // height: 600
-    // titleBarStyle: 'hidden',
-    backgroundColor: "4688F4"
+    // titleBarStyle: 'hidden'
   })
 
   // and load the index.html of the app.
   // win.loadURL('https://drive.google.com/drive/')
-  win.loadURL(`file://${__dirname}/build/index.html`)
+  win.loadURL(`file://${__dirname}/build/templates/index.html`)
 
-  win.once('ready-to-show', () => {
-    win.show()
-  })
+  // win.once('ready-to-show', () => {
+  //   win.show()
+  // })
 
   // Open the DevTools.
   win.webContents.openDevTools()
