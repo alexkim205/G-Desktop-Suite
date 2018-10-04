@@ -1,17 +1,20 @@
-doctype html
-html
-  head
-    meta(charset='UTF-8')
-    title Google Drive
-    link(rel="stylesheet", href=`../stylesheets/index.css`)
-    
-    
-  body
-    h1.loader Loading Google Drive dsdd
+extends ./layout
 
-    webview.hide(preload='./preload.js', src='https://drive.google.com/drive/')
+block styles
+  link(rel="stylesheet", href="../stylesheets/index.css")
 
-    script(async, id="__bs_script__", src="http://localhost:3000/browser-sync/browser-sync-client.js?v=2.24.7")
-    script.
-      let $ = require('jquery')
-      require('../javascripts/app-min')
+block dragcontent
+  //- | Google Drive
+
+block content
+  
+  webview(preload='./preload.js', src='')
+
+block scripts
+  script.
+    let params = (new URL(document.location)).searchParams
+    let webview_url = decodeURIComponent(params.get("url"))
+    console.log(document.location)
+    console.log(webview_url)
+
+    $('webview').attr('src', webview_url)

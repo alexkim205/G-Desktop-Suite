@@ -3,25 +3,43 @@ const {
   BrowserWindow
 } = require('electron')
 
+const url = require('url')
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
-function createWindow() {
+function createMainWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    // width: 800,s
-    // height: 600
-    // titleBarStyle: 'hidden'
+    width: 1300,
+    height: 900,
+    titleBarStyle: 'hidden',
+    minWidth: 1200,
+    minHeight: 600,
+    scrollBounce: false,
+    show: false
   })
 
-  // and load the index.html of the app.
-  // win.loadURL('https://drive.google.com/drive/')
-  win.loadURL(`file://${__dirname}/build/templates/index.html`)
+  windowSettings = {
+    'url': 'https://drive.google.com/drive/'
+  }
 
-  // win.once('ready-to-show', () => {
-  //   win.show()
-  // })
+  // console.log(`file://${__dirname}/build/templates/index.html`)
+
+  // win.loadURL(`file://${__dirname}/build/templates/index.html`)
+
+  win.loadURL(url.format({
+    protocol: 'file',
+    pathname: `${__dirname}/build/templates/index.html`,
+    slashes: true,
+    search:  Object.keys(windowSettings).map(key => key + '=' + encodeURIComponent(windowSettings[key])).join('&')
+  }))
+
+  win.once('ready-to-show', () => {
+    win.show()
+    win.focus()
+  })
 
   // Open the DevTools.
   win.webContents.openDevTools()
@@ -39,7 +57,7 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', async () => {
-  createWindow()
+  createMainWindow()
 })
 
 // Quit when all windows are closed.
@@ -55,7 +73,7 @@ app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (win === null) {
-    createWindow()
+    createMainWindow()
   }
 })
 
