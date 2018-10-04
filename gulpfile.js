@@ -6,8 +6,8 @@ var minifyCSS = require('gulp-csso');
 var minifyJS = require('gulp-minify')
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
+var replace = require('gulp-replace')
 var sourcemaps = require('gulp-sourcemaps');
-
 var browserSync = require('browser-sync').create();
 var del = require('del')
 
@@ -48,7 +48,7 @@ function css() {
   return gulp.src(paths.stylesheets.src)
     .pipe(sass())
     .pipe(minifyCSS())
-    .pipe(gulp.dest(paths.stylesheets.src))
+    .pipe(gulp.dest(paths.stylesheets.dest))
 }
 
 function reload(done) {
@@ -69,9 +69,8 @@ function run_electron() {
 
 function clean_for_build() {
   gulp.src(paths.templates.dest + 'index.html')
-  .pipe(replace('<script async id="__bs_script__" src="http://localhost:3000/browser-sync/browser-sync-client.js?v=2.24.7"></script>',''))
-  .pipe(gulp.dest(paths.templates.dest));
-
+    .pipe(replace('<script async="" id="__bs_script__" src="http://localhost:3000/browser-sync/browser-sync-client.js?v=2.24.7"></script>', ''))
+    .pipe(gulp.dest(paths.templates.dest));
 }
 
 const watch = () => {
@@ -83,7 +82,7 @@ const watch = () => {
 const pre_build = gulp.series(clean, js, css, html, serve);
 
 const dev = gulp.parallel(pre_build, run_electron, watch)
-const build = gulp.parallel(pre_build, run_electron)
+const build = gulp.parallel(pre_build, clean_for_build, run_electron)
 
 gulp.task('watch', dev)
 gulp.task('default', build)

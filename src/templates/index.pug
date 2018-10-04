@@ -3,12 +3,11 @@ html
   head
     meta(charset='UTF-8')
     title Google Drive
-    style
-      include ../stylesheets/index.scss
+    link(rel="stylesheet", href=`../stylesheets/index.css`)
     
     
   body
-    h1.loader Loading Google Drivedd
+    h1.loader Loading Google Drive dsdd
 
     webview.hide(preload='./preload.js', src='https://drive.google.com/drive/')
 
