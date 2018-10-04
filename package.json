@@ -4,7 +4,7 @@
   "description": "Use Google Drive like an office suite. A Google Drive desktop app made using ElectronJS.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "gulp build && electron ."
   },
   "keywords": [
     "google",
@@ -13,6 +13,16 @@
   "author": "Alex Gyujin Kim",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^3.0.2"
+    "electron": "^3.0.2",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4"
+  },
+  "dependencies": {
+    "electron-reload": "^1.2.5",
+    "jquery": "^3.3.1"
   }
 }

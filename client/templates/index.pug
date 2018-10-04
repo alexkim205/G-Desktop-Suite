@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Google Drive
+    style
+      include ../stylesheets/index.sass
+    
+    
+  body
+    h1.loader Loading Google Drive...
+
+    webview.hide(preload='./preload.js', src='https://drive.google.com/drive/')
+
+    script.
+      let $ = require('jquery')
+      require('../javascripts/renderer')
