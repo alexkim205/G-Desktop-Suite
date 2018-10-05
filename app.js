@@ -16,8 +16,8 @@ function createMainWindow() {
     width: 1300,
     height: 900,
     titleBarStyle: 'hidden',
-    minWidth: 1200,
-    minHeight: 600,
+    minWidth: 300,
+    minHeight: 300,
     scrollBounce: false,
     show: false
   })
@@ -25,10 +25,6 @@ function createMainWindow() {
   windowSettings = {
     'url': 'https://drive.google.com/drive/'
   }
-
-  // console.log(`file://${__dirname}/build/templates/index.html`)
-
-  // win.loadURL(`file://${__dirname}/build/templates/index.html`)
 
   win.loadURL(url.format({
     protocol: 'file',
@@ -44,6 +40,9 @@ function createMainWindow() {
 
   // Open the DevTools.
   win.webContents.openDevTools()
+  // if (process.env.NODE_ENV.trim() === "development") {
+  //   win.webContents.openDevTools()
+  // }
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -83,14 +82,14 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-app.on('ready', () => {
-  globalShortcut.register('CommandOrControl+Q', () => {
-    console.log('CommandOrControl+Q is pressed')
-    win.close()
-    app.quit()
-    console.log("closed")
-  })
-})
+// app.on('ready', () => {
+//   globalShortcut.register('CommandOrControl+Q', () => {
+//     console.log('CommandOrControl+Q is pressed')
+//     win.close()
+//     app.quit()
+//     console.log("closed")
+//   })
+// })
 
 app.on('will-quit', () => {
   console.log('will quit')

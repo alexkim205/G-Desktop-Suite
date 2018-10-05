@@ -21,14 +21,13 @@ body {
 }
 
 #dragbar {
-  height: 2em;
+  min-height: 1.5em;
   background-color: white;
 
   -webkit-app-region: drag
 }
 
 #maincontent {
-  -webkit-app-region: no-drag;
   // width: 99%;
   flex: 2;
   width: 100%;
@@ -41,5 +40,9 @@ body {
     border: none;
     /* Reset default border */
     height: 100%;
+
+    * {
+      -webkit-app-region: no-drag;
+    }
   }
 }

@@ -24,22 +24,19 @@ var template = [{
         label: "Quit",
         accelerator: "CmdOrCtrl+Q",
         click: function () {
+          
+          console.log("Closing All Windows")
+          BrowserWindow.getAllWindows().forEach(window => {
+            window.close()
+          });
           console.log("Quitting Application")
-          thisWindow.close()
           app.quit()
         }
       }
     ]
   }, {
     label: "File",
-    submenu: [{
-        label: "Minimize",
-        accelerator: "CmdOrCtrl+M",
-        click: function () {
-          console.log("Minimizing Window")
-          thisWindow.minimize();
-        }
-      },
+    submenu: [
       {
         label: "Toggle Full Screen",
         accelerator: "Cmd+Ctrl+F",
@@ -53,13 +50,29 @@ var template = [{
         }
       },
       {
+        label: "Minimize",
+        accelerator: "CmdOrCtrl+M",
+        click: function () {
+          console.log("Minimizing Window")
+          thisWindow.minimize();
+        }
+      },
+      {
         label: "Close Window",
         accelerator: "CmdOrCtrl+W",
         click: function () {
           console.log("Closing Window")
           thisWindow.close()
         }
-      }
+      },
+      {
+        label: "Reload Window",
+        accelerator: "CmdOrCtrl+R",
+        click: function () {
+          console.log("Reloading Window")
+          thisWindow.reload();
+        }
+      },
     ]
   },
   {

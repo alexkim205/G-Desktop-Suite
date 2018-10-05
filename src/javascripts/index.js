@@ -1,11 +1,22 @@
 const url = require('url')
-const {remote} = require('electron')
-const {BrowserWindow, Menu, app} = remote
+const {
+  remote
+} = require('electron')
+const {
+  BrowserWindow,
+  Menu,
+  app
+} = remote
 const thisWindow = remote.getCurrentWindow()
 
 require('../javascripts/menu')
 
+// workaround for no cursor bug
 const $webview = $('webview')
+
+// $webview.on('did-navigate-in-page', () => {
+//   $webview.insertCSS('* { -webkit-app-region: no-drag; }');
+// })
 
 function createWindow(e) {
 
@@ -13,7 +24,7 @@ function createWindow(e) {
   goToURL = e.originalEvent.url
 
   e.preventDefault()
-  
+
   if (goToURL === "about:blank") {
     return;
   }
@@ -22,8 +33,8 @@ function createWindow(e) {
     width: 1300,
     height: 900,
     titleBarStyle: 'hidden',
-    minWidth: 1200,
-    minHeight: 600,
+    minWidth: 300,
+    minHeight: 300,
     scrollBounce: false,
     // parent: thisWindow,
     show: false,
@@ -52,7 +63,9 @@ function createWindow(e) {
     childwin.focus()
   })
 
-  childwin.webContents.openDevTools()
+  if (process.env.NODE_ENV.trim() === "development") {
+    childwin.webContents.openDevTools()
+  }
 
   childwin.on('closed', () => {
     childwin = null

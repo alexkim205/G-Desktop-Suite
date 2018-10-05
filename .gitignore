@@ -1,7 +1,7 @@
 # Custom gitignore files
 
 build/
-
+release-builds/
 
 # Created by https://www.gitignore.io/api/node
 
