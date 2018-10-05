@@ -1,4 +1,8 @@
 // Replace '..' with 'about-window'
+const { remote } = require('electron')
+const { BrowserWindow, app, Menu } = remote
+const thisWindow = remote.getCurrentWindow()
+
 const openAboutWindow = require("about-window").default;
 
 var about = () => {
@@ -18,6 +22,7 @@ var about = () => {
 var quit = () => {
   console.log("Closing All Windows");
   BrowserWindow.getAllWindows().forEach(window => {
+    if (window.isDestroyed()) {return}
     window.close();
   });
   console.log("Quitting Application");
@@ -46,6 +51,11 @@ var close = () => {
 var reload = () => {
   console.log("Reloading Window");
   thisWindow.reload();
+}
+
+var print_windows = () => {
+  console.log("Printing All Windows");
+  console.log(BrowserWindow.getAllWindows())
 }
 
 var template = [{
@@ -83,7 +93,7 @@ if (process.env.NODE_ENV.trim() === "development") {
   template.push({
     label: "Debug",
     submenu: [
-      { label: "Print All Windows", accelerator: "CmdOrCtrl+P", }
+      { label: "Print All Windows", accelerator: "CmdOrCtrl+P", click: print_windows }
     ]
   })
 }
