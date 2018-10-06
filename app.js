@@ -1,13 +1,21 @@
-const { app } = require('electron')
+const { app, Menu } = require('electron')
 const log = require('electron-log');
+
+// Menu
+
+var { template } = require('./build/javascripts/menu')
 
 let win
 
-const { createMainWindow } = require('./build/javascripts/mainwindow.js')
+const { createMainWindow } = require('./build/javascripts/mainwindow')
 
 log.info(createMainWindow)
 
-app.on('ready', async () => {
+
+app.on('ready', () => {
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
+
   createMainWindow()
 })
 

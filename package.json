@@ -12,6 +12,10 @@
     "google",
     "drive"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexkim205/Google-Drive-Electron.git"
+  },
   "author": "Alex Gyujin Kim",
   "license": "MIT",
   "files": [

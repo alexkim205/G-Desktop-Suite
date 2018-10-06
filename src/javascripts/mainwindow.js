@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow} = require('electron')
 const url = require('url')
 const log = require('electron-log');
 
@@ -45,6 +45,7 @@ var createMainWindow = () => {
   win.on('closed', () => {
     win = null
   })
+
 }
 
 module.exports = { createMainWindow: createMainWindow }
