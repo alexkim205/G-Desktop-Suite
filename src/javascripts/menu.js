@@ -50,7 +50,7 @@ var template = [{
   }
 ];
 
-// if (process.env.NODE_ENV.trim() === "development") {
+// if (process.env.NODE_ENV === "development") {
 //   template.push({
 //     label: "Debug",
 //     submenu: [

@@ -37,7 +37,7 @@ var createMainWindow = () => {
     win.focus()
   })
 
-  if (process.env.NODE_ENV.trim() === "development") {
+  if (process.env.NODE_ENV === "development") {
     win.webContents.openDevTools()
   }
 
