@@ -1,31 +1,57 @@
 # Google Drive Electron
 
-Ever wish you didn't have to go to [https://drive.google.com](https://drive.google.com), click the blue button, and log in every single time you wanted to create a new document? Do you miss the good old days of not paying $99/year for Microsoft Office 365 and wish you could use Google Drive like the Microsoft Office Suite? Well you're in luck!
-
 This is a Google Drive desktop app made with ElectronJS.
 
-## Installation
+Ever wish you didn't have to go to [https://drive.google.com](https://drive.google.com), click the blue button, and log in every single time you wanted to open and view a google document? Do you miss the good old days of solid cloudless desktop apps? Well you're in luck!
+
+![demo](img/gdelectron_demo.gif)
+
+## Setup & Usage
 
 Click [here](https://github.com/alexkim205/Google-Drive-Electron/releases) to download the app for Windows, Linux, and MacOS!
 
-To build the app locally and make pull requests, clone the repository.
+## Troubleshooting
+
+### Developing and Pull Requests
+
+To build the app locally, clone the repository and run the available npm scripts.
 
 ```sh
 git clone https://github.com/alexkim205/Google-Drive-Electron.git
+cd Google-Drive-Electron
 ```
 
-## Dependencies
+```sh
+$ npm run
+Lifecycle scripts included in gdelectron:
+  start
+    gulp build && electron .
+
+available via `npm run-script`:
+  package-all
+    npm run package-mac && npm run package-win && npm run package-lin
+  package-mac
+    electron-packager . --overwrite --platform=darwin --arch=x64 --icon=static/gd.icns --prune=true --out=release-builds
+  package-win
+    electron-packager . 'Google Drive Electron' --overwrite --asar=true --platform=win32 --arch=ia32 --icon=static/gd.ico --prune=true --out=release-builds --version-string.CompanyName='Alex Gyujin Kim' --version-string.FileDescription='A Google Drive desktop app made with Electron.' --version-string.ProductName='Google Drive Electron'
+  package-lin
+    electron-packager . 'Google Drive Electron' --overwrite --asar=true --platform=linux --arch=x64 --icon=static/gd.png --prune=true --out=release-builds
+```
+I used gulp to streamline development. Run `gulp` (default) to build and run the app on localhost. Run `gulp watch` to build and run the app on localhost with hot reloading using `browserify`.
+
+To build production ready applications for macos (dmg), windows(exe), and linux, run `npm run package-all`. 
+
+### Dependencies
 
 - [about-window](https://ghub.io/about-window): &#39;About App&#39; window for Electron application
-- [electron](https://ghub.io/electron): Build cross platform desktop apps with JavaScript, HTML, and CSS
 - [jquery](https://ghub.io/jquery): JavaScript library for DOM operations
 
-## Dev Dependencies
+### Dev Dependencies
 
+- [electron](https://ghub.io/electron): Build cross platform desktop apps with JavaScript, HTML, and CSS
 - [browser-sync](https://ghub.io/browser-sync): Live CSS Reload &amp; Browser Syncing
 - [del](https://ghub.io/del): Delete files and folders
 - [gulp](https://ghub.io/gulp): The streaming build system.
-- [gulp-babel](https://ghub.io/gulp-babel): Use next generation JavaScript, today
 - [gulp-csso](https://ghub.io/gulp-csso): Minify CSS with CSSO.
 - [gulp-minify](https://ghub.io/gulp-minify): Js minify plugin for gulp
 - [gulp-pug](https://ghub.io/gulp-pug): Gulp plugin for compiling Pug templates
