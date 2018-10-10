@@ -1,12 +1,8 @@
 # Google Drive Electron 
-
-![npm](https://img.shields.io/npm/v/:package.svg)
-
-![David](https://img.shields.io/david/expressjs/express.svg)
-
-![David](https://img.shields.io/david/dev/expressjs/express.svg)
-
-[![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Google%Drive%Electron&url=https://github.com/alexkim205/Google-Drive-Electron&hashtags=googledrive,electron,electronjs,google)
+|--|--|
+|Github issues||
+|Github forks||
+|Github license||
 
 This is a Google Drive desktop app made with ElectronJS.
 
