@@ -45,9 +45,9 @@ var createChildWindow = function (e) {
     childwin.focus()
   })
 
-  if (process.env.NODE_ENV === "development") {
-    childwin.webContents.openDevTools()
-  }
+  // if (process.env.NODE_ENV === "development") {
+  //   childwin.webContents.openDevTools()
+  // }
 
   childwin.on('closed', () => {
     childwin = null

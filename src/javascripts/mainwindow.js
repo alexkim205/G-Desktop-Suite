@@ -37,9 +37,9 @@ var createMainWindow = () => {
     win.focus()
   })
 
-  if (process.env.NODE_ENV === "development") {
-    win.webContents.openDevTools()
-  }
+  // if (process.env.NODE_ENV === "development") {
+  //   win.webContents.openDevTools()
+  // }
 
   // Emitted when the window is closed.
   win.on('closed', () => {
