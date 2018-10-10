@@ -10,15 +10,21 @@ Ever wish you didn't have to go to [https://drive.google.com](https://drive.goog
 
 Click [here](https://github.com/alexkim205/Google-Drive-Electron/releases) to download the app for Windows, Linux, and MacOS!
 
-## Troubleshooting
+## Releases
+
+* v.funky-duck / 0.0.2
+* v.aunt-leslie / 0.0.1
+
+## Troubleshooting and Contact
 
 ### Developing and Pull Requests
 
-To build the app locally, clone the repository and run the available npm scripts.
+To build the app locally, clone the repository, install all dependencies, and run the available npm scripts.
 
 ```sh
 git clone https://github.com/alexkim205/Google-Drive-Electron.git
 cd Google-Drive-Electron
+npm install
 ```
 
 ```sh
@@ -37,9 +43,12 @@ available via `npm run-script`:
   package-lin
     electron-packager . 'Google Drive Electron' --overwrite --asar=true --platform=linux --arch=x64 --icon=static/gd.png --prune=true --out=release-builds
 ```
+
 I used gulp to streamline development. Run `gulp` (default) to build and run the app on localhost. Run `gulp watch` to build and run the app on localhost with hot reloading using `browserify`.
 
-To build production ready applications for macos (dmg), windows(exe), and linux, run `npm run package-all`. 
+To build production ready applications for macos (dmg), windows(exe), and linux (sh), run `npm run package-all`.
+
+See any improvements that can be made? Feel free to submit a pull request.
 
 ### Dependencies
 
@@ -48,9 +57,10 @@ To build production ready applications for macos (dmg), windows(exe), and linux,
 
 ### Dev Dependencies
 
-- [electron](https://ghub.io/electron): Build cross platform desktop apps with JavaScript, HTML, and CSS
 - [browser-sync](https://ghub.io/browser-sync): Live CSS Reload &amp; Browser Syncing
 - [del](https://ghub.io/del): Delete files and folders
+- [electron](https://ghub.io/electron): Build cross platform desktop apps with JavaScript, HTML, and CSS
+- [electron-packager](https://ghub.io/electron-packager): Customize and package your Electron app with OS-specific bundles (.app, .exe, etc.) via JS or CLI
 - [gulp](https://ghub.io/gulp): The streaming build system.
 - [gulp-csso](https://ghub.io/gulp-csso): Minify CSS with CSSO.
 - [gulp-minify](https://ghub.io/gulp-minify): Js minify plugin for gulp
