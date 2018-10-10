@@ -1,23 +1,25 @@
 # Google Drive Electron
 
+![splash](static/gd_electron.png)
+
 This is a Google Drive desktop app made with ElectronJS.
 
 Ever wish you didn't have to go to [https://drive.google.com](https://drive.google.com), click the blue button, and log in every single time you wanted to open and view a google document? Do you miss the good old days of solid cloudless desktop apps? Well you're in luck!
 
 ![demo](static/gdelectron_demo.gif)
 
-## Setup & Usage
+## Usage
 
-Click [here](https://github.com/alexkim205/Google-Drive-Electron/releases) to download the app for Windows, Linux, and MacOS!
+[Download](https://github.com/alexkim205/Google-Drive-Electron/releases) the latest releases for **Windows**, **Linux**, or **MacOS**!
 
-## Releases
+Inside the zipped folder is an executable that can be run.
+
+### Releases
 
 * v.funky-duck / 0.0.2
 * v.aunt-leslie / 0.0.1
 
-## Troubleshooting and Contact
-
-### Developing and Pull Requests
+## Developing and Pull Requests
 
 To build the app locally, clone the repository, install all dependencies, and run the available npm scripts.
 
@@ -48,7 +50,7 @@ I used gulp to streamline development. Run `gulp` (default) to build and run the
 
 To build production ready applications for macos (dmg), windows(exe), and linux (sh), run `npm run package-all`.
 
-See any improvements that can be made? Feel free to submit a pull request.
+See any improvements that can be made? Feel free to start a pull request!
 
 ### Dependencies
 
