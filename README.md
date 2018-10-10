@@ -1,18 +1,17 @@
-# Google Drive Electron 
-|--|--|
-|Github issues||
-|Github forks||
-|Github license||
+![splash](static/gd_electron_logo.png)
+
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/alexkim205/Google-Drive-Electron/tree/master.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Falexkim205%2FGoogle-Drive-Electron%2Ftree%2Fmaster&hashtag=electron,electronjs,google,googledrive)
+[![GitHub issues](https://img.shields.io/github/issues/alexkim205/Google-Drive-Electron.svg)](https://github.com/alexkim205/Google-Drive-Electron/issues) [![GitHub forks](https://img.shields.io/github/forks/alexkim205/Google-Drive-Electron.svg)](https://github.com/alexkim205/Google-Drive-Electron/network) [![GitHub license](https://img.shields.io/github/license/alexkim205/Google-Drive-Electron.svg)](https://github.com/alexkim205/Google-Drive-Electron/blob/master/LICENSE) 
+
+---
 
 This is a Google Drive desktop app made with ElectronJS.
-
-![splash](static/gd_electron_slim.png)
 
 Ever wish you didn't have to go to [https://drive.google.com](https://drive.google.com), click the blue button, and log in every single time you wanted to open and view a google document? Do you miss the good old days of solid cloudless desktop apps? Well look no further!
 
 ![demo](static/gdelectron_demo.gif)
 
-## Usage
+## Installation
 
 [Download](https://github.com/alexkim205/Google-Drive-Electron/releases) the latest releases for **Windows**, **Linux**, or **MacOS**!
 
@@ -20,10 +19,10 @@ Inside the zipped folder is an executable that can be run.
 
 ### Releases
 
-* v.funky-duck / 0.0.2
-* v.aunt-leslie / 0.0.1
+- v.funky-duck / 0.0.2
+- v.aunt-leslie / 0.0.1
 
-## Developing and Pull Requests
+## Development and Pull Requests
 
 To build the app locally, clone the repository, install all dependencies, and run the available npm scripts.
 
@@ -77,7 +76,3 @@ See any improvements that can be made? Feel free to start a pull request!
 - [gulp-run-electron](https://ghub.io/gulp-run-electron): Gulp plugin for starting Electron.
 - [gulp-sass](https://ghub.io/gulp-sass): Gulp plugin for sass
 - [gulp-sourcemaps](https://ghub.io/gulp-sourcemaps): Source map support for Gulp.js
-
-## License
-
-MIT
