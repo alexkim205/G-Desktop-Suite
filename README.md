@@ -1,6 +1,6 @@
 # Google Drive Electron
 
-[Tweet](https://twitter.com/intent/tweet?text=Google%Drive%Electron&url=https://github.com/alexkim205/Google-Drive-Electron&hashtags=googledrive,electron, electronjs, google) about it
+[Tweet](https://twitter.com/intent/tweet?text=Google%Drive%Electron&url=https://github.com/alexkim205/Google-Drive-Electron&hashtags=googledrive,electron, electronjs, google) about it.
 
 This is a Google Drive desktop app made with ElectronJS.
 
