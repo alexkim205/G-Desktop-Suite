@@ -14,7 +14,7 @@ Ever wish you didn't have to go to [https://drive.google.com](https://drive.goog
 
 ## Installation
 
-[Download](https://github.com/alexkim205/Google-Drive-Electron/releases) the latest releases for **Windows**, **Linux**, or **MacOS**.
+Download the [latest releases](https://github.com/alexkim205/Google-Drive-Electron/releases) for **Windows**, **Linux**, or **MacOS**.
 
 Inside the zipped folder is an executable that can be run.
 
@@ -22,6 +22,8 @@ Inside the zipped folder is an executable that can be run.
 
 - v.funky-duck / 0.0.2
 - v.aunt-leslie / 0.0.1
+
+Version names inspired by Vulfpeck songs.
 
 ## Development and Pull Requests
 
