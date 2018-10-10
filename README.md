@@ -62,7 +62,7 @@ See any improvements that can be made? Feel free to start a pull request!
 
 Check out the `TODO.md` for the most updated list:
 
-```sh
+```md
 * Use Google Drive API to actually develop app features instead of just loading.
 * Don't use <webview>
 * ~~Fix Cmd+Q button~~
