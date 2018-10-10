@@ -1,12 +1,18 @@
-# Google Drive Electron
+# Google Drive Electron 
 
-[Tweet](https://twitter.com/intent/tweet?text=Google%Drive%Electron&url=https://github.com/alexkim205/Google-Drive-Electron&hashtags=googledrive,electron, electronjs, google) about it.
+![npm](https://img.shields.io/npm/v/:package.svg)
+
+![David](https://img.shields.io/david/expressjs/express.svg)
+
+![David](https://img.shields.io/david/dev/expressjs/express.svg)
+
+[![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Google%Drive%Electron&url=https://github.com/alexkim205/Google-Drive-Electron&hashtags=googledrive,electron,electronjs,google)
 
 This is a Google Drive desktop app made with ElectronJS.
 
 ![splash](static/gd_electron_slim.png)
 
-Ever wish you didn't have to go to [https://drive.google.com](https://drive.google.com), click the blue button, and log in every single time you wanted to open and view a google document? Do you miss the good old days of solid cloudless desktop apps? Well you're in luck!
+Ever wish you didn't have to go to [https://drive.google.com](https://drive.google.com), click the blue button, and log in every single time you wanted to open and view a google document? Do you miss the good old days of solid cloudless desktop apps? Well look no further!
 
 ![demo](static/gdelectron_demo.gif)
 
