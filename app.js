@@ -1,5 +1,5 @@
 const { app, Menu } = require('electron')
-const log = require('electron-log');
+// const log = require('electron-log');
 
 // Menu
 
@@ -9,7 +9,7 @@ let win
 
 const { createMainWindow } = require('./build/javascripts/mainwindow')
 
-log.info(createMainWindow)
+// log.info(createMainWindow)
 
 
 app.on('ready', () => {
@@ -20,7 +20,7 @@ app.on('ready', () => {
 })
 
 app.on('window-all-closed', () => {
-  log.info('Windows All Closed')
+  // log.info('Windows All Closed')
   if (process.platform !== 'darwin') {
     app.quit()
   }

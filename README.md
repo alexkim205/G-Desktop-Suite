@@ -1,18 +1,17 @@
 # Google Drive Electron
 
-A Google Drive desktop app made with Electron.
+Ever wish you didn't have to go to [https://drive.google.com](https://drive.google.com), click the blue button, and log in every single time you wanted to create a new document? Do you miss the good old days of not paying $99/year for Microsoft Office 365 and wish you could use Google Drive like the Microsoft Office Suite? Well you're in luck!
+
+This is a Google Drive desktop app made with ElectronJS.
 
 ## Installation
 
-This is a [Node.js](https://nodejs.org/) module available through the 
-[npm registry](https://www.npmjs.com/). It can be installed using the 
-[`npm`](https://docs.npmjs.com/getting-started/installing-npm-packages-locally)
-or 
-[`yarn`](https://yarnpkg.com/en/)
-command line tools.
+Click [here](https://github.com/alexkim205/Google-Drive-Electron/releases) to download the app for Windows, Linux, and MacOS!
+
+To build the app locally and make pull requests, clone the repository.
 
 ```sh
-npm install Google Drive Electron --save
+git clone https://github.com/alexkim205/Google-Drive-Electron.git
 ```
 
 ## Dependencies

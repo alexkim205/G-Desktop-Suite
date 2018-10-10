@@ -1,6 +1,6 @@
 const { app, BrowserWindow} = require('electron')
 const url = require('url')
-const log = require('electron-log');
+// const log = require('electron-log');
 
 var encode_search = (json) => {
   return Object.keys(json).map(key => key + '=' + encodeURIComponent(json[key])).join('&')
@@ -28,8 +28,8 @@ var createMainWindow = () => {
     slashes: true,
     search: encode_search(windowSettings)
   })
-  log.info(encode_search(windowSettings))
-  log.info(file_url)
+  // log.info(encode_search(windowSettings))
+  // log.info(file_url)
   win.loadURL(file_url)
 
   win.once('ready-to-show', () => {
