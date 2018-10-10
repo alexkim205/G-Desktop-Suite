@@ -1,4 +1,4 @@
-![splash](static/gd_electron_logo.png)
+4![splash](static/gd_electron_logo.png)
 
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/alexkim205/Google-Drive-Electron/tree/master.svg?style=social)](https://twitter.com/intent/tweet?text=Check%out%Google%Drive%Electron%to%start%using%Google%Drive%as%a%desktop%app!%&url=https%3A%2F%2Fgithub.com%2Falexkim205%2FGoogle-Drive-Electron%2Ftree%2Fmaster&hashtags=electron,electronjs,google,googledrive)
 [![GitHub issues](https://img.shields.io/github/issues/alexkim205/Google-Drive-Electron.svg)](https://github.com/alexkim205/Google-Drive-Electron/issues) [![GitHub forks](https://img.shields.io/github/forks/alexkim205/Google-Drive-Electron.svg)](https://github.com/alexkim205/Google-Drive-Electron/network) [![GitHub license](https://img.shields.io/github/license/alexkim205/Google-Drive-Electron.svg)](https://github.com/alexkim205/Google-Drive-Electron/blob/master/LICENSE) [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
@@ -57,6 +57,18 @@ I used gulp to streamline development. Run `gulp` (default) to build and run the
 To build production ready applications for macos (dmg), windows(exe), and linux (sh), run `npm run package-all`.
 
 See any improvements that can be made? Feel free to start a pull request!
+
+### On my TODO list
+
+Check out the `TODO.md` for the most updated list:
+
+* Use Google Drive API to actually develop app features instead of just loading.
+* Don't use <webview>
+* ~~Fix Cmd+Q button~~
+* Implement reload
+* Implement zoom
+* Implement open main window (if user accidentally closes main page), or make it so that you can't close main window until all other windows are closed
+* Stagger window placementxs when you open new windows.
 
 ### Dependencies
 
