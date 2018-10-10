@@ -10,7 +10,7 @@ This is a Google Drive desktop app made with ElectronJS.
 
 Ever wish you didn't have to go to [https://drive.google.com](https://drive.google.com), click the blue button, and log in every single time you wanted to open and view a google document? Do you miss the good old days of solid no-frills desktop apps? Well look no further!
 
-Disclaimer: Not affiliated with Google.
+*Disclaimer: Not affiliated with Google.*
 
 ![demo](static/gdelectron_demo.gif)
 
