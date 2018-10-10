@@ -1,4 +1,4 @@
-4![splash](static/gd_electron_logo.png)
+![splash](static/gd_electron_logo.png)
 
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/alexkim205/Google-Drive-Electron/tree/master.svg?style=social)](https://twitter.com/intent/tweet?text=Check%out%Google%Drive%Electron%to%start%using%Google%Drive%as%a%desktop%app!%&url=https%3A%2F%2Fgithub.com%2Falexkim205%2FGoogle-Drive-Electron%2Ftree%2Fmaster&hashtags=electron,electronjs,google,googledrive)
 [![GitHub issues](https://img.shields.io/github/issues/alexkim205/Google-Drive-Electron.svg)](https://github.com/alexkim205/Google-Drive-Electron/issues) [![GitHub forks](https://img.shields.io/github/forks/alexkim205/Google-Drive-Electron.svg)](https://github.com/alexkim205/Google-Drive-Electron/network) [![GitHub license](https://img.shields.io/github/license/alexkim205/Google-Drive-Electron.svg)](https://github.com/alexkim205/Google-Drive-Electron/blob/master/LICENSE) [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
