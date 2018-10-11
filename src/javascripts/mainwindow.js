@@ -1,5 +1,6 @@
-const { app, BrowserWindow} = require('electron')
+const electron = require('electron')
 const url = require('url')
+const windowState = require('electron-window-state')
 // const log = require('electron-log');
 
 var encode_search = (json) => {
@@ -7,10 +8,18 @@ var encode_search = (json) => {
 }
 
 var createMainWindow = () => {
+  const workAreaSize = electron.screen.getPrimaryDisplay().workAreaSize
+  // Load the previous state with fall-back to defaults
+  const mainWindowState = windowState({
+    defaultWidth: workAreaSize.width - 200,
+    defaultHeight: workAreaSize.height - 100,
+  })
   // Create the browser window.
-  win = new BrowserWindow({
-    width: 1300,
-    height: 900,
+  win = new electron.BrowserWindow({
+    x: mainWindowState.x,
+    y: mainWindowState.y,
+    width: mainWindowState.width,
+    height: mainWindowState.height,
     titleBarStyle: 'hidden',
     minWidth: 300,
     minHeight: 300,
@@ -18,13 +27,20 @@ var createMainWindow = () => {
     show: false
   })
 
+  /**
+   * Let us register listeners on the window, so we can update the state
+   * automatically (the listeners will be removed when the window is closed)
+   * and restore the maximized or full screen state
+   */
+  mainWindowState.manage(win)
+
   windowSettings = {
     'url': 'https://drive.google.com/drive/'
   }
 
   var file_url = url.format({
     protocol: 'file',
-    pathname: `${app.getAppPath()}/build/templates/index.html`,
+    pathname: `${electron.app.getAppPath()}/build/templates/index.html`,
     slashes: true,
     search: encode_search(windowSettings)
   })

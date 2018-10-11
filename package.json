@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "about-window": "^1.12.1",
+    "electron-window-state": "^5.0.1",
     "jquery": "^3.3.1"
   }
 }
