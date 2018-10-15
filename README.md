@@ -60,18 +60,9 @@ To build production ready applications for macos (dmg), windows(exe), and linux 
 
 See any improvements that can be made? Feel free to start a pull request!
 
-### On my TODO list
+### Want to contribute?
 
-Check out the `TODO.md` for the most updated list:
-
-* Use Google Drive API to actually develop app features instead of just loading.
-* Don't use <webview>
-* ~~Fix Cmd+Q button~~
-* Implement reload
-* Implement zoom
-* Implement open main window (if user accidentally closes main page), or make it so that you can't close main window until all other windows are closed
-* Stagger window placementxs when you open new windows.
-* Incorporate Electron notifications
+Check out the `TODO.md`!
 
 ### Dependencies
 

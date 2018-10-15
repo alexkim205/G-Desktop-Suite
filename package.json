@@ -1,7 +1,7 @@
 {
   "name": "gdelectron",
   "productName": "Google Drive Electron",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Google Drive desktop app made with Electron",
   "main": "app.js",
   "scripts": {
@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "about-window": "^1.12.1",
+    "electron-localshortcut": "https://github.com/alexkim205/electron-localshortcut/tarball/master",
     "electron-window-state": "^5.0.1",
     "jquery": "^3.3.1"
   }

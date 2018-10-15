@@ -1,7 +1,17 @@
 // Replace '..' with 'about-window'
-const { app, Menu } = require('electron')
-
 const openAboutWindow = require("about-window").default;
+
+// var reload = () => {
+//   getCurrentWindow().reload()
+// }
+
+// var zoomin = () => {
+//   webFrame.setZoomFactor(1.1);
+// }
+
+// var zoomout = () => {
+//   webFrame.setZoomFactor(0.9);
+// }
 
 var about = () => {
   openAboutWindow({
@@ -27,13 +37,15 @@ var template = [{
   },
   {
     label: "File",
-    role: 'windowMenu'
-    // submenu: [
-    //   { label: "Toggle Full Screen", accelerator: "Cmd+Ctrl+F", role: 'toggleFullScreen' },
-    //   { label: "Minimize", accelerator: "CmdOrCtrl+M", role: 'minimize' },
-    //   { label: "Close Window", accelerator: "CmdOrCtrl+W", role: 'close' },
-    //   { label: "Reload Window", accelerator: "CmdOrCtrl+R", click: reload }
-    // ]
+    // role: 'windowMenu'
+    submenu: [
+      { role: 'minimize' },
+      { role: 'close' },
+      // { label: "Reload Window", accelerator: "CmdOrCtrl+R", click: reload },
+      { label: "Toggle Full Screen", accelerator: "Cmd+Ctrl+F", role: 'toggleFullScreen' },
+      // { label: "Minimize", accelerator: "CmdOrCtrl+M", role: 'minimize' },
+      // { label: "Close Window", accelerator: "CmdOrCtrl+W", role: 'close' }
+    ]
   },
   {
     label: "Edit",
@@ -47,6 +59,14 @@ var template = [{
     //   { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
     //   { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
     // ]
+  },
+  {
+    label: "View",
+    submenu: [
+      {role: 'zoomIn'},
+      {role: 'zoomOut'},
+      {role: 'resetZoom'}
+    ]
   }
 ];
 
