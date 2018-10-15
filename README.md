@@ -22,6 +22,7 @@ Inside the zipped folder is an executable that can be run.
 
 ### Releases
 
+- v.dean-town / 0.0.3
 - v.funky-duck / 0.0.2
 - v.aunt-leslie / 0.0.1
 
@@ -52,6 +53,8 @@ available via `npm run-script`:
     electron-packager . 'Google Drive Electron' --overwrite --asar=true --platform=win32 --arch=ia32 --icon=static/gd.ico --prune=true --out=release-builds --version-string.CompanyName='Alex Gyujin Kim' --version-string.FileDescription='A Google Drive desktop app made with Electron.' --version-string.ProductName='Google Drive Electron'
   package-lin
     electron-packager . 'Google Drive Electron' --overwrite --asar=true --platform=linux --arch=x64 --icon=static/gd.png --prune=true --out=release-builds
+  package-zip
+    find ./release-builds -type d -depth 1 -exec zip -r {}.zip {} \;
 ```
 
 I used gulp to streamline development. Run `gulp` (default) to build and run the app on localhost. Run `gulp watch` to build and run the app on localhost with hot reloading using `browserify`.
