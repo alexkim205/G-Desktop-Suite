@@ -20,7 +20,6 @@ var about = () => {
     copyright: "Copyright (c) 2018 Alex Kim",
     package_json_dir: `${__dirname}/../../`,
     license: "MIT",
-    open_devtools: process.env.NODE_ENV !== "production",
     win_options: {
       titleBarStyle: "hidden"
     }
