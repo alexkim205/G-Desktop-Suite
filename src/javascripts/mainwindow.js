@@ -57,6 +57,12 @@ var createMainWindow = () => {
   //   win.webContents.openDevTools()
   // }
 
+  win.on('close', (e) => {
+    if (electron.BrowserWindow.getAllWindows().length > 1) {
+      e.preventDefault()
+    }
+  })
+
   // Emitted when the window is closed.
   win.on('closed', () => {
     win = null
