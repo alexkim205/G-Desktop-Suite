@@ -22,8 +22,10 @@ var createChildWindow = function(e) {
   }
 
   childwin = new BrowserWindow({
-    width: 1300,
-    height: 900,
+    x: e.data.pos[0] + 20,
+    y: e.data.pos[1] + 20,
+    width: e.data.size[0],
+    height: e.data.size[1],
     titleBarStyle: 'hidden',
     minWidth: 300,
     minHeight: 300,
