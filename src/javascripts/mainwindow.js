@@ -1,13 +1,20 @@
-const electron = require('electron')
 const url = require('url')
+const path = require('path')
+
+const electron = require('electron')
+const { Menu, app } = electron
 const windowState = require('electron-window-state')
-// const log = require('electron-log');
+const electronLocalshortcut = require('electron-localshortcut');
+
+// Menu
+var { template } = require(path.join(app.getAppPath(), 'build/javascripts/menu'))
 
 var encode_search = (json) => {
   return Object.keys(json).map(key => key + '=' + encodeURIComponent(json[key])).join('&')
 }
 
 var createMainWindow = () => {
+
   const workAreaSize = electron.screen.getPrimaryDisplay().workAreaSize
   // Load the previous state with fall-back to defaults
   const mainWindowState = windowState({
@@ -48,14 +55,18 @@ var createMainWindow = () => {
   // log.info(file_url)
   win.loadURL(file_url)
 
+  // Load main menu 
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
+
   win.once('ready-to-show', () => {
     win.show()
     win.focus()
   })
 
-  // if (process.env.NODE_ENV === "development") {
-  //   win.webContents.openDevTools()
-  // }
+  if (process.env.NODE_ENV === "development") {
+    win.webContents.openDevTools()
+  }
 
   win.on('close', (e) => {
     if (electron.BrowserWindow.getAllWindows().length > 1) {
@@ -67,6 +78,19 @@ var createMainWindow = () => {
   win.on('closed', () => {
     win = null
   })
+
+  electronLocalshortcut.register(win, ['CmdOrCtrl+R', 'F5'], () => {
+    console.log('You reloaded the page!')
+    win.reload()
+  });
+  // electronLocalshortcut.register(win, ['CmdOrCtrl+-'], () => {
+  //   console.log('You zoomed out of the page!')
+  //   win
+  // });
+  // electronLocalshortcut.register(win, ['CmdOrCtrl+Shift+='], () => {
+  //   console.log('You zoomed in to the page!')
+  //   win.reload()
+  // });
 
 }
 
