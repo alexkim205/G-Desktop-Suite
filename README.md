@@ -22,6 +22,7 @@ Inside the zipped folder is an executable that can be run.
 
 ### Releases
 
+- v.fugue-state / 0.1.0
 - v.dean-town / 0.0.3
 - v.funky-duck / 0.0.2
 - v.aunt-leslie / 0.0.1

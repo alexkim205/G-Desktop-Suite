@@ -31,7 +31,10 @@ var createMainWindow = () => {
     minWidth: 300,
     minHeight: 300,
     scrollBounce: false,
-    show: false
+    show: false,
+    webPreferences: {
+      preload: path.join(path.join(app.getAppPath(), 'build/javascripts/preload')),
+    }
   })
 
   /**

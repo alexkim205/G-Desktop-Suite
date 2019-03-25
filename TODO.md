@@ -1,9 +1,10 @@
 # TODO
-An incomprehensive list of features to work on.
+A list of features to work on.
 
 * Dark Mode
 * Use Google Drive API to actually develop app features instead of just loading webview.
 * Don't use <webview>
+* ~~Fix Issue 9 - can't see files~~
 * ~~Fix Cmd+Q button~~
 * ~~Implement reload~~
 * ~~Implement zoom~~

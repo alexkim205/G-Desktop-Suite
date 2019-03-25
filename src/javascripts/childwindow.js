@@ -31,6 +31,9 @@ var createChildWindow = function(e) {
     minHeight: 300,
     scrollBounce: false,
     show: false,
+    webPreferences: {
+      preload: path.join(path.join(app.getAppPath(), 'build/javascripts/preload')),
+    }
   })
 
   windowSettings = {
