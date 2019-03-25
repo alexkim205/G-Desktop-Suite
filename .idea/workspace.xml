@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce6d5095-c5aa-4207-babe-47e70461254a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/javascripts/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/javascripts/menu.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,7 +23,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="js" value="6" />
+          <entry key="js" value="7" />
           <entry key="md" value="1" />
           <entry key="pug" value="1" />
         </counts>
@@ -31,13 +31,13 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Jade" value="1" />
-          <entry key="JavaScript" value="6" />
+          <entry key="JavaScript" value="7" />
           <entry key="Markdown" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="15" />
+          <entry key="js" value="16" />
           <entry key="json" value="2" />
           <entry key="md" value="41" />
           <entry key="pug" value="13" />
@@ -47,7 +47,7 @@
         <counts>
           <entry key="JSON" value="2" />
           <entry key="Jade" value="13" />
-          <entry key="JavaScript" value="15" />
+          <entry key="JavaScript" value="16" />
           <entry key="Markdown" value="41" />
         </counts>
       </usages-collector>
@@ -55,11 +55,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+            <state relative-caret-position="465">
+              <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build/javascripts/menu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -82,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/src/javascripts/menu.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -140,6 +149,7 @@
         <option value="$PROJECT_DIR$/src/javascripts/childwindow.js" />
         <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/build/javascripts/menu.js" />
       </list>
     </option>
   </component>
@@ -254,12 +264,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1553526292376</updated>
-      <workItem from="1553526293865" duration="764000" />
+      <workItem from="1553526293865" duration="865000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="764000" />
+    <option name="totallyTimeSpent" value="865000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="187" y="23" width="1092" height="948" extended-state="0" />
@@ -330,7 +340,7 @@
     <entry file="file://$PROJECT_DIR$/src/javascripts/menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -346,8 +356,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        <state relative-caret-position="465">
+          <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/javascripts/menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
         </state>
       </provider>
     </entry>
