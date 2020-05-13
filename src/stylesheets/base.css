@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   background-color: white;
   -webkit-app-region: no-drag;
@@ -10,8 +10,6 @@ html {
 }
 
 body {
-  // -ms-overflow-style: scrollbar;
-  // width: 100%;
   height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -24,25 +22,22 @@ body {
   min-height: 1.5em;
   background-color: white;
 
-  -webkit-app-region: drag
+  -webkit-app-region: drag;
 }
 
 #maincontent {
-  // width: 99%;
   flex: 2;
   width: 100%;
   margin: 0 auto;
+}
 
-  webview {
-    // height: inherit;
-    // display: block;
-    /* iframes are inline by default */
-    border: none;
-    /* Reset default border */
-    height: 100%;
+#maincontent > webview {
+  /* iframes are inline by default */
+  border: none;
+  /* Reset default border */
+  height: 100%;
+}
 
-    * {
-      -webkit-app-region: no-drag;
-    }
-  }
+#maincontent > webview > * {
+  -webkit-app-region: no-drag;
 }
