@@ -36,6 +36,7 @@
     "about-window": "^1.12.1",
     "electron-localshortcut": "https://github.com/alexkim205/electron-localshortcut/tarball/master",
     "electron-window-state": "^5.0.1",
+    "file-system": "^2.2.2",
     "jquery": "^3.3.1"
   }
 }

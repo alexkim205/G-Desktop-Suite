@@ -32,23 +32,33 @@ var createChildWindow = function (e) {
     minHeight: 300,
     scrollBounce: false,
     show: false,
-    webPreferences: {
-      preload: `./preload.js`,
-    },
   });
 
   windowSettings = {
     url: goToURL,
   };
 
-  var file_url = url.format({
-    protocol: "file",
-    pathname: `../templates/index.html`,
-    slashes: true,
-    search: encode_search(windowSettings),
+  // var file_url = url.format({
+  //   protocol: "file",
+  //   pathname: `../templates/index.html`,
+  //   slashes: true,
+  //   search: encode_search(windowSettings),
+  // });
+  // console.log(file_url);
+  childwin.loadURL(windowSettings.url, { userAgent: "Chrome" });
+
+  // Inject custom css
+  win.webContents.on("did-finish-load", function () {
+    fs.readFile(`${__dirname}/../stylesheets/base.css`, "utf-8", function (
+      error,
+      data
+    ) {
+      if (!error) {
+        var formattedData = data.replace(/\s{2,10}/g, " ").trim();
+        win.webContents.insertCSS(formattedData);
+      }
+    });
   });
-  console.log(file_url);
-  childwin.loadURL(file_url);
 
   // Load main menu
 

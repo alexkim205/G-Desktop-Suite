@@ -1,5 +1,4 @@
-const url = require("url");
-const path = require("path");
+const fs = require("file-system");
 
 const electron = require("electron");
 const { Menu } = electron;
@@ -29,13 +28,12 @@ var createMainWindow = () => {
     width: mainWindowState.width,
     height: mainWindowState.height,
     // titleBarStyle: "hidden",
+    titleBarStyle: "hidden",
+    // frame: false,
     minWidth: 300,
     minHeight: 300,
     scrollBounce: false,
     show: false,
-    webPreferences: {
-      preload: path.join(__dirname, "src/javascripts/preload.js"),
-    },
   });
 
   /**
@@ -50,12 +48,12 @@ var createMainWindow = () => {
       "https://accounts.google.com/signin/v2/identifier?service=wise&passive=true&continue=http%3A%2F%2Fdrive.google.com%2F%3Futm_source%3Den&utm_medium=button&utm_campaign=web&utm_content=gotodrive&usp=gtd&ltmpl=drive&flowName=GlifWebSignIn&flowEntry=ServiceLogin",
   };
 
-  var file_url = url.format({
-    protocol: "file",
-    pathname: path.join(__dirname, "src/templates/index.html"),
-    slashes: true,
-    search: encode_search(windowSettings),
-  });
+  // var file_url = url.format({
+  //   protocol: "file",
+  //   pathname: path.join(__dirname, "src/templates/index.html"),
+  //   slashes: true,
+  //   search: encode_search(windowSettings),
+  // });
   // log.info(encode_search(windowSettings))
   // log.info(file_url)
   // console.log(file_url);
@@ -68,6 +66,19 @@ var createMainWindow = () => {
   // https://pragli.com/blog/how-to-authenticate-with-google-in-electron/
   // https://stackoverflow.com/questions/35672602/how-to-set-electron-useragent
   win.loadURL(windowSettings.url, { userAgent: "Chrome" });
+
+  // Inject custom css
+  win.webContents.on("did-stop-loading", function () {
+    fs.readFile(`${__dirname}/../stylesheets/base.css`, "utf-8", function (
+      error,
+      data
+    ) {
+      if (!error) {
+        var formattedData = data.replace(/\s{2,10}/g, " ").trim();
+        win.webContents.insertCSS(formattedData);
+      }
+    });
+  });
 
   // Load main menu
   const menu = Menu.buildFromTemplate(template);
@@ -105,6 +116,8 @@ var createMainWindow = () => {
   //   console.log('You zoomed in to the page!')
   //   win.reload()
   // });
+
+  win.webContents.openDevTools();
 };
 
 module.exports = { createMainWindow: createMainWindow };

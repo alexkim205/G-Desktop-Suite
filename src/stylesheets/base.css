@@ -1,43 +1,8 @@
-* {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  background-color: white;
-  -webkit-app-region: no-drag;
-}
-
 html {
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-#dragbar {
-  min-height: 1.5em;
-  background-color: white;
-
+  padding-top: 1.5rem;
   -webkit-app-region: drag;
 }
 
-#maincontent {
-  flex: 2;
-  width: 100%;
-  margin: 0 auto;
-}
-
-#maincontent > webview {
-  /* iframes are inline by default */
-  border: none;
-  /* Reset default border */
-  height: 100%;
-}
-
-#maincontent > webview > * {
+body {
   -webkit-app-region: no-drag;
 }

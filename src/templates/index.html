@@ -3,18 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Google Drive</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700"
-    />
     <link rel="stylesheet" href="../stylesheets/base.css" />
-    <link rel="stylesheet" href="../stylesheets/index.css" />
   </head>
 
   <body>
-    <div id="dragbar"></div>
     <div id="maincontent">
-      <webview preload="../javascripts/preload.js" src="" />
     </div>
     <script
       async
@@ -23,15 +16,6 @@
     ></script>
     <script>
       let $ = require("jquery");
-    </script>
-    <script src="../javascripts/index.js"></script>
-    <script>
-      let params = new URL(document.location).searchParams;
-      let webview_url = decodeURIComponent(params.get("url"));
-      console.log(document.location);
-      console.log(webview_url);
-
-      $("webview").attr("src", webview_url);
     </script>
   </body>
 </html>
