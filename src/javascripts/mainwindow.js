@@ -26,9 +26,13 @@ var createMainWindow = () => {
     minWidth: 300,
     minHeight: 300,
     backgroundColor: "#FFF",
-    titleBarStyle: "hidden",
+    // titleBarStyle: "hidden",
     center: true,
     scrollBounce: false,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
   });
 
   /**
@@ -37,9 +41,6 @@ var createMainWindow = () => {
    * and restore the maximized or full screen state
    */
   mainWindowState.manage(win);
-
-  // Load template containing title bar
-  win.loadFile(path.join(__dirname, "../templates/index.html"));
 
   windowSettings = {
     url: signInURL,
@@ -56,12 +57,7 @@ var createMainWindow = () => {
    *
    */
   // win.loadURL(windowSettings.url, { userAgent });
-  let view = new BrowserView({
-    webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: true,
-    },
-  });
+  let view = new BrowserView();
   win.setBrowserView(view);
   view.setBounds({
     x: 0,
@@ -75,19 +71,20 @@ var createMainWindow = () => {
   });
   view.webContents.loadURL(windowSettings.url, { userAgent });
 
-  view.webContents.on("before-input-event", (event, input) => {
-    // For example, only enable application menu keyboard shortcuts when
-    // Ctrl/Cmd are down.
-    console.log(event, input);
-  });
-
   // Menu
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 
-  view.once("ready-to-show", () => {
+  // Load template containing title bar
+  win.loadFile(path.join(__dirname, "../templates/index.html"));
+
+  view.webContents.once("ready-to-show", () => {
     win.show();
     view.focus();
+  });
+
+  view.webContents.on("page-title-updated", (e) => {
+    win.setTitle(view.webContents.getTitle())
   });
 
   if (process.env.NODE_ENV === "development") {
@@ -98,6 +95,8 @@ var createMainWindow = () => {
     if (BrowserWindow.getAllWindows().length > 1) {
       e.preventDefault();
     }
+    electronLocalshortcut.unregisterAll(win);
+    electronLocalshortcut.unregisterAll(view);
   });
 
   // Emitted when the window is closed.
@@ -119,6 +118,10 @@ var createMainWindow = () => {
   );
 
   electronLocalshortcut.register(view, ["CmdOrCtrl+R", "F5"], () => {
+    // No reload API for browserview yet.
+    view.webContents.loadURL(windowSettings.url, { userAgent });
+  });
+  electronLocalshortcut.register(win, ["CmdOrCtrl+R", "F5"], () => {
     // No reload API for browserview yet.
     view.webContents.loadURL(windowSettings.url, { userAgent });
   });

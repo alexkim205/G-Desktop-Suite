@@ -9,3 +9,8 @@ body {
   background-color: white;
   -webkit-app-region: drag;
 }
+
+#title-bar {
+  width: 100%;
+  text-align: center;
+}

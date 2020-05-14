@@ -34,6 +34,10 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
     titleBarStyle: "hidden",
     center: true,
     scrollBounce: false,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
   });
 
   /**
@@ -49,12 +53,7 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   windowSettings = { url };
 
   // Create the browser window.
-  let childview = new BrowserView({
-    webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: true,
-    },
-  });
+  let childview = new BrowserView();
   childwin.setBrowserView(childview);
   childview.setBounds({
     x: 0,
@@ -74,9 +73,14 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
     childwin.webContents.openDevTools();
   }
 
-  childview.once("ready-to-show", () => {
+  childview.webContents.once("ready-to-show", () => {
     childwin.show();
     childview.focus();
+  });
+
+  childwin.on("close", (e) => {
+    electronLocalshortcut.unregisterAll(childwin);
+    electronLocalshortcut.unregisterAll(childview);
   });
 
   childwin.on("closed", () => {
@@ -86,7 +90,11 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
 
   electronLocalshortcut.register(childview, ["CmdOrCtrl+R", "F5"], () => {
     // console.log("You reloaded the child page!");
-    view.webContents.loadURL(windowSettings.url);
+    childview.webContents.loadURL(windowSettings.url);
+  });
+  electronLocalshortcut.register(childwin, ["CmdOrCtrl+R", "F5"], () => {
+    // console.log("You reloaded the child page!");
+    childview.webContents.loadURL(windowSettings.url);
   });
 
   // childwin.webContents.openDevTools();
