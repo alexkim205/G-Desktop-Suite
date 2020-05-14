@@ -1,39 +1,34 @@
-const fs = require("file-system");
-
-const electron = require("electron");
-const { Menu } = electron;
+const { screen, BrowserView, BrowserWindow, Menu } = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
+const path = require("path");
 
-// Menu
+const { signInURL, userAgent } = require("../config");
+const { TITLE_BAR_HEIGHT } = require("../util");
+const { createChildWindow } = require("./childwindow");
 var { template } = require("./menu");
 
-var encode_search = (json) => {
-  return Object.keys(json)
-    .map((key) => key + "=" + encodeURIComponent(json[key]))
-    .join("&");
-};
-
 var createMainWindow = () => {
-  const workAreaSize = electron.screen.getPrimaryDisplay().workAreaSize;
+  // Get information about the screen size.
+  const workAreaSize = screen.getPrimaryDisplay().workAreaSize;
   // Load the previous state with fall-back to defaults
   const mainWindowState = windowState({
     defaultWidth: workAreaSize.width - 200,
     defaultHeight: workAreaSize.height - 100,
   });
+
   // Create the browser window.
-  win = new electron.BrowserWindow({
+  win = new BrowserWindow({
     x: mainWindowState.x,
     y: mainWindowState.y,
     width: mainWindowState.width,
     height: mainWindowState.height,
-    // titleBarStyle: "hidden",
-    titleBarStyle: "hidden",
-    // frame: false,
     minWidth: 300,
     minHeight: 300,
+    backgroundColor: "#FFF",
+    titleBarStyle: "hidden",
+    center: true,
     scrollBounce: false,
-    show: false,
   });
 
   /**
@@ -43,50 +38,56 @@ var createMainWindow = () => {
    */
   mainWindowState.manage(win);
 
+  // Load template containing title bar
+  win.loadFile(path.join(__dirname, "../templates/index.html"));
+
   windowSettings = {
-    url:
-      "https://accounts.google.com/signin/v2/identifier?service=wise&passive=true&continue=http%3A%2F%2Fdrive.google.com%2F%3Futm_source%3Den&utm_medium=button&utm_campaign=web&utm_content=gotodrive&usp=gtd&ltmpl=drive&flowName=GlifWebSignIn&flowEntry=ServiceLogin",
+    url: signInURL,
   };
 
-  // var file_url = url.format({
-  //   protocol: "file",
-  //   pathname: path.join(__dirname, "src/templates/index.html"),
-  //   slashes: true,
-  //   search: encode_search(windowSettings),
-  // });
-  // log.info(encode_search(windowSettings))
-  // log.info(file_url)
-  // console.log(file_url);
-  // win.loadURL(file_url);
+  // Create the browser window.
+  /**
+   * Google requires a supported browser for oauth sign in's. I can use
+   * the setUserAgent() function or app.userAgentFallback to trick
+   * Google's Oauth servers into thinking that the electron window is
+   * Chrome.
+   * https://pragli.com/blog/how-to-authenticate-with-google-in-electron/
+   * https://stackoverflow.com/questions/35672602/how-to-set-electron-useragent
+   *
+   */
+  // win.loadURL(windowSettings.url, { userAgent });
+  let view = new BrowserView({
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
+  });
+  win.setBrowserView(view);
+  view.setBounds({
+    x: 0,
+    y: TITLE_BAR_HEIGHT,
+    width: mainWindowState.width,
+    height: mainWindowState.height - TITLE_BAR_HEIGHT,
+  });
+  view.setAutoResize({
+    width: true,
+    height: true,
+  });
+  view.webContents.loadURL(windowSettings.url, { userAgent });
 
-  // Google requires a supported browser for oauth sign in's. I can use
-  // the setUserAgent() function or app.userAgentFallback to trick
-  // Google's Oauth servers into thinking that the electron window is
-  // Chrome.
-  // https://pragli.com/blog/how-to-authenticate-with-google-in-electron/
-  // https://stackoverflow.com/questions/35672602/how-to-set-electron-useragent
-  win.loadURL(windowSettings.url, { userAgent: "Chrome" });
-
-  // Inject custom css
-  win.webContents.on("did-stop-loading", function () {
-    fs.readFile(`${__dirname}/../stylesheets/base.css`, "utf-8", function (
-      error,
-      data
-    ) {
-      if (!error) {
-        var formattedData = data.replace(/\s{2,10}/g, " ").trim();
-        win.webContents.insertCSS(formattedData);
-      }
-    });
+  view.webContents.on("before-input-event", (event, input) => {
+    // For example, only enable application menu keyboard shortcuts when
+    // Ctrl/Cmd are down.
+    console.log(event, input);
   });
 
-  // Load main menu
+  // Menu
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 
-  win.once("ready-to-show", () => {
+  view.once("ready-to-show", () => {
     win.show();
-    win.focus();
+    view.focus();
   });
 
   if (process.env.NODE_ENV === "development") {
@@ -94,7 +95,7 @@ var createMainWindow = () => {
   }
 
   win.on("close", (e) => {
-    if (electron.BrowserWindow.getAllWindows().length > 1) {
+    if (BrowserWindow.getAllWindows().length > 1) {
       e.preventDefault();
     }
   });
@@ -102,22 +103,27 @@ var createMainWindow = () => {
   // Emitted when the window is closed.
   win.on("closed", () => {
     win = null;
+    view = null;
   });
 
-  electronLocalshortcut.register(win, ["CmdOrCtrl+R", "F5"], () => {
-    console.log("You reloaded the page!");
-    win.reload();
-  });
-  // electronLocalshortcut.register(win, ['CmdOrCtrl+-'], () => {
-  //   console.log('You zoomed out of the page!')
-  //   win
-  // });
-  // electronLocalshortcut.register(win, ['CmdOrCtrl+Shift+='], () => {
-  //   console.log('You zoomed in to the page!')
-  //   win.reload()
-  // });
+  // On new window, create child window
+  view.webContents.on(
+    "new-window",
+    (event, url, frameName, disposition, options) => {
+      createChildWindow(event, url, frameName, disposition, {
+        ...options,
+        pos: win.getPosition(),
+        size: win.getSize(),
+      });
+    }
+  );
 
-  win.webContents.openDevTools();
+  electronLocalshortcut.register(view, ["CmdOrCtrl+R", "F5"], () => {
+    // No reload API for browserview yet.
+    view.webContents.loadURL(windowSettings.url, { userAgent });
+  });
+
+  // win.webContents.openDevTools();
 };
 
 module.exports = { createMainWindow: createMainWindow };

@@ -1,3 +1,3 @@
 if (!window.chrome) {
-  window.chrome = {}
+  window.chrome = {};
 }

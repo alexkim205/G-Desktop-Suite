@@ -1,8 +1,11 @@
 html {
-  padding-top: 1.5rem;
-  -webkit-app-region: drag;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-  -webkit-app-region: no-drag;
+  margin: 0;
+  height: 2em;
+  background-color: white;
+  -webkit-app-region: drag;
 }

@@ -1,7 +1,7 @@
 {
   "name": "gdelectron",
   "productName": "Google Drive Electron",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Google Drive desktop app made with Electron",
   "main": "app.js",
   "scripts": {
