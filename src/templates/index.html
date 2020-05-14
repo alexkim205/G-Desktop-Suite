@@ -13,5 +13,43 @@
       id="__bs_script__"
       src="http://localhost:3000/browser-sync/browser-sync-client.js?v=2.24.7"
     ></script>
+    <script>
+      const { remote } = require("electron");
+      const fs = require("file-system");
+      const path = require("path");
+      let viewCssKey, windowCssKey;
+
+      window.__setTheme = async () => {
+        let userTheme = window.localStorage.user_theme;
+        let OSTheme = localStorage.os_theme;
+        let defaultTheme = "light";
+        let changeToTheme = userTheme || OSTheme || defaultTheme;
+
+        let currentWindow = remote.getCurrentWindow();
+        let currentView = currentWindow.getBrowserViews()[0];
+
+        console.log(currentView.id, changeToTheme);
+
+        if (changeToTheme === "dark") {
+          windowCssKey = await currentWindow.webContents.insertCSS(
+            fs.readFileSync(
+              path.join(__dirname, "../stylesheets/dark-base.css"),
+              "utf8"
+            )
+          );
+          viewCssKey = await currentView.webContents.insertCSS(
+            fs.readFileSync(
+              path.join(__dirname, "../stylesheets/dark-drive.css"),
+              "utf8"
+            )
+          );
+        } else {
+          currentWindow.webContents.removeInsertedCSS(windowCssKey);
+          currentView.webContents.removeInsertedCSS(viewCssKey);
+        }
+      };
+
+      __setTheme();
+    </script>
   </body>
 </html>
