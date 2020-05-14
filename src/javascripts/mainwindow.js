@@ -1,100 +1,147 @@
-const url = require('url')
-const path = require('path')
+const {
+  screen,
+  BrowserView,
+  BrowserWindow,
+  Menu,
+  ipcMain,
+} = require("electron");
+const windowState = require("electron-window-state");
+const electronLocalshortcut = require("electron-localshortcut");
+const path = require("path");
 
-const electron = require('electron')
-const { Menu, app } = electron
-const windowState = require('electron-window-state')
-const electronLocalshortcut = require('electron-localshortcut');
-
-// Menu
-var { template } = require(path.join(app.getAppPath(), 'build/javascripts/menu'))
-
-var encode_search = (json) => {
-  return Object.keys(json).map(key => key + '=' + encodeURIComponent(json[key])).join('&')
-}
+const { signInURL, userAgent } = require("../config");
+const { TITLE_BAR_HEIGHT } = require("../util");
+const { createChildWindow } = require("./childwindow");
+var { template } = require("./menu");
 
 var createMainWindow = () => {
-
-  const workAreaSize = electron.screen.getPrimaryDisplay().workAreaSize
+  // Get information about the screen size.
+  const workAreaSize = screen.getPrimaryDisplay().workAreaSize;
   // Load the previous state with fall-back to defaults
   const mainWindowState = windowState({
     defaultWidth: workAreaSize.width - 200,
     defaultHeight: workAreaSize.height - 100,
-  })
+  });
+
   // Create the browser window.
-  win = new electron.BrowserWindow({
+  win = new BrowserWindow({
     x: mainWindowState.x,
     y: mainWindowState.y,
     width: mainWindowState.width,
     height: mainWindowState.height,
-    titleBarStyle: 'hidden',
     minWidth: 300,
     minHeight: 300,
+    backgroundColor: "#FFF",
+    titleBarStyle: "hidden",
+    center: true,
     scrollBounce: false,
-    show: false,
     webPreferences: {
-      preload: path.join(path.join(app.getAppPath(), 'build/javascripts/preload')),
-    }
-  })
+      preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+    },
+  });
 
   /**
    * Let us register listeners on the window, so we can update the state
    * automatically (the listeners will be removed when the window is closed)
    * and restore the maximized or full screen state
    */
-  mainWindowState.manage(win)
+  mainWindowState.manage(win);
 
-  windowSettings = {
-    'url': 'https://drive.google.com/drive/'
-  }
+  const windowSettings = {
+    url: signInURL,
+  };
 
-  var file_url = url.format({
-    protocol: 'file',
-    pathname: `${electron.app.getAppPath()}/build/templates/index.html`,
-    slashes: true,
-    search: encode_search(windowSettings)
-  })
-  // log.info(encode_search(windowSettings))
-  // log.info(file_url)
-  win.loadURL(file_url)
+  // Create the browser window.
+  /**
+   * Google requires a supported browser for oauth sign in's. I can use
+   * the setUserAgent() function or app.userAgentFallback to trick
+   * Google's Oauth servers into thinking that the electron window is
+   * Chrome.
+   * https://pragli.com/blog/how-to-authenticate-with-google-in-electron/
+   * https://stackoverflow.com/questions/35672602/how-to-set-electron-useragent
+   *
+   */
+  // win.loadURL(windowSettings.url, { userAgent });
+  let view = new BrowserView();
+  win.setBrowserView(view);
+  view.setBounds({
+    x: 0,
+    y: TITLE_BAR_HEIGHT,
+    width: mainWindowState.width,
+    height: mainWindowState.height - TITLE_BAR_HEIGHT,
+  });
+  view.setAutoResize({
+    width: true,
+    height: true,
+  });
+  view.webContents.loadURL(windowSettings.url, { userAgent });
 
-  // Load main menu 
-  const menu = Menu.buildFromTemplate(template)
-  Menu.setApplicationMenu(menu)
+  // Menu
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 
-  win.once('ready-to-show', () => {
-    win.show()
-    win.focus()
-  })
+  // Load template containing title bar
+  win.loadFile(path.join(__dirname, "../templates/index.html"));
 
-  // if (process.env.NODE_ENV === "development") {
-  //   win.webContents.openDevTools()
-  // }
+  view.webContents.once("ready-to-show", () => {
+    win.show();
+    view.focus();
+  });
 
-  win.on('close', (e) => {
-    if (electron.BrowserWindow.getAllWindows().length > 1) {
-      e.preventDefault()
+  // Send page title to window
+  ipcMain.on("title-request", function (e, arg) {
+    win.webContents.send(
+      "title-reply",
+      view.webContents.getTitle().split(" - ")[0]
+    );
+  });
+  view.webContents.on("page-title-updated", (e) => {
+    win.webContents.send(
+      "title-reply",
+      view.webContents.getTitle().split(" - ")[0]
+    );
+  });
+
+  // On new window, create child window
+  view.webContents.on(
+    "new-window",
+    (event, url, frameName, disposition, options) => {
+      createChildWindow(event, url, frameName, disposition, {
+        ...options,
+        pos: win.getPosition(),
+        size: win.getSize(),
+      });
     }
-  })
+  );
+
+  win.on("close", (e) => {
+    if (BrowserWindow.getAllWindows().length > 1) {
+      e.preventDefault();
+    }
+    ipcMain.removeAllListeners("title-request");
+    electronLocalshortcut.unregisterAll(win);
+    electronLocalshortcut.unregisterAll(view);
+  });
 
   // Emitted when the window is closed.
-  win.on('closed', () => {
-    win = null
-  })
-
-  electronLocalshortcut.register(win, ['CmdOrCtrl+R', 'F5'], () => {
-    console.log('You reloaded the page!')
-    win.reload()
+  win.on("closed", () => {
+    win = null;
+    view = null;
   });
-  // electronLocalshortcut.register(win, ['CmdOrCtrl+-'], () => {
-  //   console.log('You zoomed out of the page!')
-  //   win
-  // });
-  // electronLocalshortcut.register(win, ['CmdOrCtrl+Shift+='], () => {
-  //   console.log('You zoomed in to the page!')
-  //   win.reload()
-  // });
 
-}
+  electronLocalshortcut.register(view, ["CmdOrCtrl+R", "F5"], () => {
+    // No reload API for browserview yet.
+    view.webContents.loadURL(windowSettings.url, { userAgent });
+  });
+  electronLocalshortcut.register(win, ["CmdOrCtrl+R", "F5"], () => {
+    // No reload API for browserview yet.
+    view.webContents.loadURL(windowSettings.url, { userAgent });
+  });
 
-module.exports = { createMainWindow: createMainWindow }
+  if (process.env.NODE_ENV === "development") {
+    win.webContents.openDevTools();
+  }
+};
+
+module.exports = { createMainWindow: createMainWindow };

@@ -1,11 +1,12 @@
 {
   "name": "gdelectron",
   "productName": "Google Drive Electron",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Google Drive desktop app made with Electron",
   "main": "app.js",
   "scripts": {
-    "start": "gulp build && electron .",
+    "start": "electron .",
+    "dev": "cross-env NODE_ENV=development electron .",
     "package-all": "npm run package-mac && npm run package-win && npm run package-lin",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=static/gd.icns --prune=true --out=release-builds",
     "package-win": "electron-packager . 'Google Drive Electron' --overwrite --asar=true --platform=win32 --arch=ia32 --icon=static/gd.ico --prune=true --out=release-builds --version-string.CompanyName='Alex Gyujin Kim' --version-string.FileDescription='A Google Drive desktop app made with Electron.' --version-string.ProductName='Google Drive Electron'",
@@ -28,24 +29,15 @@
   ],
   "devDependencies": {
     "browser-sync": "^2.24.7",
-    "del": "^3.0.0",
-    "electron": "^3.0.2",
-    "electron-packager": "^12.2.0",
-    "gulp": "^4.0.0",
-    "gulp-csso": "^3.0.1",
-    "gulp-minify": "^3.1.0",
-    "gulp-pug": "^4.0.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-run": "^1.7.1",
-    "gulp-run-electron": "^3.0.2",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4"
+    "cross-env": "^7.0.2",
+    "del": "^5.1.0",
+    "electron": "^8.2.5",
+    "electron-packager": "^14.2.1"
   },
   "dependencies": {
     "about-window": "^1.12.1",
     "electron-localshortcut": "https://github.com/alexkim205/electron-localshortcut/tarball/master",
     "electron-window-state": "^5.0.1",
-    "jquery": "^3.3.1"
+    "file-system": "^2.2.2"
   }
 }

@@ -1,8 +1,9 @@
-// Replace '..' with 'about-window'
 const openAboutWindow = require("about-window").default;
 
 // var reload = () => {
-//   getCurrentWindow().reload()
+//   console.log("You reloaded globally!");
+//   const currentBrowserView = getCurrentWindow().getBrowserViews()[0]
+//   // currentBrowserView.
 // }
 
 // var zoomin = () => {
