@@ -56,7 +56,11 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   const windowSettings = { url };
 
   // Create the browser window.
-  let childview = new BrowserView();
+  let childview = new BrowserView({
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
   childwin.setBrowserView(childview);
   childview.setBounds({
     x: 0,

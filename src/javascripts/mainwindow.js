@@ -63,10 +63,15 @@ var createMainWindow = () => {
    *
    */
   // win.loadURL(windowSettings.url, { userAgent });
-  let view = new BrowserView();
+  let view = new BrowserView({
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
   win.setBrowserView(view);
   view.setBounds({
     x: 0,
+    // y: 800, 
     y: TITLE_BAR_HEIGHT,
     width: mainWindowState.width,
     height: mainWindowState.height - TITLE_BAR_HEIGHT,
@@ -141,6 +146,7 @@ var createMainWindow = () => {
 
   if (process.env.NODE_ENV === "development") {
     win.webContents.openDevTools();
+    view.webContents.openDevTools();
   }
 };
 

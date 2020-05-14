@@ -659,6 +659,13 @@ cuint@^0.2.2:
   resolved "https://registry.yarnpkg.com/cuint/-/cuint-0.2.2.tgz#408086d409550c2631155619e9fa7bcadc3b991b"
   integrity sha1-QICG1AlVDCYxFVYZ6fp7ytw7mRs=
 
+darkreader@^4.9.2:
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/darkreader/-/darkreader-4.9.2.tgz#f4a1500d4305e1adca2a44f11330dfac4722c7dc"
+  integrity sha512-5Jjf2vK9BmFBzndsomFdrMsndXQwfZkd6o2WyqwexVeryrOkTYW1CLS+MKtPt7/rv+0wn9eBY4iufIDPqaaZ+g==
+  dependencies:
+    malevic "0.18.0"
+
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -1839,6 +1846,11 @@ lowercase-keys@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-2.0.0.tgz#2603e78b7b4b0006cbca2fbcc8a3202558ac9479"
   integrity sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==
+
+malevic@0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/malevic/-/malevic-0.18.0.tgz#ed78a644329c410b3d66cb03f62a1c0332a6096c"
+  integrity sha512-d9XfQKexRjGUHugCUAMFjTbPnx1V8sfKcD9sYrk1/W/4/QpsgLR4x5GgkUGfHdsgQ2UbEcJSj6NWWJ+rd/m4aQ==
 
 map-cache@^0.2.2:
   version "0.2.2"
