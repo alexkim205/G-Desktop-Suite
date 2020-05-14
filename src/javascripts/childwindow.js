@@ -1,4 +1,10 @@
-const { screen, BrowserView, BrowserWindow, Menu } = require("electron");
+const {
+  screen,
+  BrowserView,
+  BrowserWindow,
+  Menu,
+  ipcMain,
+} = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
@@ -47,10 +53,7 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
    */
   childWindowState.manage(childwin);
 
-  // Load template containing title bar
-  childwin.loadFile(path.join(__dirname, "../templates/index.html"));
-
-  windowSettings = { url };
+  const windowSettings = { url };
 
   // Create the browser window.
   let childview = new BrowserView();
@@ -69,16 +72,30 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   });
   childview.webContents.loadURL(windowSettings.url);
 
-  if (process.env.NODE_ENV === "development") {
-    childwin.webContents.openDevTools();
-  }
+  // Load template containing title bar
+  childwin.loadFile(path.join(__dirname, "../templates/index.html"));
 
   childview.webContents.once("ready-to-show", () => {
     childwin.show();
     childview.focus();
   });
 
+  // Send page title to window
+  ipcMain.on("title-request", function (e, arg) {
+    childwin.webContents.send(
+      "title-reply",
+      childview.webContents.getTitle().split(" - ")[0]
+    );
+  });
+  childview.webContents.on("page-title-updated", (e) => {
+    childwin.webContents.send(
+      "title-reply",
+      childview.webContents.getTitle().split(" - ")[0]
+    );
+  });
+
   childwin.on("close", (e) => {
+    ipcMain.removeAllListeners("title-request");
     electronLocalshortcut.unregisterAll(childwin);
     electronLocalshortcut.unregisterAll(childview);
   });
@@ -89,15 +106,15 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   });
 
   electronLocalshortcut.register(childview, ["CmdOrCtrl+R", "F5"], () => {
-    // console.log("You reloaded the child page!");
     childview.webContents.loadURL(windowSettings.url);
   });
   electronLocalshortcut.register(childwin, ["CmdOrCtrl+R", "F5"], () => {
-    // console.log("You reloaded the child page!");
     childview.webContents.loadURL(windowSettings.url);
   });
 
-  // childwin.webContents.openDevTools();
+  if (process.env.NODE_ENV === "development") {
+    childwin.webContents.openDevTools();
+  }
 };
 
 module.exports = { createChildWindow: createChildWindow };

@@ -1,4 +1,10 @@
-const { screen, BrowserView, BrowserWindow, Menu } = require("electron");
+const {
+  screen,
+  BrowserView,
+  BrowserWindow,
+  Menu,
+  ipcMain,
+} = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
@@ -26,7 +32,7 @@ var createMainWindow = () => {
     minWidth: 300,
     minHeight: 300,
     backgroundColor: "#FFF",
-    // titleBarStyle: "hidden",
+    titleBarStyle: "hidden",
     center: true,
     scrollBounce: false,
     webPreferences: {
@@ -42,7 +48,7 @@ var createMainWindow = () => {
    */
   mainWindowState.manage(win);
 
-  windowSettings = {
+  const windowSettings = {
     url: signInURL,
   };
 
@@ -83,26 +89,18 @@ var createMainWindow = () => {
     view.focus();
   });
 
+  // Send page title to window
+  ipcMain.on("title-request", function (e, arg) {
+    win.webContents.send(
+      "title-reply",
+      view.webContents.getTitle().split(" - ")[0]
+    );
+  });
   view.webContents.on("page-title-updated", (e) => {
-    win.setTitle(view.webContents.getTitle())
-  });
-
-  if (process.env.NODE_ENV === "development") {
-    win.webContents.openDevTools();
-  }
-
-  win.on("close", (e) => {
-    if (BrowserWindow.getAllWindows().length > 1) {
-      e.preventDefault();
-    }
-    electronLocalshortcut.unregisterAll(win);
-    electronLocalshortcut.unregisterAll(view);
-  });
-
-  // Emitted when the window is closed.
-  win.on("closed", () => {
-    win = null;
-    view = null;
+    win.webContents.send(
+      "title-reply",
+      view.webContents.getTitle().split(" - ")[0]
+    );
   });
 
   // On new window, create child window
@@ -117,6 +115,21 @@ var createMainWindow = () => {
     }
   );
 
+  win.on("close", (e) => {
+    if (BrowserWindow.getAllWindows().length > 1) {
+      e.preventDefault();
+    }
+    ipcMain.removeAllListeners("title-request");
+    electronLocalshortcut.unregisterAll(win);
+    electronLocalshortcut.unregisterAll(view);
+  });
+
+  // Emitted when the window is closed.
+  win.on("closed", () => {
+    win = null;
+    view = null;
+  });
+
   electronLocalshortcut.register(view, ["CmdOrCtrl+R", "F5"], () => {
     // No reload API for browserview yet.
     view.webContents.loadURL(windowSettings.url, { userAgent });
@@ -126,7 +139,9 @@ var createMainWindow = () => {
     view.webContents.loadURL(windowSettings.url, { userAgent });
   });
 
-  // win.webContents.openDevTools();
+  if (process.env.NODE_ENV === "development") {
+    win.webContents.openDevTools();
+  }
 };
 
 module.exports = { createMainWindow: createMainWindow };
