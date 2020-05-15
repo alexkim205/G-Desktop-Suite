@@ -1,17 +1,5 @@
-const fs = require("file-system");
+// Use frameless title shift only on MacOS.Use os specific titlebar for other OS's.
 
-const TITLE_BAR_HEIGHT = 20;
-
-// const injectCSS = () => {
-//   fs.readFile(`${__dirname}/stylesheets/base.css`, "utf-8", function (
-//     error,
-//     data
-//   ) {
-//     if (!error) {
-//       var formattedData = data.replace(/\s{2,10}/g, " ").trim();
-//       win.webContents.insertCSS(formattedData);
-//     }
-//   });
-// };
+const TITLE_BAR_HEIGHT = process.platform === "darwin" ? 20 : 0;
 
 module.exports = { TITLE_BAR_HEIGHT };
