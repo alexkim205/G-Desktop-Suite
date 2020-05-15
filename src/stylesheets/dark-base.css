@@ -1,0 +1,5 @@
+  /* Leading rule */
+  html {
+    -webkit-filter: invert(85%) hue-rotate(180deg) brightness(110%) !important;
+    filter: invert(85%) hue-rotate(180deg) brightness(110%) !important;
+  }

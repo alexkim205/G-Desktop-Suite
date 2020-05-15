@@ -1,19 +1,5 @@
 const openAboutWindow = require("about-window").default;
 
-// var reload = () => {
-//   console.log("You reloaded globally!");
-//   const currentBrowserView = getCurrentWindow().getBrowserViews()[0]
-//   // currentBrowserView.
-// }
-
-// var zoomin = () => {
-//   webFrame.setZoomFactor(1.1);
-// }
-
-// var zoomout = () => {
-//   webFrame.setZoomFactor(0.9);
-// }
-
 var about = () => {
   openAboutWindow({
     product_name: "Google Drive Electron",
@@ -47,19 +33,19 @@ var template = [{
       // { label: "Close Window", accelerator: "CmdOrCtrl+W", role: 'close' }
     ]
   },
-  // {
-  //   label: "Edit",
-  //   role: 'editMenu'
-  //   // submenu: [
-  //   //   { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
-  //   //   { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
-  //   //   { type: "separator" },
-  //   //   { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
-  //   //   { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
-  //   //   { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
-  //   //   { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
-  //   // ]
-  // },
+  {
+    label: "Edit",
+    role: 'editMenu'
+    // submenu: [
+    //   { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+    //   { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+    //   { type: "separator" },
+    //   { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+    //   { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+    //   { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+    //   { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+    // ]
+  },
   {
     label: "View",
     submenu: [

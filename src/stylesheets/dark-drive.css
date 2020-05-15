@@ -1,0 +1,88 @@
+/**
+  Generated with DarkReader Filter Mode with following modifications:
+
+  * Change filter to invert only 85% instead of 100% for lighter dark shade.
+
+ */
+
+@media screen {
+  /* Leading rule */
+  html {
+    -webkit-filter: invert(85%) hue-rotate(180deg) brightness(110%) !important;
+    filter: invert(85%) hue-rotate(180deg) brightness(110%) !important;
+  }
+
+  /* Reverse rule */
+  img,
+  video,
+  :not(object):not(body) > embed,
+  object,
+  svg image,
+  [style*="background:url"],
+  [style*="background-image:url"],
+  [style*="background: url"],
+  [style*="background-image: url"],
+  [background],
+  twitterwidget,
+  [aria-label^="Showing viewer"] > [aria-label^="Displaying"],
+  [aria-label^="Showing viewer"] > [role="toolbar"],
+  [aria-label^="Showing viewer"] [role="button"][data-tooltip="Previous"],
+  [aria-label^="Showing viewer"] [role="button"][data-tooltip="Next"],
+  [aria-label^="Showing viewer"] [aria-label^="Page"],
+  [aria-label^="Showing viewer"] [aria-label^="Page"] + div,
+  [aria-label^="No preview available"],
+  [aria-label^="No preview available"] ~ div,
+  [aria-label^="There was a problem previewing"],
+  [aria-label^="There was a problem previewing"] ~ div,
+  [aria-label^="Google Account"],
+  div[title="Profile"] {
+    -webkit-filter: invert(100%) hue-rotate(180deg) !important;
+    filter: invert(100%) hue-rotate(180deg) !important;
+  }
+  [style*="background:url"] *,
+  [style*="background-image:url"] *,
+  [style*="background: url"] *,
+  [style*="background-image: url"] *,
+  input,
+  [background] *,
+  img[src^="https://s0.wp.com/latex.php"],
+  twitterwidget .NaturalImage-image {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+  .compatibility-with-darkreader-below-4-3-3 {
+    background: white !important;
+  }
+
+  /* Text contrast */
+  html {
+    text-shadow: 0 0 0 !important;
+  }
+
+  /* Full screen */
+  :-webkit-full-screen,
+  :-webkit-full-screen * {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+  :-moz-full-screen,
+  :-moz-full-screen * {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+  :fullscreen,
+  :fullscreen * {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+
+  /* Page background */
+  html {
+    background: rgb(255, 255, 255) !important;
+  }
+
+  /* Custom rules */
+  .compatibility-with-darkreader-below-4-3-3 {
+    background: white !important;
+  }
+}
