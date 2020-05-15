@@ -28,7 +28,6 @@
     "node_modules"
   ],
   "devDependencies": {
-    "browser-sync": "^2.24.7",
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
     "electron": "^8.2.5",
@@ -36,7 +35,6 @@
   },
   "dependencies": {
     "about-window": "^1.12.1",
-    "darkreader": "^4.9.2",
     "electron-localshortcut": "https://github.com/alexkim205/electron-localshortcut/tarball/master",
     "electron-window-state": "^5.0.1",
     "file-system": "^2.2.2"
