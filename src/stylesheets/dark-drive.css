@@ -1,139 +1,88 @@
 /**
-Generated with DarkReader
- Array.from(document.querySelectorAll('.darkreader')).map((n) => n.textContent).join('\n');
- OR
-[...document.querySelectorAll(".darkreader")]
-  .flatMap(stylesheet => [...stylesheet.sheet.cssRules])
-  .map(rule => rule.cssText)
-  .filter(Boolean)
-  .join("\n")
+  Generated with DarkReader Filter Mode with following modifications:
+
+  * Change filter to invert only 85% instead of 100% for lighter dark shade.
+
  */
 
-.jfk-bubble,
-embed[type="application/pdf"],
-img[src$="google_gsuite"] {
-  filter: invert(100%) hue-rotate(180deg) brightness(110%) contrast(90%) !important;
-}
-html {
-  background-color: rgb(26, 29, 30) !important;
-}
-html,
-body,
-input,
-textarea,
-select,
-button {
-  background-color: rgb(26, 29, 30) !important;
-}
-html,
-body,
-input,
-textarea,
-select,
-button {
-  border-color: rgb(96, 96, 96) !important;
-  color: rgb(255, 253, 250) !important;
-}
-a {
-  color: rgb(56, 160, 255) !important;
-}
-table {
-  border-color: rgb(84, 84, 84) !important;
-}
-::placeholder {
-  color: rgb(205, 199, 188) !important;
-}
-::selection {
-  background-color: rgb(0, 101, 224) !important;
-  color: rgb(255, 255, 255) !important;
-}
-input:-webkit-autofill,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-  background-color: rgb(92, 100, 0) !important;
-  color: rgb(255, 253, 250) !important;
-}
-.gsoi_w {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_x,
-.gsoi_xu {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_xs,
-.gsoi_xsu {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_0 {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_0s {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_0u {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_0su {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_1,
-.gsoi_1u {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_1s,
-.gsoi_1su {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_2,
-.gsoi_2u {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_2s,
-.gsoi_2su {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_3,
-.gsoi_3u {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_3s,
-.gsoi_3su {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_4,
-.gsoi_4u {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_4s,
-.gsoi_4su {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_5,
-.gsoi_5u {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_5s,
-.gsoi_5su {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ffcdaee4f325/icons.png");
-  background-color: transparent;
-}
-.gsoi_6,
-.gsoi_6u {
-  background-image: url("https://ssl.gstatic.com/cloudsearch/static/o/d/0016-a3cdcdc31a16b3497ed6ff");
+@media screen {
+  /* Leading rule */
+  html {
+    -webkit-filter: invert(85%) hue-rotate(180deg) brightness(110%) !important;
+    filter: invert(85%) hue-rotate(180deg) brightness(110%) !important;
+  }
+
+  /* Reverse rule */
+  img,
+  video,
+  :not(object):not(body) > embed,
+  object,
+  svg image,
+  [style*="background:url"],
+  [style*="background-image:url"],
+  [style*="background: url"],
+  [style*="background-image: url"],
+  [background],
+  twitterwidget,
+  [aria-label^="Showing viewer"] > [aria-label^="Displaying"],
+  [aria-label^="Showing viewer"] > [role="toolbar"],
+  [aria-label^="Showing viewer"] [role="button"][data-tooltip="Previous"],
+  [aria-label^="Showing viewer"] [role="button"][data-tooltip="Next"],
+  [aria-label^="Showing viewer"] [aria-label^="Page"],
+  [aria-label^="Showing viewer"] [aria-label^="Page"] + div,
+  [aria-label^="No preview available"],
+  [aria-label^="No preview available"] ~ div,
+  [aria-label^="There was a problem previewing"],
+  [aria-label^="There was a problem previewing"] ~ div,
+  [aria-label^="Google Account"],
+  div[title="Profile"] {
+    -webkit-filter: invert(100%) hue-rotate(180deg) !important;
+    filter: invert(100%) hue-rotate(180deg) !important;
+  }
+  [style*="background:url"] *,
+  [style*="background-image:url"] *,
+  [style*="background: url"] *,
+  [style*="background-image: url"] *,
+  input,
+  [background] *,
+  img[src^="https://s0.wp.com/latex.php"],
+  twitterwidget .NaturalImage-image {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+  .compatibility-with-darkreader-below-4-3-3 {
+    background: white !important;
+  }
+
+  /* Text contrast */
+  html {
+    text-shadow: 0 0 0 !important;
+  }
+
+  /* Full screen */
+  :-webkit-full-screen,
+  :-webkit-full-screen * {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+  :-moz-full-screen,
+  :-moz-full-screen * {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+  :fullscreen,
+  :fullscreen * {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+
+  /* Page background */
+  html {
+    background: rgb(255, 255, 255) !important;
+  }
+
+  /* Custom rules */
+  .compatibility-with-darkreader-below-4-3-3 {
+    background: white !important;
+  }
 }

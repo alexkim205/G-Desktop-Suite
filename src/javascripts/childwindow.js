@@ -58,6 +58,7 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   // Create the browser window.
   let childview = new BrowserView({
     webPreferences: {
+      preload: path.join(__dirname, "preload-view.js"),
       nodeIntegration: true,
     },
   });

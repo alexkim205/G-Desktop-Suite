@@ -1,4 +1,5 @@
-body {
-  background-color: rgb(26, 29, 30) !important;
-  color: rgb(255, 255, 255) !important;
-}
+  /* Leading rule */
+  html {
+    -webkit-filter: invert(85%) hue-rotate(180deg) brightness(110%) !important;
+    filter: invert(85%) hue-rotate(180deg) brightness(110%) !important;
+  }

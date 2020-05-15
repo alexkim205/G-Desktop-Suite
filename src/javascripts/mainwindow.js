@@ -7,6 +7,7 @@ const {
 } = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
+const fs = require("file-system");
 const path = require("path");
 
 const { signInURL, userAgent } = require("../config");
@@ -65,14 +66,14 @@ var createMainWindow = () => {
   // win.loadURL(windowSettings.url, { userAgent });
   let view = new BrowserView({
     webPreferences: {
+      preload: path.join(__dirname, "preload-view.js"),
       nodeIntegration: true,
     },
   });
   win.setBrowserView(view);
   view.setBounds({
     x: 0,
-    y: 400, 
-    // y: TITLE_BAR_HEIGHT,
+    y: TITLE_BAR_HEIGHT,
     width: mainWindowState.width,
     height: mainWindowState.height - TITLE_BAR_HEIGHT,
   });
@@ -89,9 +90,9 @@ var createMainWindow = () => {
   // Load template containing title bar
   win.loadFile(path.join(__dirname, "../templates/index.html"));
 
-  view.webContents.once("ready-to-show", () => {
+  view.webContents.once("did-finish-load", () => {
     win.show();
-    view.focus();
+    view.webContents.focus();
   });
 
   // Send page title to window

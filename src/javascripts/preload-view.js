@@ -1,26 +1,12 @@
-const { ipcRenderer, remote } = require("electron");
+const { remote } = require("electron");
 const path = require("path");
 const fs = require("file-system");
 
-if (!window.chrome) {
-  window.chrome = {};
-}
-
-window.addEventListener("DOMContentLoaded", (event) => {
-  const titleBar = document.getElementById("titlebar");
-
-  ipcRenderer.send("title-request");
-
-  ipcRenderer.on("title-reply", function (event, title) {
-    titleBar.innerHTML = title;
-  });
-});
-
 // https://medium.com/missive-app/make-your-electron-app-dark-mode-compatible-c23dcfdd0dfa
 const { nativeTheme } = remote;
-const darkCssPath = path.join(__dirname, "../stylesheets/dark-base.css");
+const darkCssPath = path.join(__dirname, "../stylesheets/dark-drive.css");
 let cssKey;
-let currentWindow = remote.getCurrentWindow();
+let currentView = remote.getCurrentWindow().getBrowserViews()[0];
 
 const setOSTheme = async () => {
   // Fetch correct theme
@@ -31,13 +17,12 @@ const setOSTheme = async () => {
   let changeToTheme = userTheme || OSTheme || defaultTheme;
 
   if (changeToTheme === "dark") {
-    // insert dark stylesheet
-    cssKey = await currentWindow.webContents.insertCSS(
+    cssKey = await currentView.webContents.insertCSS(
       fs.readFileSync(path.join(darkCssPath), "utf8")
     );
   } else {
     // remove dark stylesheet
-    currentWindow.webContents.removeInsertedCSS(cssKey);
+    currentView.webContents.removeInsertedCSS(cssKey);
   }
 };
 
