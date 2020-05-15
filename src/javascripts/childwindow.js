@@ -101,8 +101,12 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
 
   childwin.on("close", (e) => {
     ipcMain.removeAllListeners("title-request");
-    electronLocalshortcut.unregisterAll(childwin);
-    electronLocalshortcut.unregisterAll(childview);
+    if (childwin?.webContents) {
+      electronLocalshortcut.unregisterAll(childwin);
+    }
+    if (childview?.webContents) {
+      electronLocalshortcut.unregisterAll(childview);
+    }
   });
 
   childwin.on("closed", () => {

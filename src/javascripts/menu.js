@@ -1,12 +1,13 @@
 const openAboutWindow = require("about-window").default;
+const appInfo = require("../../package.json")
 
 var about = () => {
   openAboutWindow({
-    product_name: "Google Drive Electron",
+    product_name: appInfo.productName,
     icon_path: `${__dirname}/../../static/gd.png`,
-    copyright: "Copyright (c) 2018 Alex Kim",
+    copyright: `Copyright (c) 2018 ${appInfo.author}`,
     package_json_dir: `${__dirname}/../../`,
-    license: "MIT",
+    license: appInfo.license,
     win_options: {
       titleBarStyle: "hidden"
     }
@@ -16,7 +17,7 @@ var about = () => {
 var template = [{
     label: "Application",
     submenu: [
-      { label: "About Google Drive Desktop", click: about },
+      { label: `About ${appInfo.productName}`, click: about },
       { type: "separator" },
       { label: "Quit", accelerator: "CmdOrCtrl+Q", role: 'quit' }
     ]

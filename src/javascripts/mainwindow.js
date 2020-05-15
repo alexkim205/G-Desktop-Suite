@@ -126,8 +126,12 @@ var createMainWindow = () => {
       e.preventDefault();
     }
     ipcMain.removeAllListeners("title-request");
-    electronLocalshortcut.unregisterAll(win);
-    electronLocalshortcut.unregisterAll(view);
+    if (win?.webContents) {
+      electronLocalshortcut.unregisterAll(win);
+    }
+    if (view?.webContents) {
+      electronLocalshortcut.unregisterAll(view);
+    }
   });
 
   // Emitted when the window is closed.
