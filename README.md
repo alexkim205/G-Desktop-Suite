@@ -68,21 +68,21 @@ $ yarn run
 yarn run v1.22.4
    - dev
       cross-env NODE_ENV=development electron .
-   - package-all
-      npm run package-mac && npm run package-win && npm run package-lin
+   - dist
+      yarn package-mac && yarn package-win && yarn package-lin && yarn zip
    - package-lin
-      electron-packager . 'Google Drive Electron' --overwrite --asar=true --platform=linux --arch=x64 --icon=static/gd.png --prune=true --out=release-builds
+      electron-packager . 'G Desktop Suite' --overwrite --asar --platform=linux --arch=x64 --icon=build/icon.png --prune=true --out=release-builds
    - package-mac
-      electron-packager . --overwrite --platform=darwin --arch=x64 --icon=static/gd.icns --prune=true --out=release-builds
+      electron-packager . --overwrite --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true --out=release-builds
    - package-win
-      electron-packager . 'Google Drive Electron' --overwrite --asar=true --platform=win32 --arch=ia32 --icon=static/gd.ico --prune=true --out=release-builds --version-string.CompanyName='Alex Gyujin Kim' --version-string.FileDescription='A Google Drive desktop app made with Electron.' --version-string.ProductName='Google Drive Electron'
-   - package-zip
-      find ./release-builds -type d -depth 1 -exec zip -r {}.zip {} \;
+      electron-packager . 'G Desktop Suite' --overwrite --asar --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true --out=release-builds --version-string.CompanyName='Alex Gyujin Kim' --version-string.FileDescription='A Google Drive desktop app made with Electron.' --version-string.ProductName='G Desktop Suite'
    - start
       electron .
+   - zip
+      find ./release-builds -type d -depth 1 -exec zip -r {}.zip {} \;
 ```
 
-To build production ready applications for macos (dmg), windows (exe), and linux (sh), run `yarn package-all`.
+To build production ready applications for macos (dmg), windows (exe), and linux (sh), run `yarn dist`.
 
 🛎️ **Have suggestions?** Feel free to create an issue or make a pull request.
 
