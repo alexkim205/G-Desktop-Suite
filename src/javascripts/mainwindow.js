@@ -7,7 +7,6 @@ const {
 } = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
-const fs = require("file-system");
 const path = require("path");
 
 const { signInURL, userAgent } = require("../config");

@@ -1,42 +1,53 @@
 const openAboutWindow = require("about-window").default;
-const appInfo = require("../../package.json")
+const path = require("path");
+
+const appInfo = require("../../package.json");
 
 var about = () => {
   openAboutWindow({
     product_name: appInfo.productName,
-    icon_path: `${__dirname}/../../static/gd.png`,
+    icon_path: `${__dirname}/../../build/icon.png`,
     copyright: `Copyright (c) 2018 ${appInfo.author}`,
     package_json_dir: `${__dirname}/../../`,
+    bug_report_url:
+      "https://github.com/alexkim205/G-Desktop-Suite/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc",
     license: appInfo.license,
     win_options: {
-      titleBarStyle: "hidden"
-    }
-  })
-}
+      titleBarStyle: "hidden",
+      resizable: false,
+      open_devtools: true,
+    },
+  });
+};
 
-var template = [{
+var template = [
+  {
     label: "Application",
     submenu: [
       { label: `About ${appInfo.productName}`, click: about },
       { type: "separator" },
-      { label: "Quit", accelerator: "CmdOrCtrl+Q", role: 'quit' }
-    ]
+      { label: "Quit", accelerator: "CmdOrCtrl+Q", role: "quit" },
+    ],
   },
   {
     label: "File",
     // role: 'windowMenu'
     submenu: [
-      { role: 'minimize' },
-      { role: 'close' },
+      { role: "minimize" },
+      { role: "close" },
       // { label: "Reload Window", accelerator: "CmdOrCtrl+R", click: reload },
-      { label: "Toggle Full Screen", accelerator: "Cmd+Ctrl+F", role: 'toggleFullScreen' },
+      {
+        label: "Toggle Full Screen",
+        accelerator: "Cmd+Ctrl+F",
+        role: "toggleFullScreen",
+      },
       // { label: "Minimize", accelerator: "CmdOrCtrl+M", role: 'minimize' },
       // { label: "Close Window", accelerator: "CmdOrCtrl+W", role: 'close' }
-    ]
+    ],
   },
   {
     label: "Edit",
-    role: 'editMenu'
+    role: "editMenu",
     // submenu: [
     //   { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
     //   { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
@@ -49,12 +60,8 @@ var template = [{
   },
   {
     label: "View",
-    submenu: [
-      {role: 'zoomIn'},
-      {role: 'zoomOut'},
-      {role: 'resetZoom'}
-    ]
-  }
+    submenu: [{ role: "zoomIn" }, { role: "zoomOut" }, { role: "resetZoom" }],
+  },
 ];
 
 // if (process.env.NODE_ENV === "development") {
@@ -66,4 +73,4 @@ var template = [{
 //   })
 // }
 
-module.exports = { template: template }
+module.exports = { template: template };
