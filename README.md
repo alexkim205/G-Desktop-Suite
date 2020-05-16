@@ -35,6 +35,11 @@ As of `v.conscious-club/0.2.0`, the app will automatically adjust to your OS's d
 
 Download the [latest releases](https://github.com/alexkim205/Google-Drive-Desktop/releases) for **Windows**, **Linux**, or **MacOS**. Inside the zipped folder will be an executable that can be run.
 
+- For MacOS, drag the app into `Applications` folder.
+- For Windows, copy the `Google Drive Desktop-win32-ia32/` folder into `Program Files/`. Then, find `Google Drive Desktop.exe` inside the copied folder and create a shortcut to place on your `Desktop/`.
+
+### 🎶 Versions
+
 - v.conscious-club / 0.2.0
 - v.fugue-state / 0.1.0
 - v.dean-town / 0.0.3
