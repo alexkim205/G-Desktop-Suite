@@ -38,7 +38,8 @@ var createMainWindow = () => {
     scrollBounce: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: true,
+      nodeIntegration: false,
+      contextIsolation: true,
     },
   });
 
@@ -67,7 +68,8 @@ var createMainWindow = () => {
   let view = new BrowserView({
     webPreferences: {
       preload: path.join(__dirname, "preload-view.js"),
-      nodeIntegration: true,
+      nodeIntegration: false,
+      contextIsolation: true,
     },
   });
   win.setBrowserView(view);
