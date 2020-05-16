@@ -32,10 +32,7 @@ As of `v.conscious-club/0.2.0`, the app will automatically adjust to your OS's d
 
 ## 📀 Installation
 
-Download the [latest releases](https://github.com/alexkim205/G-Desktop-Suite/releases) for **Windows**, **Linux**, or **MacOS**. Inside the zipped folder will be an executable that can be run.
-
-- For MacOS, drag the app into `Applications` folder.
-- For Windows, copy the `Google Drive Desktop-win32-ia32/` folder into `Program Files/`. Then, find `Google Drive Desktop.exe` inside the copied folder and create a shortcut to place on your `Desktop/`.
+Download the [latest releases](https://github.com/alexkim205/G-Desktop-Suite/releases) for **Windows**, **Linux**, or **MacOS**.
 
 ### 🎶 Versions
 
@@ -69,17 +66,11 @@ yarn run v1.22.4
    - dev
       cross-env NODE_ENV=development electron .
    - dist
-      yarn package-mac && yarn package-win && yarn package-lin && yarn zip
-   - package-lin
-      electron-packager . 'G Desktop Suite' --overwrite --asar --platform=linux --arch=x64 --icon=build/icon.png --prune=true --out=release-builds
-   - package-mac
-      electron-packager . --overwrite --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true --out=release-builds
-   - package-win
-      electron-packager . 'G Desktop Suite' --overwrite --asar --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true --out=release-builds --version-string.CompanyName='Alex Gyujin Kim' --version-string.FileDescription='A Google Drive desktop app made with Electron.' --version-string.ProductName='G Desktop Suite'
+      electron-builder -mwl
+   - pack
+      electron-builder --dir
    - start
       electron .
-   - zip
-      find ./release-builds -type d -depth 1 -exec zip -r {}.zip {} \;
 ```
 
 To build production ready applications for macos (dmg), windows (exe), and linux (sh), run `yarn dist`.

@@ -7,10 +7,9 @@ var about = () => {
   openAboutWindow({
     product_name: appInfo.productName,
     icon_path: `${__dirname}/../../build/icon.png`,
-    copyright: `Copyright (c) 2018 ${appInfo.author}`,
+    copyright: appInfo.build.copyright,
     package_json_dir: `${__dirname}/../../`,
-    bug_report_url:
-      "https://github.com/alexkim205/G-Desktop-Suite/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc",
+    bug_report_url: appInfo.repository.report,
     license: appInfo.license,
     win_options: {
       titleBarStyle: "hidden",
