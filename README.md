@@ -2,18 +2,17 @@
 
 <div style="text-align:center;">
 
-![GitHub stars](https://img.shields.io/github/stars/alexkim205/Google-Drive-Desktop?style=social)
-![GitHub forks](https://img.shields.io/github/forks/alexkim205/Google-Drive-Desktop?style=social)
-![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fintent%2Ftweet%3Ftext%3DCheck%25out%25Google%25Drive%25Electron%25to%25start%25using%25Google%25Drive%25as%25a%25desktop%25app%21%25%26url%3Dhttps%253A%252F%252Fgithub.com%252Falexkim205%252FGoogle-Drive-Electron%252Ftree%252Fmaster%26hashtags%3Delectron%2Celectronjs%2Cgoogle%2Cgoogledrive)
+![GitHub stars](https://img.shields.io/github/stars/alexkim205/G-Desktop-Suite?style=social)
+![GitHub forks](https://img.shields.io/github/forks/alexkim205/G-Desktop-Suite?style=social)
 
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/alexkim205/Google-Drive-Desktop/dev/electron?style=flat-square)
-![David](https://img.shields.io/david/alexkim205/Google-Drive-Desktop?style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/alexkim205/Google-Drive-Desktop?style=flat-square)
-![GitHub issues](https://img.shields.io/github/issues/alexkim205/Google-Drive-Desktop?style=flat-square)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/alexkim205/G-Desktop-Suite/dev/electron?style=flat-square)
+![David](https://img.shields.io/david/alexkim205/G-Desktop-Suite?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/alexkim205/G-Desktop-Suite?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/alexkim205/G-Desktop-Suite?style=flat-square)
 
-![GitHub All Releases](https://img.shields.io/github/downloads/alexkim205/Google-Drive-Desktop/total?style=flat-square)
+![GitHub All Releases](https://img.shields.io/github/downloads/alexkim205/G-Desktop-Suite/total?style=flat-square)
 ![Platforms](https://img.shields.io/badge/platform-macos%20%7C%20windows%20%7C%20linux-lightgrey?style=flat-square)
-![GitHub](https://img.shields.io/github/license/alexkim205/Google-Drive-Desktop?style=flat-square)
+![GitHub](https://img.shields.io/github/license/alexkim205/G-Desktop-Suite?style=flat-square)
 
 </div>
 
@@ -21,7 +20,7 @@
 
 Have you ever wished you had a no-frills, word-processing desktop app dedicated to just Google Drive? Annoyed at having to click the Go to My Drive button everytime you visit [https://drive.google.com](https://drive.google.com)? Want a Microsoft Word-esque experience for your Google Drive? Or simply looking to separate Google Drive from the other bajillion tabs that you opened for your research paper? Look no further!
 
-Google Drive Desktop is a desktop wrapper for Google Drive built with [ElectronJS](https://github.com/electron/electron). Give it a try, and if you like what you see, share it with your friends!
+G Desktop Suite is a desktop wrapper for Google Drive built with [ElectronJS](https://github.com/electron/electron). Give it a try, and if you like what you see, share it with your friends!
 
 ![demo](static/gd_demo.gif)
 
@@ -33,7 +32,7 @@ As of `v.conscious-club/0.2.0`, the app will automatically adjust to your OS's d
 
 ## 📀 Installation
 
-Download the [latest releases](https://github.com/alexkim205/Google-Drive-Desktop/releases) for **Windows**, **Linux**, or **MacOS**. Inside the zipped folder will be an executable that can be run.
+Download the [latest releases](https://github.com/alexkim205/G-Desktop-Suite/releases) for **Windows**, **Linux**, or **MacOS**. Inside the zipped folder will be an executable that can be run.
 
 - For MacOS, drag the app into `Applications` folder.
 - For Windows, copy the `Google Drive Desktop-win32-ia32/` folder into `Program Files/`. Then, find `Google Drive Desktop.exe` inside the copied folder and create a shortcut to place on your `Desktop/`.
@@ -59,8 +58,8 @@ Version names inspired by Vulfpeck songs. They're a great band, check them out [
 To build the app locally, clone the repository, install all dependencies, and run the available npm scripts.
 
 ```sh
-git clone https://github.com/alexkim205/Google-Drive-Desktop.git
-cd Google-Drive-Desktop
+git clone https://github.com/alexkim205/G-Desktop-Suite.git
+cd G-Desktop-Suite
 yarn install
 ```
 

@@ -1,25 +1,28 @@
 {
-  "name": "googledrivedesktop",
-  "productName": "Google Drive Desktop",
+  "name": "gdesktopsuite",
+  "productName": "G Desktop Suite",
   "version": "0.2.0",
-  "description": "A Google Drive desktop app made with Electron",
+  "description": "A Google Suite desktop app made with Electron",
   "main": "app.js",
   "scripts": {
     "start": "electron .",
     "dev": "cross-env NODE_ENV=development electron .",
-    "package-all": "yarn package-mac && yarn package-win && yarn package-lin",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=static/gd.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . 'Google Drive Desktop' --overwrite --asar=true --platform=win32 --arch=ia32 --icon=static/gd.ico --prune=true --out=release-builds --version-string.CompanyName='Alex Gyujin Kim' --version-string.FileDescription='A Google Drive desktop app made with Electron.' --version-string.ProductName='Google Drive Desktop'",
-    "package-lin": "electron-packager . 'Google Drive Desktop' --overwrite --asar=true --platform=linux --arch=x64 --icon=static/gd.png --prune=true --out=release-builds",
-    "package-zip": "find ./release-builds -type d -depth 1 -exec zip -r {}.zip {} \\;"
+    "dist": "yarn package-mac && yarn package-win && yarn package-lin && zip",
+    "zip": "find ./release-builds -type d -depth 1 -exec zip -r {}.zip {} \\;",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . 'G Desktop' --overwrite --asar --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true --out=release-builds --version-string.CompanyName='Alex Gyujin Kim' --version-string.FileDescription='A Google Drive desktop app made with Electron.' --version-string.ProductName='G Desktop Suite'",
+    "package-lin": "electron-packager . 'G Desktop' --overwrite --asar --platform=linux --arch=x64 --icon=build/icon.png --prune=true --out=release-builds"
   },
   "keywords": [
     "google",
-    "drive"
+    "drive",
+    "google drive",
+    "google suite",
+    "desktop"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexkim205/Google-Drive-Desktop.git"
+    "url": "https://github.com/alexkim205/G-Desktop-Suite.git"
   },
   "author": "Alex Gyujin Kim",
   "license": "MIT",
@@ -28,6 +31,7 @@
     "node_modules"
   ],
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
     "electron": "^8.2.5",
