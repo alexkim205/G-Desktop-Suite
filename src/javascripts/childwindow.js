@@ -104,10 +104,10 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   childwin.on("close", (e) => {
     ipcMain.removeAllListeners("title-request");
     if (childwin?.webContents) {
-      electronLocalshortcut.unregisterAll(childwin);
+      electronLocalshortcut.unregister(childwin, ["CmdOrCtrl+R", "F5"]);
     }
     if (childview?.webContents) {
-      electronLocalshortcut.unregisterAll(childview);
+      electronLocalshortcut.unregister(childview, ["CmdOrCtrl+R", "F5"]);
     }
   });
 
