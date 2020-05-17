@@ -116,6 +116,13 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
     childview = null;
   });
 
+  // When window is refocused, focus on webview to persist focus
+  childwin.on("focus", () => {
+    if (childview?.webContents) {
+      childview.webContents.focus();
+    }
+  });
+
   electronLocalshortcut.register(childview, ["CmdOrCtrl+R", "F5"], () => {
     childview.webContents.loadURL(windowSettings.url);
   });
