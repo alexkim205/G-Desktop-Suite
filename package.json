@@ -29,7 +29,7 @@
   "license": "MIT",
   "build": {
     "appId": "com.alexgyujinkim.GDesktopSuite",
-    "copyright": "Copyright © 2018 $npm_package_author_name",
+    "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
     "files": [
       "./build/**/*",
       "./src/**/*",
