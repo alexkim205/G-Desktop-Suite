@@ -31,6 +31,7 @@
     "appId": "com.alexgyujinkim.GDesktopSuite",
     "copyright": "Copyright © 2018 $npm_package_author_name",
     "files": [
+      "./build/**/*",
       "./src/**/*",
       "./app.js"
     ],
