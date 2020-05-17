@@ -33,7 +33,8 @@
     "files": [
       "./build/**/*",
       "./src/**/*",
-      "./app.js"
+      "./app.js",
+      "./package.json"
     ],
     "mac": {
       "category": "public.app-category.productivity",
