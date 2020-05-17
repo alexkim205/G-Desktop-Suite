@@ -141,6 +141,13 @@ var createMainWindow = () => {
     view = null;
   });
 
+  // When window is refocused, focus on webview to persist focus
+  win.on("focus", () => {
+    if (view?.webContents) {
+      view.webContents.focus();
+    }
+  });
+
   electronLocalshortcut.register(view, ["CmdOrCtrl+R", "F5"], () => {
     // No reload API for browserview yet.
     view.webContents.loadURL(windowSettings.url, { userAgent });
