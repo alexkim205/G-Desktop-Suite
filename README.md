@@ -1,6 +1,6 @@
 ![splash](static/gd_electron_logo.png)
 
-**☕ If you like what you see, consider buying me a [coffee](https://www.buymeacoffee.com/alexgkim).**
+If you like what you see, consider buying me a [coffee](https://www.buymeacoffee.com/alexgkim) ☕.
 
 ![GitHub stars](https://img.shields.io/github/stars/alexkim205/G-Desktop-Suite?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/alexkim205/G-Desktop-Suite?style=social)
