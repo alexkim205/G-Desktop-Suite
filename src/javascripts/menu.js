@@ -7,7 +7,7 @@ var about = () => {
   openAboutWindow({
     product_name: appInfo.productName,
     icon_path: `${__dirname}/../../build/icon.png`,
-    copyright: appInfo.build.copyright,
+    copyright: appInfo.copyright,
     package_json_dir: `${__dirname}/../../`,
     bug_report_url: appInfo.repository.report,
     license: appInfo.license,
