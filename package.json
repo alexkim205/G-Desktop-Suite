@@ -1,7 +1,7 @@
 {
   "name": "gdesktopsuite",
   "productName": "G Desktop Suite",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A Google Suite desktop app made with Electron",
   "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
   "main": "app.js",
