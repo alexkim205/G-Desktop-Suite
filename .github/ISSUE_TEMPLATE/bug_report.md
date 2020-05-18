@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
+title: "[\U0001F41B BUG] - {Descriptive title here}"
 labels: bug
 assignees: alexkim205
 
