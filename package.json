@@ -1,8 +1,9 @@
 {
   "name": "gdesktopsuite",
   "productName": "G Desktop Suite",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A Google Suite desktop app made with Electron",
+  "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
   "main": "app.js",
   "scripts": {
     "start": "electron .",
@@ -29,11 +30,12 @@
   "license": "MIT",
   "build": {
     "appId": "com.alexgyujinkim.GDesktopSuite",
-    "copyright": "Copyright © 2018 $npm_package_author_name",
+    "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
     "files": [
       "./build/**/*",
       "./src/**/*",
-      "./app.js"
+      "./app.js",
+      "./package.json"
     ],
     "mac": {
       "category": "public.app-category.productivity",

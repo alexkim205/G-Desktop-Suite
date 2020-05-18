@@ -1,6 +1,6 @@
 ![splash](static/gd_electron_logo.png)
 
-<div style="text-align:center;">
+**If you like what you see, consider buying me a [coffee](https://www.buymeacoffee.com/alexgkim) ☕.**
 
 ![GitHub stars](https://img.shields.io/github/stars/alexkim205/G-Desktop-Suite?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/alexkim205/G-Desktop-Suite?style=social)
@@ -13,8 +13,6 @@
 ![GitHub All Releases](https://img.shields.io/github/downloads/alexkim205/G-Desktop-Suite/total?style=flat-square)
 ![Platforms](https://img.shields.io/badge/platform-macos%20%7C%20windows%20%7C%20linux-lightgrey?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/alexkim205/G-Desktop-Suite?style=flat-square)
-
-</div>
 
 ---
 

@@ -2,6 +2,8 @@
 
 Cleaner code suggestions are always welcome!
 
+- [ ] Auto update app
+- [ ] Automate publish to github
 - [ ] Making it more future proof to future Chromium updates.
 - [x] Dark Mode
 - [x] Don't use <webview>, use `BrowserView` instead.

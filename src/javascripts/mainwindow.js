@@ -128,10 +128,10 @@ var createMainWindow = () => {
     }
     ipcMain.removeAllListeners("title-request");
     if (win?.webContents) {
-      electronLocalshortcut.unregisterAll(win);
+      electronLocalshortcut.unregister(win, ["CmdOrCtrl+R", "F5"]);
     }
     if (view?.webContents) {
-      electronLocalshortcut.unregisterAll(view);
+      electronLocalshortcut.unregister(view, ["CmdOrCtrl+R", "F5"]);
     }
   });
 
@@ -139,6 +139,13 @@ var createMainWindow = () => {
   win.on("closed", () => {
     win = null;
     view = null;
+  });
+
+  // When window is refocused, focus on webview to persist focus
+  win.on("focus", () => {
+    if (view?.webContents) {
+      view.webContents.focus();
+    }
   });
 
   electronLocalshortcut.register(view, ["CmdOrCtrl+R", "F5"], () => {
