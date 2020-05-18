@@ -14,7 +14,7 @@ _What problem are you trying to solve?_
 _How did you solve the problem?_
 
 
-## Before & After Screenshots (if necessary)
+## Before & After Screenshots
 
 **BEFORE**:
 [insert screenshot here]
