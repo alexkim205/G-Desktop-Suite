@@ -132,6 +132,7 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
 
   if (process.env.NODE_ENV === "development") {
     childwin.webContents.openDevTools();
+    childview.webContents.openDevTools();
   }
 };
 
