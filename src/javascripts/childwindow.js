@@ -68,9 +68,9 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   childview.setBounds({
     x: 0,
     y: TITLE_BAR_HEIGHT,
-    width: options.size ? options.size[0] : childWindowState.width,
+    width: options.size ? options.size[0] : childwin.getContentBounds().width,
     height:
-      (options.size ? options.size[1] : childWindowState.height) -
+      (options.size ? options.size[1] : childwin.getContentBounds().height) -
       TITLE_BAR_HEIGHT,
   });
   childview.setAutoResize({
