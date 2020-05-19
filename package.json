@@ -9,7 +9,8 @@
     "start": "electron .",
     "dev": "cross-env NODE_ENV=development electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder -mwl"
+    "dist": "electron-builder -mwl",
+    "update-cask": "./Casks/update.sh $npm_package_version"
   },
   "keywords": [
     "google",
