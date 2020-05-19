@@ -38,14 +38,13 @@ Download the [latest releases](https://github.com/alexkim205/G-Desktop-Suite/rel
 
 This method is highly recommended for users who want the latest release without the hassle of downloading the executable each time. Learn more about how to get [`homebrew`](https://brew.sh/) and [`homebrew-cask`](https://github.com/Homebrew/homebrew-cask).
 
-Tap the repository URL and install the app as follows. This will install `G Desktop Suite.app` in your `Applications/` folder.
+The following script will install `G Desktop Suite.app` into your `Applications/` folder.
 
 ```sh
-brew tap alexkim205/G-Desktop-Suite https://github.com/alexkim205/G-Desktop-Suite
-brew cask install gsuite
+brew cask install g-desktop-suite
 ```
 
-Simply run `brew cask update` to get the latest version of the app.
+Simply run `brew cask upgrade` to get the latest version of the app.
 
 ### 🎶 Versions
 
