@@ -4,9 +4,9 @@ cask 'gsuite' do
 
   # github.com/fitztrev/shuttle was verified as official when first introduced to the cask
   url "https://github.com/alexkim205/G-Desktop-Suite/releases/latest/download/G.Desktop.Suite-#{version}.dmg"
+  appcast 'https://github.com/alexkim205/G-Desktop-Suite/releases.atom'
   name 'G Desktop Suite'
   homepage 'https://github.com/alexkim205/G-Desktop-Suite'
-  appcast 'https://github.com/alexkim205/G-Desktop-Suite/releases.atom'
 
   depends_on formula: 'node'
 
