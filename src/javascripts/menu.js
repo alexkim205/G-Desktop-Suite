@@ -3,7 +3,7 @@ const path = require("path");
 
 const appInfo = require("../../package.json");
 
-var about = () => {
+const about = () => {
   openAboutWindow({
     product_name: appInfo.productName,
     icon_path: `${__dirname}/../../build/icon.png`,
@@ -19,7 +19,7 @@ var about = () => {
   });
 };
 
-var template = [
+const template = [
   {
     label: "Application",
     submenu: [
@@ -37,7 +37,7 @@ var template = [
       // { label: "Reload Window", accelerator: "CmdOrCtrl+R", click: reload },
       {
         label: "Toggle Full Screen",
-        accelerator: "Cmd+Ctrl+F",
+        accelerator: "CmdOrCtrl+F",
         role: "toggleFullScreen",
       },
       // { label: "Minimize", accelerator: "CmdOrCtrl+M", role: 'minimize' },
@@ -59,17 +59,19 @@ var template = [
   },
   {
     label: "View",
-    submenu: [{ role: "zoomIn" }, { role: "zoomOut" }, { role: "resetZoom" }],
+    submenu: [
+      {
+        label: "Toggle Dark Mode",
+        accelerator: 'CmdOrCtrl+T',
+        click: () => {
+
+        }
+      },
+      { role: "zoomIn" },
+      { role: "zoomOut" },
+      { role: "resetZoom" }
+    ],
   },
 ];
 
-// if (process.env.NODE_ENV === "development") {
-//   template.push({
-//     label: "Debug",
-//     submenu: [
-//       { label: "Print All Windows", accelerator: "CmdOrCtrl+P", click: print_windows }
-//     ]
-//   })
-// }
-
-module.exports = { template: template };
+module.exports = { template };
