@@ -57,6 +57,7 @@
       "target": [
         "deb",
         "rpm",
+        "AppImage",
         "tar.gz"
       ],
       "category": "Development"
