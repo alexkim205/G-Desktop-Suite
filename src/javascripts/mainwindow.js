@@ -75,8 +75,8 @@ var createMainWindow = () => {
   view.setBounds({
     x: 0,
     y: TITLE_BAR_HEIGHT,
-    width: win.getSize()[0],
-    height: win.getSize()[1] - TITLE_BAR_HEIGHT,
+    width: win.getContentBounds().width,
+    height: win.getContentBounds().height - TITLE_BAR_HEIGHT,
   });
   view.setAutoResize({
     width: true,
