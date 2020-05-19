@@ -36,7 +36,7 @@ Download the [latest releases](https://github.com/alexkim205/G-Desktop-Suite/rel
 
 ### For MacOS/Linux users with Homebrew + Homebrew Cask
 
-This method is highly recommended for users who want the latest release without the hassle of downloading the executable each time. Click to learn more about how to get [`homebrew`](https://brew.sh/) and [`homebrew-cask`](https://github.com/Homebrew/homebrew-cask).
+This method is highly recommended for users who want the latest release without the hassle of downloading the executable each time. Learn more about how to get [`homebrew`](https://brew.sh/) and [`homebrew-cask`](https://github.com/Homebrew/homebrew-cask).
 
 Tap the repository URL and install the app as follows. This will install `G Desktop Suite.app` in your `Applications/` folder.
 
