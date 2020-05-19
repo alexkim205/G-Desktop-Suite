@@ -5,8 +5,9 @@ Cleaner code suggestions are always welcome!
 - [ ] Auto update app
 - [ ] Automate publish to github
 - [ ] Making it more future proof to future Chromium updates.
+- [ ] Create and maintain homebrew tap.
 - [x] Dark Mode
-- [x] Don't use <webview>, use `BrowserView` instead.
+- [x] Don't use `<webview>`, use `BrowserView` instead.
 - [x] Fix Issue 9 - can't see files
 - [x] Fix Cmd+Q button
 - [x] Implement reload
