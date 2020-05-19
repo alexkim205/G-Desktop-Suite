@@ -1,12 +1,11 @@
-| Status  | Type  | Env Vars Change | Review App | Ticket |
-| :---: | :---: | :---: | :--: | :--: |
-| Ready/Hold | Feature/Bug/Tooling/Refactor/Hotfix | Yes/No | [Link](<Review app link here>) | [Link](<ticket link here>) |
+| Status  | Type  | Env Vars Change |
+| :---: | :---: | :---: |
+| Ready/Hold | Feature/Bug/Tooling/Refactor/Hotfix | Yes/No |
 
-> ⚠️ NOTE: use notes like this to emphasize something about the PR. This could include other PRs this PR is built on top of; new or removed environment variables; reasons for why the PR is on hold; or anything else you would like to draw attention to.
 
 ## Problem
 
-_What problem are you trying to solve?_
+Resolves #[Issue number here].
 
 
 ## Solution
