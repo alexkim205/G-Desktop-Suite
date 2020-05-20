@@ -19,8 +19,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 // https://medium.com/missive-app/make-your-electron-app-dark-mode-compatible-c23dcfdd0dfa
 const { nativeTheme } = remote;
 const darkCssPath = path.join(__dirname, "../stylesheets/dark-base.css");
+const currentWindow = remote.getCurrentWindow();
 let cssKey;
-let currentWindow = remote.getCurrentWindow();
 
 const setOSTheme = async () => {
   // Fetch correct theme
