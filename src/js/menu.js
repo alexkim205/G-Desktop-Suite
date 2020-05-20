@@ -6,6 +6,8 @@ const config = require("../helpers/config");
 const { CONSTANTS } = require("../helpers/util");
 const theme = require('../helpers/theme');
 
+const { OS_PLATFORMS } = CONSTANTS;
+
 const about = () => {
   openAboutWindow({
     product_name: appInfo.productName,
@@ -43,7 +45,7 @@ const template = [
       {
         label: "Toggle Full Screen",
         accelerator:
-          config.osPlatform === CONSTANTS.OS_PLATFORMS.MAC_OS
+          config.osPlatform === OS_PLATFORMS.MAC_OS
             ? "Cmd+Ctrl+F"
             : "Ctrl+Alt+F",
         role: "toggleFullScreen",
