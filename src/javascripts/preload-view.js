@@ -5,8 +5,8 @@ const fs = require("file-system");
 // https://medium.com/missive-app/make-your-electron-app-dark-mode-compatible-c23dcfdd0dfa
 const { nativeTheme } = remote;
 const darkCssPath = path.join(__dirname, "../stylesheets/dark-drive.css");
+const currentView = remote.getCurrentWindow().getBrowserViews()[0];
 let cssKey;
-let currentView = remote.getCurrentWindow().getBrowserViews()[0];
 
 const setOSTheme = async () => {
   // Fetch correct theme
