@@ -37,14 +37,7 @@ const template = [
       { role: "close" },
       {
         label: "Toggle Full Screen",
-<<<<<<< HEAD
         accelerator: "Cmd+Ctrl+F",
-=======
-        accelerator:
-          config.osPlatform === CONSTANTS.OS_PLATFORMS.MAC_OS
-            ? "Cmd+Ctrl+F"
-            : "Ctrl+Alt+F",
->>>>>>> 9dca877... move constants to util
         role: "toggleFullScreen",
       },
     ],
@@ -55,20 +48,7 @@ const template = [
   },
   {
     label: "View",
-<<<<<<< HEAD
     submenu: [{ role: "zoomIn" }, { role: "zoomOut" }, { role: "resetZoom" }],
-=======
-    submenu: [
-      {
-        label: "Toggle Dark Mode",
-        accelerator: "CmdOrCtrl+T",
-        click: () => {},
-      },
-      { role: "zoomIn" },
-      { role: "zoomOut" },
-      { role: "resetZoom" },
-    ],
->>>>>>> 9dca877... move constants to util
   },
 ];
 
