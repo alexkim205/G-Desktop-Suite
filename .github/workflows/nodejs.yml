@@ -32,6 +32,7 @@ jobs:
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
           brew cask install xquartz
           brew cask install wine-stable
+          brew install rpm
     
       - name: Build with electron-builder
         run: |
