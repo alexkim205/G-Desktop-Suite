@@ -3,6 +3,7 @@ const path = require("path");
 
 const appInfo = require("../../package.json");
 const config = require('../config');
+const theme = require('./helpers/theme');
 
 const about = () => {
   openAboutWindow({
@@ -19,6 +20,10 @@ const about = () => {
     },
   });
 };
+
+const toggleDarkMode = () => {
+  theme.toggleDarkMode();
+}
 
 const template = [
   {
@@ -51,9 +56,7 @@ const template = [
       {
         label: "Toggle Dark Mode",
         accelerator: 'CmdOrCtrl+T',
-        click: () => {
-
-        }
+        click: toggleDarkMode,
       },
       { role: "zoomIn" },
       { role: "zoomOut" },
