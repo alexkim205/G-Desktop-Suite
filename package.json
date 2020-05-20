@@ -1,14 +1,14 @@
 {
   "name": "gdesktopsuite",
   "productName": "G Desktop Suite",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A Google Suite desktop app made with Electron",
   "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
   "main": "app.js",
   "scripts": {
     "start": "electron .",
     "dev": "cross-env NODE_ENV=development electron .",
-    "pack": "electron-builder --dir && update-cask",
+    "pack": "electron-builder --dir && yarn update-cask",
     "dist": "electron-builder -mwl",
     "update-cask": "./Casks/update.sh $npm_package_version"
   },
