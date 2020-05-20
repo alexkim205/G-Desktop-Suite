@@ -2,6 +2,7 @@ const openAboutWindow = require("about-window").default;
 const path = require("path");
 
 const appInfo = require("../../package.json");
+const config = require('../config');
 
 const about = () => {
   openAboutWindow({
@@ -35,7 +36,7 @@ const template = [
       { role: "close" },
       {
         label: "Toggle Full Screen",
-        accelerator: "CmdOrCtrl+F",
+        accelerator: config.osPlatform === config.CONSTANTS.OS_PLATFORMS.MAC_OS? "Cmd+Ctrl+F": "Ctrl+Alt+F",
         role: "toggleFullScreen",
       },
     ],
@@ -61,7 +62,7 @@ const template = [
   },
 ];
 
-if (process.env.NODE_ENV === "development") {
+if (config.isDev) {
   template.push({
     label: "Debug",
     submenu: [
