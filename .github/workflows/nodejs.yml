@@ -26,6 +26,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          
+      - name: Install wine
+        run: |
+          sudo apt-get install wine
+          sudo apt-get install winetricks
+          sudo apt-get install playonlinux
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install wine-bin:i386
     
-      - run: yarn --frozen-lockfile
-      - run: yarn dist
+      - name: Build with electron-builder
+        run: |
+          yarn --frozen-lockfile
+          yarn dist
