@@ -2,8 +2,8 @@ const openAboutWindow = require("about-window").default;
 const path = require("path");
 
 const appInfo = require("../../package.json");
-const config = require('../config');
-const theme = require('./helpers/theme');
+const config = require("../helpers/config");
+const { CONSTANTS } = require("../helpers/util");
 
 const about = () => {
   openAboutWindow({
@@ -41,7 +41,10 @@ const template = [
       { role: "close" },
       {
         label: "Toggle Full Screen",
-        accelerator: config.osPlatform === config.CONSTANTS.OS_PLATFORMS.MAC_OS? "Cmd+Ctrl+F": "Ctrl+Alt+F",
+        accelerator:
+          config.osPlatform === CONSTANTS.OS_PLATFORMS.MAC_OS
+            ? "Cmd+Ctrl+F"
+            : "Ctrl+Alt+F",
         role: "toggleFullScreen",
       },
     ],
@@ -61,6 +64,12 @@ const template = [
       { role: "zoomIn" },
       { role: "zoomOut" },
       { role: "resetZoom" }
+        accelerator: "CmdOrCtrl+T",
+        click: () => {},
+      },
+      { role: "zoomIn" },
+      { role: "zoomOut" },
+      { role: "resetZoom" },
     ],
   },
 ];
