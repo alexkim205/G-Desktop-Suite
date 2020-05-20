@@ -14,7 +14,7 @@ const setOSTheme = async (webContents, cssPath) => {
 
   if (changeToTheme === "dark") {
     // insert dark stylesheet
-    cssKey = await webContents.insertCSS(
+    await webContents.insertCSS(
       fs.readFileSync(path.join(cssPath), "utf8")
     );
   } else {
@@ -23,4 +23,8 @@ const setOSTheme = async (webContents, cssPath) => {
   }
 };
 
-module.exports = { setOSTheme };
+const toggleDarkMode = () => {
+
+}
+
+module.exports = { setOSTheme, toggleDarkMode };
