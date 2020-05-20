@@ -44,7 +44,7 @@ The following script will install `G Desktop Suite.app` into your `Applications/
 brew cask install g-desktop-suite
 ```
 
-Simply run `brew cask upgrade` to get the latest version of the app.
+Run `brew cask upgrade` to get the latest version of the app.
 
 ### For Arch Linux and related distributions
 
