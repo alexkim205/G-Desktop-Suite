@@ -1,11 +1,9 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require("electron");
 
-const config = require("./src/config");
-const { CONSTANTS } = require("./src/util");
-const { createMainWindow } = require("./src/javascripts/mainwindow");
-
-let win;
+const config = require("./src/helpers/config");
+const { CONSTANTS } = require("./src/helpers/util");
+const { createMainWindow } = require("./src/js/mainwindow");
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

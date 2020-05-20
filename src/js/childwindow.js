@@ -9,8 +9,8 @@ const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
 
-const { isDev } = require("../config");
-const { TITLE_BAR_HEIGHT } = require("../util");
+const { isDev } = require("../helpers/config");
+const { TITLE_BAR_HEIGHT } = require("../helpers/util");
 
 var createChildWindow = function (event, url, frameName, disposition, options) {
   event.preventDefault();

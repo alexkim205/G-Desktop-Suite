@@ -9,8 +9,8 @@ const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
 
-const { signInURL, userAgent, isDev } = require("../config");
-const { TITLE_BAR_HEIGHT } = require("../util");
+const { signInURL, userAgent, isDev } = require("../helpers/config");
+const { TITLE_BAR_HEIGHT } = require("../helpers/util");
 const { createChildWindow } = require("./childwindow");
 var { template } = require("./menu");
 
