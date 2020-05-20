@@ -37,7 +37,10 @@ const template = [
       { role: "close" },
       {
         label: "Toggle Full Screen",
-        accelerator: "CmdOrCtrl+F",
+        accelerator:
+          config.osPlatform === CONSTANTS.OS_PLATFORMS.MAC_OS
+            ? "Cmd+Ctrl+F"
+            : "Ctrl+Alt+F",
         role: "toggleFullScreen",
       },
     ],
@@ -59,18 +62,24 @@ const template = [
       { role: "zoomIn" },
       { role: "zoomOut" },
       { role: "resetZoom" }
+        accelerator: "CmdOrCtrl+T",
+        click: () => {},
+      },
+      { role: "zoomIn" },
+      { role: "zoomOut" },
+      { role: "resetZoom" },
     ],
   },
 ];
 
-if (process.env.NODE_ENV === "development") {
+if (config.isDev) {
   template.push({
     label: "Debug",
     submenu: [
       {
         label: "Print All Windows",
         accelerator: "CmdOrCtrl+P",
-        click: print_windows,
+        // click: print_windows,
       },
     ],
   });
