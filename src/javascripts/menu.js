@@ -35,7 +35,7 @@ const template = [
       { role: "close" },
       {
         label: "Toggle Full Screen",
-        accelerator: "Cmd+Ctrl+F",
+        accelerator: "CmdOrCtrl+F",
         role: "toggleFullScreen",
       },
     ],
@@ -46,7 +46,18 @@ const template = [
   },
   {
     label: "View",
-    submenu: [{ role: "zoomIn" }, { role: "zoomOut" }, { role: "resetZoom" }],
+    submenu: [
+      {
+        label: "Toggle Dark Mode",
+        accelerator: 'CmdOrCtrl+T',
+        click: () => {
+
+        }
+      },
+      { role: "zoomIn" },
+      { role: "zoomOut" },
+      { role: "resetZoom" }
+    ],
   },
 ];
 
