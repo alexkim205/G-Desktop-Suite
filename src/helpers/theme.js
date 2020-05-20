@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("file-system");
-const nativeTheme = require("electron").remote.nativeTheme;
+const { nativeTheme } = require("electron");
 
 // Set OS theme in specified window's or view's web contents.
 const setOSTheme = async (webContents, cssPath) => {
