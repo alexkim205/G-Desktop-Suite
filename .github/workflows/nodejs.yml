@@ -12,11 +12,11 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: macos-10.15
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
       - name: Checkout Git repository
@@ -27,11 +27,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           
-      - name: Install wine
+      - name: Install brew, cask, and wine
         run: |
-          sudo dpkg --add-architecture i386
-          sudo apt update
-          sudo apt install wine64 wine32
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+          brew cask install xquartz
+          brew cask install wine-stable
     
       - name: Build with electron-builder
         run: |
