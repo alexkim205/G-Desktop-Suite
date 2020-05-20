@@ -69,7 +69,7 @@ if (config.isDev) {
       {
         label: "Print All Windows",
         accelerator: "CmdOrCtrl+P",
-        click: print_windows,
+        // click: print_windows,
       },
     ],
   });
