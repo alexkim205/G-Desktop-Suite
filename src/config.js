@@ -15,4 +15,9 @@ const CONSTANTS = {
   }
 }
 
-module.exports = { userAgent, signInURL, osPlatform, CONSTANTS };
+module.exports = {
+  userAgent,
+  signInURL,
+  osPlatform,
+  CONSTANTS
+};
