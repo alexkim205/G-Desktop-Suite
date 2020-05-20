@@ -46,6 +46,14 @@ brew cask install g-desktop-suite
 
 Simply run `brew cask upgrade` to get the latest version of the app.
 
+### For Arch Linux and related distirubtions ###
+
+Install the AUR package [`g-desktop-suite-git`](https://aur.archlinux.org/packages/g-desktop-suite-git/). Below is an example with yay, but any AUR manager will work.
+
+```sh
+yay -S g-desktop-suite-git
+```
+
 ### 🎶 Versions
 
 - v.conscious-club / 0.2.0-0.2.1
