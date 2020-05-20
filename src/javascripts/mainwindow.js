@@ -9,7 +9,7 @@ const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
 
-const { signInURL, userAgent } = require("../config");
+const { signInURL, userAgent, isDev } = require("../config");
 const { TITLE_BAR_HEIGHT } = require("../util");
 const { createChildWindow } = require("./childwindow");
 var { template } = require("./menu");
@@ -157,7 +157,7 @@ var createMainWindow = () => {
     view.webContents.loadURL(windowSettings.url, { userAgent });
   });
 
-  if (process.env.NODE_ENV === "development") {
+  if (isDev) {
     win.webContents.openDevTools();
     view.webContents.openDevTools();
   }
