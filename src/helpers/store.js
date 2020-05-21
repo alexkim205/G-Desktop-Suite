@@ -1,4 +1,4 @@
-const Store = require("electron-storage");
+const Store = require("electron-store");
 
 const createStore = () => {
   // Default is light theme.
