@@ -29,8 +29,6 @@ const selectTheme = () => {
     ? THEME_OPTIONS.DARK
     : THEME_OPTIONS.LIGHT;
 
-  console.log("usertheme", userTheme, "ostheme", OSTheme);
-
   // If theme is auto, select os theme.
   // Else theme is manually selected, choose user's selection
   return userTheme === THEME_OPTIONS.AUTO ? OSTheme : userTheme;
@@ -51,11 +49,7 @@ nativeTheme.on("updated", () => {
   const toThemeStyle = selectTheme();
   // Send to all webcontents at once. This triggers an appwide theme change.
   const allWebContents = webContents.getAllWebContents();
-  Promise.all(
-    allWebContents.map((wc) => wc.send("theme-reply", toThemeStyle))
-  ).then(() => {
-    console.log("Theme updated to", toThemeStyle);
-  });
+  Promise.all(allWebContents.map((wc) => wc.send("theme-reply", toThemeStyle)));
 });
 
 // This method will be called when Electron has finished

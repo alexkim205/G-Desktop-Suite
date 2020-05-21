@@ -1,9 +1,6 @@
 const openAboutWindow = require("about-window").default;
-const path = require("path");
 
 const appInfo = require("../../package.json");
-const config = require("../helpers/config");
-const { CONSTANTS } = require("../helpers/util");
 
 const about = () => {
   openAboutWindow({
