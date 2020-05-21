@@ -19,24 +19,10 @@ const enableLight = () => {
 };
 
 // Set OS theme in specified window's or view's web contents.
-const setOSTheme = async () => {
+const setOSTheme = async (toThemeStyle) => {
   DarkReader.setFetchMethod(window.fetch);
 
-  const userTheme = store.get("theme");
-  const OSTheme = nativeTheme.shouldUseDarkColors
-    ? THEME_OPTIONS.DARK
-    : THEME_OPTIONS.LIGHT;
-
-  console.log("usertheme", userTheme, "ostheme", OSTheme);
-
   switch (userTheme) {
-    case THEME_OPTIONS.AUTO:
-      if (OSTheme === THEME_OPTIONS.DARK) {
-        enableDark();
-      } else {
-        enableLight();
-      }
-      break;
     case THEME_OPTIONS.DARK:
       enableDark();
       break;

@@ -1,9 +1,17 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require("electron");
+const {
+  BrowserWindow,
+  webContents,
+  ipcMain,
+  nativeTheme,
+  app,
+} = require("electron");
 
 const createStore = require("./src/helpers/store");
 const config = require("./src/helpers/config");
-const { CONSTANTS } = require("./src/helpers/util");
+const {
+  CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS },
+} = require("./src/helpers/util");
 const { createMainWindow } = require("./src/js/mainwindow");
 
 // Create store only once in app root.
@@ -14,21 +22,23 @@ let store = createStore();
 let win, view;
 let childwin, childview;
 
-// Send page title to window
-ipcMain.on("title-request", function (e) {
-  if (!win && !view) {
-    return;
-  }
-  win.webContents.send(
-    "title-reply",
-    view.webContents.getTitle().split(" - ")[0]
-  );
-});
+// Send theme to window or view,
+// Pass in webcontentId of window/view you would like to send theme to.
+ipcMain.on("theme-request", function (e, webContentsId) {
+  const userTheme = store.get("theme");
+  const OSTheme = nativeTheme.shouldUseDarkColors
+    ? THEME_OPTIONS.DARK
+    : THEME_OPTIONS.LIGHT;
 
-// Send theme to window or view, 
-// Pass in webcontents of window/view you would like to send theme to.
-ipcMain.on("theme-request", function (e, webContents) {
-  webContents.send("theme-reply", view.webContents.getTitle().split(" - ")[0]);
+  console.log("usertheme", userTheme, "ostheme", OSTheme);
+
+  if (userTheme === THEME_OPTIONS.AUTO) {
+    // If theme is auto, select os theme.
+    webContents.fromId(webContentsId).send("theme-reply", OSTheme);
+  } else {
+    // If theme is manually selected, choose user's selection
+    webContents.fromId(webContentsId).send("theme-reply", userTheme);
+  }
 });
 
 // This method will be called when Electron has finished
@@ -48,7 +58,7 @@ app.whenReady().then(() => {
 app.on("window-all-closed", function () {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (config.osPlatform !== CONSTANTS.OS_PLATFORMS.MAC_OS) app.quit();
+  if (config.osPlatform !== OS_PLATFORMS.MAC_OS) app.quit();
 });
 
 // Make store accessible for easy access in other files.

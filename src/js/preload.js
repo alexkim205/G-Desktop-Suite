@@ -9,30 +9,23 @@ if (!window.chrome) {
   window.chrome = {};
 }
 
-// Receive title from child preload view
-currentWindow.webContents.on("did-finish-load", (e) => {
+/* Title reply and request */
+currentWindow.webContents.on("did-finish-load", () => {
   const titleBar = document.getElementById("titlebar");
 
-  ipcRenderer.on("title-reply", function (event, title) {
+  // Receive title from child preload view
+  ipcRenderer.on("title-reply", function (_, title) {
     titleBar.innerHTML = title;
   });
 
   ipcRenderer.send("title-request");
 });
 
-// const { nativeTheme } = remote;
-// const currentWindow = remote.getCurrentWindow();
+/* Theme reply and request */
+currentWindow.webContents.on("did-finish-load", () => {
+  ipcRenderer.on("theme-reply", function (_, toThemeStyle) {
+    console.log("change window to ", toThemeStyle);
+  });
 
-// nativeTheme.on("updated", () => {
-//   setOSTheme();
-// });
-
-// // renderer process gets current theme from main process.
-
-// currentWindow.webContents.on("did-finish-load", () => {
-//   setOSTheme();
-// });
-
-// // window.addEventListener("DOMContentLoaded", (event) => {
-// //   setOSTheme(currentWindow.webContents);
-// // });
+  ipcRenderer.send("theme-request", currentWindow.id);
+});

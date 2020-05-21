@@ -3,22 +3,14 @@ const path = require("path");
 
 const { setOSTheme } = require("../helpers/theme");
 
-// // https://medium.com/missive-app/make-your-electron-app-dark-mode-compatible-c23dcfdd0dfa
-// const darkCssPath = path.join(__dirname, "../css/dark-drive.css");
-// // Key is used to keep track of css that is in the scope of this window.
-// let cssKey;
-
 const currentWindow = remote.getCurrentWindow();
 const currentView = currentWindow.getBrowserViews()[0];
 
-// nativeTheme.on("updated", () => {
-//   setOSTheme();
-// });
-
+/* Title reply and request */
 currentView.webContents.on("did-finish-load", () => {
-  // Send page title to parent window
   const parsedTitle = currentView.webContents.getTitle().split(" - ")[0];
 
+  // Send page title to parent window
   const sendTitleToParent = () => {
     ipcRenderer.sendTo(currentWindow.id, "title-reply", parsedTitle);
   };
@@ -34,4 +26,13 @@ currentView.webContents.on("did-finish-load", () => {
   });
 
   sendTitleToParent();
+});
+
+/* Theme reply and request */
+currentView.webContents.on("did-finish-load", () => {
+  ipcRenderer.on("theme-reply", function (_, toThemeStyle) {
+    console.log("change view to ", toThemeStyle);
+  });
+
+  ipcRenderer.send("theme-request", currentView.id);
 });
