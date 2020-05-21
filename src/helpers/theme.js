@@ -1,61 +1,26 @@
 const DarkReader = require("darkreader");
-const { nativeTheme } = require("electron");
 
 // const { store } = require("../../app");
 const { CONSTANTS } = require("./util");
 
 const { THEME_OPTIONS } = CONSTANTS;
 
-const enableDark = () => {
-  DarkReader.enable({
-    brightness: 100,
-    contrast: 90,
-    sepia: 10,
-  });
-};
-
-const enableLight = () => {
-  DarkReader.disable();
-};
-
-// Set OS theme in specified window's or view's web contents.
+// Set OS theme. This script will be run in the respective
+// document contexts provided by preload.js.
 const setOSTheme = async (toThemeStyle) => {
   DarkReader.setFetchMethod(window.fetch);
 
-  switch (userTheme) {
-    case THEME_OPTIONS.DARK:
-      enableDark();
-      break;
-    case THEME_OPTIONS.LIGHT:
-    default:
-      enableLight();
-      break;
+  if (userTheme === THEME_OPTIONS.DARK) {
+    // Enable dark theme if userTheme is dark
+    DarkReader.enable({
+      brightness: 100,
+      contrast: 90,
+      sepia: 10,
+    });
+  } else {
+    // Otherwise default to light.
+    DarkReader.disable();
   }
-
-  // Fetch correct theme
-  // let OSTheme = nativeTheme.shouldUseDarkColors ? "dark" : "light";
-  // window.localStorage.os_theme = OSTheme;
-  // let userTheme = window.localStorage.user_theme;
-  // let defaultTheme = "light";
-  // let changeToTheme = userTheme || OSTheme || defaultTheme;
-
-  // if (changeToTheme === "dark") {
-  //   // Execute dark reader script
-  //   await webContents.executeJavaScript(`
-  //   const DarkReader = require("darkreader")
-  //   DarkReader.enable({
-  //       brightness: 100,
-  //       contrast: 90,
-  //       sepia: 10
-  //   });
-  //   `);
-  // } else {
-  //   // remove dark style
-  //   await webContents.executeJavaScript(`
-  //   const DarkReader = require("darkreader")
-  //   DarkReader.disable();
-  //   `);
-  // }
 };
 
 module.exports = { setOSTheme };

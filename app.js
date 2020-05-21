@@ -22,9 +22,8 @@ let store = createStore();
 let win, view;
 let childwin, childview;
 
-// Send theme to window or view,
-// Pass in webcontentId of window/view you would like to send theme to.
-ipcMain.on("theme-request", function (e, webContentsId) {
+// Select which theme to change to
+const selectTheme = () => {
   const userTheme = store.get("theme");
   const OSTheme = nativeTheme.shouldUseDarkColors
     ? THEME_OPTIONS.DARK
@@ -32,13 +31,31 @@ ipcMain.on("theme-request", function (e, webContentsId) {
 
   console.log("usertheme", userTheme, "ostheme", OSTheme);
 
-  if (userTheme === THEME_OPTIONS.AUTO) {
-    // If theme is auto, select os theme.
-    webContents.fromId(webContentsId).send("theme-reply", OSTheme);
-  } else {
-    // If theme is manually selected, choose user's selection
-    webContents.fromId(webContentsId).send("theme-reply", userTheme);
+  // If theme is auto, select os theme.
+  // Else theme is manually selected, choose user's selection
+  return userTheme === THEME_OPTIONS.AUTO ? OSTheme : userTheme;
+};
+
+// Listen for theme requests from windows to set theme
+ipcMain.on("theme-request", function (e, webContentsId) {
+  const toThemeStyle = selectTheme();
+  webContents.fromId(webContentsId).send("theme-reply", toThemeStyle);
+});
+
+// Listen for changes in native os theme to set theme
+nativeTheme.on("updated", () => {
+  // Don't change theme if not set to auto.
+  if (store.get("theme") !== THEME_OPTIONS.AUTO) {
+    return;
   }
+  const toThemeStyle = selectTheme();
+  // Send to all webcontents at once. This triggers an appwide theme change.
+  const allWebContents = webContents.getAllWebContents();
+  Promise.all(
+    allWebContents.map((wc) => wc.send("theme-reply", toThemeStyle))
+  ).then(() => {
+    console.log("Theme updated to", toThemeStyle);
+  });
 });
 
 // This method will be called when Electron has finished
