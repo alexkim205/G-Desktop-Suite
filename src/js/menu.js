@@ -1,9 +1,6 @@
 const openAboutWindow = require("about-window").default;
-const path = require("path");
 
 const appInfo = require("../../package.json");
-const config = require("../helpers/config");
-const { CONSTANTS } = require("../helpers/util");
 
 const about = () => {
   openAboutWindow({
@@ -59,7 +56,7 @@ if (process.env.NODE_ENV === "development") {
       {
         label: "Print All Windows",
         accelerator: "CmdOrCtrl+P",
-        click: print_windows,
+        // click: print_windows,
       },
     ],
   });

@@ -2,8 +2,7 @@ const {
   screen,
   BrowserView,
   BrowserWindow,
-  Menu,
-  ipcMain,
+  Menu
 } = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
@@ -87,22 +86,7 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
     childview.focus();
   });
 
-  // Send page title to window
-  ipcMain.on("title-request", function (e, arg) {
-    childwin.webContents.send(
-      "title-reply",
-      childview.webContents.getTitle().split(" - ")[0]
-    );
-  });
-  childview.webContents.on("page-title-updated", (e) => {
-    childwin.webContents.send(
-      "title-reply",
-      childview.webContents.getTitle().split(" - ")[0]
-    );
-  });
-
   childwin.on("close", (e) => {
-    ipcMain.removeAllListeners("title-request");
     if (childwin?.webContents) {
       electronLocalshortcut.unregister(childwin, ["CmdOrCtrl+R", "F5"]);
     }
@@ -132,6 +116,7 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
 
   if (isDev) {
     childwin.webContents.openDevTools();
+    childview.webContents.openDevTools();
   }
 };
 
