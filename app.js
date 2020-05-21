@@ -1,9 +1,13 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require("electron");
 
+const { createStore } = require("./src/helpers/store");
 const config = require("./src/helpers/config");
 const { CONSTANTS } = require("./src/helpers/util");
 const { createMainWindow } = require("./src/js/mainwindow");
+
+// Initialize store only once at app root.
+let store = createStore();
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
