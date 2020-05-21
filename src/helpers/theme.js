@@ -10,7 +10,7 @@ const { THEME_OPTIONS } = CONSTANTS;
 const setOSTheme = async (toThemeStyle) => {
   DarkReader.setFetchMethod(window.fetch);
 
-  if (userTheme === THEME_OPTIONS.DARK) {
+  if (toThemeStyle === THEME_OPTIONS.DARK) {
     // Enable dark theme if userTheme is dark
     DarkReader.enable({
       brightness: 100,

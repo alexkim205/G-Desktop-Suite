@@ -37,7 +37,7 @@ const selectTheme = () => {
 };
 
 // Listen for theme requests from windows to set theme
-ipcMain.on("theme-request", function (e, webContentsId) {
+ipcMain.on("theme-request", function (_, webContentsId) {
   const toThemeStyle = selectTheme();
   webContents.fromId(webContentsId).send("theme-reply", toThemeStyle);
 });

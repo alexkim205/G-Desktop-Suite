@@ -7,11 +7,12 @@ const currentWindow = remote.getCurrentWindow();
 const currentView = currentWindow.getBrowserViews()[0];
 
 /* Title reply and request */
-currentView.webContents.on("did-finish-load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   const parsedTitle = currentView.webContents.getTitle().split(" - ")[0];
 
   // Send page title to parent window
   const sendTitleToParent = () => {
+    console.log("sending title-reply");
     ipcRenderer.sendTo(currentWindow.id, "title-reply", parsedTitle);
   };
 
@@ -29,10 +30,10 @@ currentView.webContents.on("did-finish-load", () => {
 });
 
 /* Theme reply and request */
-currentView.webContents.on("did-finish-load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   ipcRenderer.on("theme-reply", function (_, toThemeStyle) {
-    console.log("change view to ", toThemeStyle);
+    setOSTheme(toThemeStyle);
   });
 
-  ipcRenderer.send("theme-request", currentView.id);
+  ipcRenderer.send("theme-request", currentView.webContents.id);
 });

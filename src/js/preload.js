@@ -15,6 +15,7 @@ currentWindow.webContents.on("did-finish-load", () => {
 
   // Receive title from child preload view
   ipcRenderer.on("title-reply", function (_, title) {
+    console.log("got title reply, setting title", title);
     titleBar.innerHTML = title;
   });
 
@@ -24,8 +25,8 @@ currentWindow.webContents.on("did-finish-load", () => {
 /* Theme reply and request */
 currentWindow.webContents.on("did-finish-load", () => {
   ipcRenderer.on("theme-reply", function (_, toThemeStyle) {
-    console.log("change window to ", toThemeStyle);
+    setOSTheme(toThemeStyle);
   });
 
-  ipcRenderer.send("theme-request", currentWindow.id);
+  ipcRenderer.send("theme-request", currentWindow.webContents.id);
 });
