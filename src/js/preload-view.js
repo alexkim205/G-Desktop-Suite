@@ -1,20 +1,39 @@
-const { remote } = require("electron");
+const { ipcRenderer, remote } = require("electron");
 const path = require("path");
 
 const { setOSTheme } = require("../helpers/theme");
 
-// https://medium.com/missive-app/make-your-electron-app-dark-mode-compatible-c23dcfdd0dfa
-const darkCssPath = path.join(__dirname, "../css/dark-drive.css");
-// Key is used to keep track of css that is in the scope of this window.
-let cssKey;
+const currentWindow = remote.getCurrentWindow();
+const currentView = currentWindow.getBrowserViews()[0];
 
-const { nativeTheme } = remote;
-const currentView = remote.getCurrentWindow().getBrowserViews()[0];
+/* Title reply and request */
+window.addEventListener("DOMContentLoaded", () => {
+  // Send page title to parent window
+  const sendTitleToParent = (newTitle) => {
+    const parsedTitle = (
+      currentView.webContents.getTitle() || "Google Drive"
+    ).split(" - ")[0];
+    ipcRenderer.sendTo(currentWindow.webContents.id, "title-reply", parsedTitle);
+  };
 
-nativeTheme.on("updated", function theThemeHasChanged() {
-  setOSTheme(currentView.webContents, darkCssPath);
+  // On title request send to parent window
+  ipcRenderer.on("title-request", (e) => {
+    sendTitleToParent(currentView.webContents.getTitle());
+  });
+
+  // On update send title to parent window
+  currentView.webContents.on("page-title-updated", (e, updatedTitle) =>
+    sendTitleToParent(updatedTitle)
+  );
+
+  sendTitleToParent();
 });
 
-window.addEventListener("DOMContentLoaded", (event) => {
-  setOSTheme(currentView.webContents, darkCssPath);
+/* Theme reply and request */
+window.addEventListener("DOMContentLoaded", () => {
+  ipcRenderer.on("theme-reply", function (_, toThemeStyle) {
+    setOSTheme(toThemeStyle);
+  });
+
+  ipcRenderer.send("theme-request", currentView.webContents.id);
 });

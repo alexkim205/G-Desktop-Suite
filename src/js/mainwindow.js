@@ -2,8 +2,7 @@ const {
   screen,
   BrowserView,
   BrowserWindow,
-  Menu,
-  ipcMain,
+  Menu
 } = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
@@ -74,6 +73,7 @@ var createMainWindow = () => {
   win.setBrowserView(view);
   view.setBounds({
     x: 0,
+    // y: 500,
     y: TITLE_BAR_HEIGHT,
     width: win.getContentBounds().width,
     height: win.getContentBounds().height - TITLE_BAR_HEIGHT,
@@ -96,20 +96,6 @@ var createMainWindow = () => {
     view.webContents.focus();
   });
 
-  // Send page title to window
-  ipcMain.on("title-request", function (e, arg) {
-    win.webContents.send(
-      "title-reply",
-      view.webContents.getTitle().split(" - ")[0]
-    );
-  });
-  view.webContents.on("page-title-updated", (e) => {
-    win.webContents.send(
-      "title-reply",
-      view.webContents.getTitle().split(" - ")[0]
-    );
-  });
-
   // On new window, create child window
   view.webContents.on(
     "new-window",
@@ -126,7 +112,6 @@ var createMainWindow = () => {
     if (BrowserWindow.getAllWindows().length > 1) {
       e.preventDefault();
     }
-    ipcMain.removeAllListeners("title-request");
     if (win?.webContents) {
       electronLocalshortcut.unregister(win, ["CmdOrCtrl+R", "F5"]);
     }

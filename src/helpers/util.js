@@ -11,8 +11,9 @@ const CONSTANTS = {
     SUN_OS: "sunos",
   },
   THEME_OPTIONS: {
-    DARK: 'dark',
-    LIGHT: 'light',
+    DARK: "dark",
+    LIGHT: "light",
+    AUTO: "auto",
   },
 };
 
