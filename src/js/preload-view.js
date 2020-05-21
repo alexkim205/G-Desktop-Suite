@@ -8,23 +8,23 @@ const currentView = currentWindow.getBrowserViews()[0];
 
 /* Title reply and request */
 window.addEventListener("DOMContentLoaded", () => {
-  const parsedTitle = currentView.webContents.getTitle().split(" - ")[0];
-
   // Send page title to parent window
-  const sendTitleToParent = () => {
-    console.log("sending title-reply");
+  const sendTitleToParent = (newTitle) => {
+    const parsedTitle = (
+      currentView.webContents.getTitle() || "Google Drive"
+    ).split(" - ")[0];
     ipcRenderer.sendTo(currentWindow.id, "title-reply", parsedTitle);
   };
 
   // On title request send to parent window
   ipcRenderer.on("title-request", (e) => {
-    sendTitleToParent();
+    sendTitleToParent(currentView.webContents.getTitle());
   });
 
   // On update send title to parent window
-  currentView.webContents.on("page-title-updated", (e) => {
-    sendTitleToParent();
-  });
+  currentView.webContents.on("page-title-updated", (e, updatedTitle) =>
+    sendTitleToParent(updatedTitle)
+  );
 
   sendTitleToParent();
 });

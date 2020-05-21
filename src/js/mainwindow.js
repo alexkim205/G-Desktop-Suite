@@ -96,13 +96,6 @@ var createMainWindow = () => {
     view.webContents.focus();
   });
 
-  view.webContents.on("page-title-updated", (e) => {
-    win.webContents.send(
-      "title-reply",
-      view.webContents.getTitle().split(" - ")[0]
-    );
-  });
-
   // On new window, create child window
   view.webContents.on(
     "new-window",
