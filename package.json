@@ -74,7 +74,7 @@
     "about-window": "^1.12.1",
     "darkreader": "^4.9.2",
     "electron-localshortcut": "https://github.com/alexkim205/electron-localshortcut/tarball/master",
-    "electron-storage": "^1.0.7",
+    "electron-store": "^5.1.1",
     "electron-window-state": "^5.0.1",
     "file-system": "^2.2.2"
   }
