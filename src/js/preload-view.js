@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const parsedTitle = (
       currentView.webContents.getTitle() || "Google Drive"
     ).split(" - ")[0];
-    ipcRenderer.sendTo(currentWindow.id, "title-reply", parsedTitle);
+    ipcRenderer.sendTo(currentWindow.webContents.id, "title-reply", parsedTitle);
   };
 
   // On title request send to parent window
