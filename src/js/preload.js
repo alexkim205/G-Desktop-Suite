@@ -3,33 +3,36 @@ const path = require("path");
 
 const { setOSTheme } = require("../helpers/theme");
 
+const currentWindow = remote.getCurrentWindow();
+
 if (!window.chrome) {
   window.chrome = {};
 }
 
-// Set titlebar name when embedded view replies to ipc request.
-window.addEventListener("DOMContentLoaded", (event) => {
+// Receive title from child preload view
+currentWindow.webContents.on("did-finish-load", (e) => {
   const titleBar = document.getElementById("titlebar");
-
-  ipcRenderer.send("title-request");
 
   ipcRenderer.on("title-reply", function (event, title) {
     titleBar.innerHTML = title;
   });
+
+  ipcRenderer.send("title-request");
 });
 
-// https://medium.com/missive-app/make-your-electron-app-dark-mode-compatible-c23dcfdd0dfa
-const darkCssPath = path.join(__dirname, "../css/dark-base.css");
-// Key is used to keep track of css that is in the scope of this window.
-let cssKey;
+// const { nativeTheme } = remote;
+// const currentWindow = remote.getCurrentWindow();
 
-const { nativeTheme } = remote;
-const currentWindow = remote.getCurrentWindow();
+// nativeTheme.on("updated", () => {
+//   setOSTheme();
+// });
 
-nativeTheme.on("updated", function theThemeHasChanged() {
-  setOSTheme(currentWindow.webContents, darkCssPath);
-});
+// // renderer process gets current theme from main process.
 
-window.addEventListener("DOMContentLoaded", (event) => {
-  setOSTheme(currentWindow.webContents, darkCssPath);
-});
+// currentWindow.webContents.on("did-finish-load", () => {
+//   setOSTheme();
+// });
+
+// // window.addEventListener("DOMContentLoaded", (event) => {
+// //   setOSTheme(currentWindow.webContents);
+// // });

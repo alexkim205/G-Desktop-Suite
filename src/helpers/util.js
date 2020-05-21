@@ -10,6 +10,11 @@ const CONSTANTS = {
     OPENBSD: "openbsd",
     SUN_OS: "sunos",
   },
+  THEME_OPTIONS: {
+    DARK: "dark",
+    LIGHT: "light",
+    AUTO: "auto",
+  },
 };
 
 // Use frameless title shift only on MacOS.Use os specific titlebar for other OS's.

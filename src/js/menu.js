@@ -59,7 +59,7 @@ if (process.env.NODE_ENV === "development") {
       {
         label: "Print All Windows",
         accelerator: "CmdOrCtrl+P",
-        click: print_windows,
+        // click: print_windows,
       },
     ],
   });

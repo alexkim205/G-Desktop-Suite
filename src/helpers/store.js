@@ -1,8 +1,13 @@
 const Store = require("electron-store");
 
-const createStore = () => {
-  // Default is light theme.
-  return new Store({ theme: "light" });
-};
+module.exports = () => {
+  const schema = {
+    theme: {
+      type: "string",
+      enum: ["auto", "light", "dark"],
+      default: "auto",
+    },
+  };
 
-module.exports = { createStore };
+  return new Store({ schema });
+};
