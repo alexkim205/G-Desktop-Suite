@@ -524,6 +524,13 @@ crypto-random-string@^2.0.0:
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
 
+darkreader@^4.9.2:
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/darkreader/-/darkreader-4.9.2.tgz#f4a1500d4305e1adca2a44f11330dfac4722c7dc"
+  integrity sha512-5Jjf2vK9BmFBzndsomFdrMsndXQwfZkd6o2WyqwexVeryrOkTYW1CLS+MKtPt7/rv+0wn9eBY4iufIDPqaaZ+g==
+  dependencies:
+    malevic "0.18.0"
+
 date-fns@^2.0.1:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.13.0.tgz#d7b8a0a2d392e8d88a8024d0a46b980bbfdbd708"
@@ -686,6 +693,14 @@ electron-publish@22.6.0:
     fs-extra "^9.0.0"
     lazy-val "^1.0.4"
     mime "^2.4.4"
+
+electron-storage@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/electron-storage/-/electron-storage-1.0.7.tgz#f088b689da90414e4f95552083896eed53fde75f"
+  integrity sha1-8Ii2idqQQU5PlVUgg4lu7VP9518=
+  dependencies:
+    mkdirp "^0.5.1"
+    rimraf "^2.5.4"
 
 electron-window-state@^5.0.1:
   version "5.0.3"
@@ -1291,6 +1306,11 @@ make-dir@^3.0.0:
   dependencies:
     semver "^6.0.0"
 
+malevic@0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/malevic/-/malevic-0.18.0.tgz#ed78a644329c410b3d66cb03f62a1c0332a6096c"
+  integrity sha512-d9XfQKexRjGUHugCUAMFjTbPnx1V8sfKcD9sYrk1/W/4/QpsgLR4x5GgkUGfHdsgQ2UbEcJSj6NWWJ+rd/m4aQ==
+
 matcher@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/matcher/-/matcher-2.1.0.tgz#64e1041c15b993e23b786f93320a7474bf833c28"
@@ -1611,6 +1631,13 @@ reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
+
+rimraf@^2.5.4:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
+  integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==
+  dependencies:
+    glob "^7.1.3"
 
 rimraf@^3.0.0:
   version "3.0.2"
