@@ -4,7 +4,7 @@ const {
   CONSTANTS: { THEME_OPTIONS },
 } = require("../helpers/util");
 
-DarkReader.setFetchMethod(window.fetch)
+DarkReader.setFetchMethod(window.fetch);
 
 // Save enable and disable dark theme functions in view.
 const enableDark = () => {

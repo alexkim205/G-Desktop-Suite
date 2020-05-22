@@ -1,4 +1,4 @@
-const { screen, BrowserView, BrowserWindow, Menu } = require("electron");
+const { screen, BrowserView, BrowserWindow } = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
@@ -61,6 +61,7 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   childwin.setBrowserView(childview);
   childview.setBounds({
     x: 0,
+    // y: 800,
     y: TITLE_BAR_HEIGHT,
     width: childwin.getContentBounds().width,
     height: childwin.getContentBounds().height - TITLE_BAR_HEIGHT,
@@ -90,6 +91,7 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
 
   childwin.on("closed", () => {
     childwin = null;
+    childview.destroy();
     childview = null;
   });
 

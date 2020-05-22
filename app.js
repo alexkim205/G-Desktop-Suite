@@ -10,11 +10,6 @@ const {
 
 const { createMainWindow } = require("./src/js/mainwindow");
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let win, view;
-let childwin, childview;
-
 // Listen for theme requests from windows to set theme
 ipcMain.on("theme-request", function (_, webContentsId) {
   setThemeOnAllWindows();

@@ -1,9 +1,4 @@
-const {
-  screen,
-  BrowserView,
-  BrowserWindow,
-  Menu
-} = require("electron");
+const { screen, BrowserView, BrowserWindow, Menu } = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
@@ -73,7 +68,7 @@ var createMainWindow = () => {
   win.setBrowserView(view);
   view.setBounds({
     x: 0,
-    // y: 500,
+    // y: 800,
     y: TITLE_BAR_HEIGHT,
     width: win.getContentBounds().width,
     height: win.getContentBounds().height - TITLE_BAR_HEIGHT,
@@ -123,6 +118,7 @@ var createMainWindow = () => {
   // Emitted when the window is closed.
   win.on("closed", () => {
     win = null;
+    view.destroy();
     view = null;
   });
 
