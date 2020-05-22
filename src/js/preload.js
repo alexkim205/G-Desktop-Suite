@@ -28,5 +28,4 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   ipcRenderer.send("theme-request", currentWindow.webContents.id);
-
 });
