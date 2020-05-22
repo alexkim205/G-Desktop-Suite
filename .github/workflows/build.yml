@@ -40,11 +40,6 @@ jobs:
           yarn --frozen-lockfile
           yarn deploy
 
-      - name: Update cask and create PR
-        run: |
-          brew install vitorgalvao/tiny-scripts/cask-repair
-          yarn build-cask
-          yarn deploy-cask
   style:
   
     runs-on: macos-latest
