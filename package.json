@@ -12,7 +12,13 @@
     "dist": "electron-builder -mwl",
     "update-cask": "./Casks/update.sh $npm_package_version",
     "clean": "concurrently \"prettier './**/*.js' --write\" \"eslint ./**/*.js --fix\"",
-    "check": "prettier \"./**/*.js\" --list-different"
+    "clean-check": "concurrently \"prettier './**/*.js' --list-different\" \"eslint ./**/*.js\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn clean-check",
+      "pre-push": "yarn clean"
+    }
   },
   "keywords": [
     "google",
@@ -75,6 +81,7 @@
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
     "prettier": "^2.0.5"
   },
   "dependencies": {
