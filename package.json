@@ -11,7 +11,8 @@
     "pack": "electron-builder --dir && yarn update-cask",
     "dist": "electron-builder -mwl",
     "update-cask": "./Casks/update.sh $npm_package_version",
-    "prettify": "prettier \"src/**/*.js\" --write"
+    "clean": "concurrently \"prettier './**/*.js' --write\" \"eslint ./**/*.js --fix\"",
+    "check": "prettier \"./**/*.js\" --list-different"
   },
   "keywords": [
     "google",
@@ -65,6 +66,7 @@
     }
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "concurrently": "^5.2.0",
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
