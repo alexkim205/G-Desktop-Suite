@@ -43,7 +43,8 @@ jobs:
       - name: Update and create PR for update for cask
         run: |
           brew install vitorgalvao/tiny-scripts/cask-repair
-          yarn update-cask
+          yarn build-cask
+          yarn deploy-cask
   style:
   
     runs-on: macos-latest
