@@ -3,7 +3,7 @@ const openAboutWindow = require("about-window").default;
 
 const appInfo = require("../../package.json");
 const config = require("../helpers/config");
-const store = require("../helpers/store")
+const store = require("../helpers/store");
 const {
   CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS },
 } = require("../helpers/util");
@@ -50,6 +50,12 @@ const template = [
     submenu: [
       { label: `About ${appInfo.productName}`, click: about },
       { type: "separator" },
+      { role: "services" },
+      { type: "separator" },
+      { role: "hide" },
+      { role: "hideothers" },
+      { role: "unhide" },
+      { type: "separator" },
       { label: "Quit", accelerator: "CmdOrCtrl+Q", role: "quit" },
     ],
   },
@@ -78,10 +84,33 @@ const template = [
       { role: "zoomIn" },
       { role: "zoomOut" },
       { role: "resetZoom" },
+      { type: "separator" },
       {
         label: "Toggle Dark Mode",
         accelerator: "CmdOrCtrl+T",
         click: toggleDarkMode,
+      },
+    ],
+  },
+  {
+    label: "Window",
+    submenu: [
+      { role: "minimize" },
+      { role: "zoom" },
+      ...(config.osPlatform === OS_PLATFORMS.MAC_OS
+        ? [{ role: "front" }]
+        : [{ role: "close" }]),
+    ],
+  },
+  {
+    role: "help",
+    submenu: [
+      {
+        label: "Learn More",
+        click: async () => {
+          const { shell } = require("electron");
+          await shell.openExternal(appInfo.repository.url);
+        },
       },
     ],
   },
