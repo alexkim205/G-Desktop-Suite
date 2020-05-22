@@ -6,7 +6,7 @@ const config = require("../helpers/config");
 const store = require("../helpers/store");
 const {
   CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS },
-  openInBrowser,
+  openUrlInBrowser,
 } = require("../helpers/util");
 
 const about = () => {
@@ -46,7 +46,7 @@ const toggleDarkMode = () => {
 };
 
 const openAppRepoUrlInBrowser = async () => {
-  openInBrowser({ url: appInfo.repository.url, });
+  openUrlInBrowser({ url: appInfo.repository.url, });
 }
 
 const template = [

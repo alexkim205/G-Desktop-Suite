@@ -4,7 +4,7 @@ const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
 
 const { signInURL, userAgent, isDev } = require("../helpers/config");
-const { TITLE_BAR_HEIGHT, openInBrowser } = require("../helpers/util");
+const { TITLE_BAR_HEIGHT, openUrlInBrowser } = require("../helpers/util");
 const { createChildWindow } = require("./childwindow");
 const { template } = require("./menu");
 const store = require('../helpers/store');
@@ -99,7 +99,7 @@ const createMainWindow = () => {
       const shouldOpenLinkInBrowser = store.get('openLinkInBrowser');
 
       if (shouldOpenLinkInBrowser) {
-        openInBrowser({ event, url });
+        openUrlInBrowser({ event, url });
       } else {
         createChildWindow(event, url, frameName, disposition, {
           ...options,

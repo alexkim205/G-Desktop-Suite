@@ -23,7 +23,7 @@ const CONSTANTS = {
 const TITLE_BAR_HEIGHT =
   config.osPlatform === CONSTANTS.OS_PLATFORMS.MAC_OS ? 20 : 0;
 
-const openInBrowser = ({
+const openUrlInBrowser = ({
   event = null,
   url
 }) => {
@@ -33,4 +33,4 @@ const openInBrowser = ({
   shell.openExternal(url)
 }
 
-module.exports = { TITLE_BAR_HEIGHT, CONSTANTS, openInBrowser };
+module.exports = { TITLE_BAR_HEIGHT, CONSTANTS, openUrlInBrowser };
