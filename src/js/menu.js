@@ -1,4 +1,4 @@
-const { nativeTheme, ipcRenderer } = require("electron");
+const { nativeTheme } = require("electron");
 const openAboutWindow = require("about-window").default;
 
 const appInfo = require("../../package.json");

@@ -1,34 +1,27 @@
-const DarkReader = require("darkreader");
+const { webContents, nativeTheme } = require("electron");
 
+const store = require("./store");
 const {
   CONSTANTS: { THEME_OPTIONS },
 } = require("./util");
 
-DarkReader.setFetchMethod(window.fetch)
+// Select which theme to change to
+const selectTheme = () => {
+  const userTheme = store.get("theme");
+  const OSTheme = nativeTheme.shouldUseDarkColors
+    ? THEME_OPTIONS.DARK
+    : THEME_OPTIONS.LIGHT;
 
-// Save enable and disable dark theme functions in view.
-const enableDark = () => {
-  // Enable dark theme if userTheme is dark
-  DarkReader.enable({
-    brightness: 100,
-    contrast: 90,
-    sepia: 10,
-  });
+  // If theme is auto, select os theme.
+  // Else theme is manually selected, choose user's selection
+  return userTheme === THEME_OPTIONS.AUTO ? OSTheme : userTheme;
 };
 
-const enableLight = () => {
-  // Otherwise default to light.
-  DarkReader.disable();
+const setThemeOnAllWindows = () => {
+  const toThemeStyle = selectTheme();
+  // Send to all webcontents at once. This triggers an appwide theme change.
+  const allWebContents = webContents.getAllWebContents();
+  Promise.all(allWebContents.map((wc) => wc.send("theme-reply", toThemeStyle)));
 };
 
-// Set OS theme. This script will be run in the respective
-// document contexts provided by preload.js.
-const setOSTheme = async (toThemeStyle) => {
-  if (toThemeStyle === THEME_OPTIONS.DARK) {
-    enableDark();
-  } else {
-    enableLight();
-  }
-};
-
-module.exports = { setOSTheme };
+module.exports = { selectTheme, setThemeOnAllWindows };

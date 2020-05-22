@@ -1,7 +1,7 @@
 const { ipcRenderer, remote } = require("electron");
 const DarkReader = require("darkreader");
 
-const { setOSTheme } = require("../helpers/theme");
+const { setOSTheme } = require("./preload-theme");
 
 const currentWindow = remote.getCurrentWindow();
 
