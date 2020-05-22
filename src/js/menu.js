@@ -50,6 +50,12 @@ const template = [
     submenu: [
       { label: `About ${appInfo.productName}`, click: about },
       { type: "separator" },
+      { role: "services" },
+      { type: "separator" },
+      { role: "hide" },
+      { role: "hideothers" },
+      { role: "unhide" },
+      { type: "separator" },
       { label: "Quit", accelerator: "CmdOrCtrl+Q", role: "quit" },
     ],
   },
@@ -84,6 +90,16 @@ const template = [
         accelerator: "CmdOrCtrl+T",
         click: toggleDarkMode,
       },
+    ],
+  },
+  {
+    label: "Window",
+    submenu: [
+      { role: "minimize" },
+      { role: "zoom" },
+      ...(config.osPlatform === OS_PLATFORMS.MAC_OS
+        ? [{ role: "front" }]
+        : [{ role: "close" }]),
     ],
   },
   {
