@@ -7,15 +7,12 @@ const {
   app,
 } = require("electron");
 
-const createStore = require("./src/helpers/store");
+const store = require("./src/helpers/store");
 const config = require("./src/helpers/config");
 const {
   CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS },
 } = require("./src/helpers/util");
 const { createMainWindow } = require("./src/js/mainwindow");
-
-// Create store only once in app root.
-let store = createStore();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
