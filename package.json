@@ -1,7 +1,7 @@
 {
   "name": "gdesktopsuite",
   "productName": "G Desktop Suite",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A Google Suite desktop app made with Electron",
   "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
   "main": "app.js",
@@ -9,8 +9,10 @@
     "start": "electron .",
     "dev": "cross-env NODE_ENV=development electron .",
     "pack": "electron-builder --dir && yarn update-cask",
-    "dist": "electron-builder -mwl",
-    "update-cask": "./Casks/update.sh $npm_package_version",
+    "build": "electron-builder -mwl -p never",
+    "deploy": "electron-builder -mwl -p onTagOrDraft",
+    "build-cask": "./Casks/update.sh $npm_package_version",
+    "deploy-cask": "cask-repair g-desktop-suite -v $npm_package_version -b",
     "clean": "concurrently \"prettier './**/*.js' --write\" \"eslint ./**/*.js --fix\"",
     "clean-check": "concurrently \"prettier './**/*.js' --list-different\" \"eslint ./**/*.js\""
   },
@@ -40,6 +42,13 @@
   "build": {
     "appId": "com.alexgyujinkim.GDesktopSuite",
     "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
+    "publish": [
+      {
+        "provider": "github",
+        "repo": "G-Desktop-Suite",
+        "owner": "alexkim205"
+      }
+    ],
     "files": [
       "./build/**/*",
       "./src/**/*",
@@ -78,6 +87,7 @@
     "del": "^5.1.0",
     "electron": "^8.2.5",
     "electron-builder": "^22.6.0",
+    "electron-log": "^4.1.4",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
@@ -89,6 +99,7 @@
     "darkreader": "^4.9.2",
     "electron-localshortcut": "https://github.com/alexkim205/electron-localshortcut/tarball/master",
     "electron-store": "^5.1.1",
+    "electron-updater": "^4.3.1",
     "electron-window-state": "^5.0.1",
     "file-system": "^2.2.2"
   }

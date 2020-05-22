@@ -36,9 +36,10 @@ jobs:
     
       - name: Build with electron-builder
         run: |
+          export GH_TOKEN=${{ secrets.GH_TOKEN }}
           yarn --frozen-lockfile
-          yarn dist --publish=never
-  
+          yarn deploy
+
   style:
   
     runs-on: macos-latest
