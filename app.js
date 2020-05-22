@@ -1,9 +1,4 @@
-const {
-  BrowserWindow,
-  ipcMain,
-  nativeTheme,
-  app
-} = require("electron");
+const { BrowserWindow, ipcMain, nativeTheme, app } = require("electron");
 
 const store = require("./src/helpers/store");
 const config = require("./src/helpers/config");

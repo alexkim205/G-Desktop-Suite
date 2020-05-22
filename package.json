@@ -36,7 +36,8 @@
     "publish": [
       {
         "provider": "github",
-        "token": "${{ secrets.GITHUB_TOKEN }}"
+        "repo": "G-Desktop-Suite",
+        "owner": "alexkim205"
       }
     ],
     "files": [
