@@ -75,14 +75,14 @@ const template = [
   {
     label: "View",
     submenu: [
+      { role: "zoomIn" },
+      { role: "zoomOut" },
+      { role: "resetZoom" },
       {
         label: "Toggle Dark Mode",
         accelerator: "CmdOrCtrl+T",
         click: toggleDarkMode,
       },
-      { role: "zoomIn" },
-      { role: "zoomOut" },
-      { role: "resetZoom" },
     ],
   },
 ];
