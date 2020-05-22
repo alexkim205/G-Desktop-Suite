@@ -6,6 +6,7 @@ const config = require("../helpers/config");
 const store = require("../helpers/store");
 const {
   CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS },
+  openInBrowser,
 } = require("../helpers/util");
 
 const about = () => {
@@ -43,6 +44,10 @@ const toggleDarkMode = () => {
   // Set theme store to manual, and trigger style change
   store.set("theme", toTheme);
 };
+
+const openAppRepoUrlInBrowser = async () => {
+  openInBrowser({ url: appInfo.repository.url, });
+}
 
 const template = [
   {
@@ -107,10 +112,7 @@ const template = [
     submenu: [
       {
         label: "Learn More",
-        click: async () => {
-          const { shell } = require("electron");
-          await shell.openExternal(appInfo.repository.url);
-        },
+        click: openAppRepoUrlInBrowser,
       },
     ],
   },

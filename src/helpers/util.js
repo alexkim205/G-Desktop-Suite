@@ -1,3 +1,5 @@
+const { shell } = require('electron')
+
 const config = require("./config");
 
 const CONSTANTS = {
@@ -21,8 +23,14 @@ const CONSTANTS = {
 const TITLE_BAR_HEIGHT =
   config.osPlatform === CONSTANTS.OS_PLATFORMS.MAC_OS ? 20 : 0;
 
-// Get os theme util
-// const getNativeTheme = () =>
-//   nativeTheme.shouldUseDarkColors ? THEME_OPTIONS.DARK : THEME_OPTIONS.LIGHT;
+const openInBrowser = ({
+  event = null,
+  url
+}) => {
+  if (event) {
+    event.preventDefault();
+  }
+  shell.openExternal(url)
+}
 
-module.exports = { TITLE_BAR_HEIGHT, CONSTANTS };
+module.exports = { TITLE_BAR_HEIGHT, CONSTANTS, openInBrowser };
