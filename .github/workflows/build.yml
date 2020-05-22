@@ -39,7 +39,11 @@ jobs:
           export GH_TOKEN=${{ secrets.GH_TOKEN }}
           yarn --frozen-lockfile
           yarn deploy
-  
+
+      - name: Update and create PR for update for cask
+        run: |
+          brew install vitorgalvao/tiny-scripts/cask-repair
+          yarn update-cask
   style:
   
     runs-on: macos-latest

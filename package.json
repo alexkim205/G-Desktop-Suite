@@ -1,7 +1,7 @@
 {
   "name": "gdesktopsuite",
   "productName": "G Desktop Suite",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A Google Suite desktop app made with Electron",
   "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
   "main": "app.js",
@@ -11,7 +11,8 @@
     "pack": "electron-builder --dir && yarn update-cask",
     "build": "electron-builder -mwl -p never",
     "deploy": "electron-builder -mwl -p onTagOrDraft",
-    "update-cask": "./Casks/update.sh $npm_package_version",
+    "build-cask": "./Casks/update.sh $npm_package_version",
+    "deploy-cask": "cask-repair g-desktop-suite -v $npm_package_version -b",
     "clean": "concurrently \"prettier './**/*.js' --write\" \"eslint ./**/*.js --fix\"",
     "clean-check": "concurrently \"prettier './**/*.js' --list-different\" \"eslint ./**/*.js\""
   },
