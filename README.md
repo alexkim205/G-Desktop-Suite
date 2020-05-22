@@ -56,11 +56,12 @@ yay -S g-desktop-suite-git
 
 ### 🎶 Versions
 
-- v.conscious-club / 0.2.0-0.2.1
-- v.fugue-state / 0.1.0
-- v.dean-town / 0.0.3
-- v.funky-duck / 0.0.2
-- v.aunt-leslie / 0.0.1
+- v.0.3.0 // mr-finish-line
+- v.0.2.0-0.2.1 // conscious-club
+- v.0.1.0 // fugue-state
+- v.0.0.3 // dean-town
+- v.0.0.2 // funky-duck
+- v.0.0.1 // aunt-leslie
 
 Version names inspired by Vulfpeck songs. They're a great band, check them out [here](https://vulfpeck.com/).
 
@@ -83,17 +84,27 @@ yarn install
 ```sh
 $ yarn run
 yarn run v1.22.4
+   - build
+      electron-builder -mwl -p never
+   - build-cask
+      ./Casks/update.sh $npm_package_version
+   - clean
+      concurrently "prettier './**/*.js' --write" "eslint ./**/*.js --fix"
+   - clean-check
+      concurrently "prettier './**/*.js' --list-different" "eslint ./**/*.js"
+   - deploy
+      electron-builder -mwl -p onTagOrDraft
+   - deploy-cask
+      cask-repair g-desktop-suite -v $npm_package_version -b
    - dev
       cross-env NODE_ENV=development electron .
-   - dist
-      electron-builder -mwl
    - pack
-      electron-builder --dir
+      electron-builder --dir && yarn update-cask
    - start
       electron .
 ```
 
-To build production ready applications for macos (dmg), windows (exe), and linux (sh), run `yarn dist`.
+To build production ready applications for macos (dmg), windows (exe), and linux (sh), run `yarn build`.
 
 🛎️ **Have suggestions?** Feel free to create an issue or make a pull request.
 
