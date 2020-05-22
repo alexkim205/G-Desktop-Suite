@@ -36,6 +36,7 @@ jobs:
     
       - name: Build with electron-builder
         run: |
+          export GH_TOKEN=${{ secrets.GH_TOKEN }}
           yarn --frozen-lockfile
           yarn deploy
   
