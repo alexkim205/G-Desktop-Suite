@@ -10,15 +10,7 @@
     "dev": "cross-env NODE_ENV=development electron .",
     "pack": "electron-builder --dir && yarn update-cask",
     "dist": "electron-builder -mwl",
-    "update-cask": "./Casks/update.sh $npm_package_version",
-    "clean": "concurrently \"prettier './**/*.js' --write\" \"eslint ./**/*.js --fix\"",
-    "clean-check": "concurrently \"prettier './**/*.js' --list-different\" \"eslint ./**/*.js\""
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn clean-check",
-      "pre-push": "yarn clean"
-    }
+    "update-cask": "./Casks/update.sh $npm_package_version"
   },
   "keywords": [
     "google",
@@ -72,17 +64,11 @@
     }
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "concurrently": "^5.2.0",
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
     "electron": "^8.2.5",
-    "electron-builder": "^22.6.0",
-    "eslint": "^7.0.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "husky": "^4.2.5",
-    "prettier": "^2.0.5"
+    "electron-builder": "^22.6.0"
   },
   "dependencies": {
     "about-window": "^1.12.1",

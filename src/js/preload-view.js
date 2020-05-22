@@ -1,9 +1,12 @@
-const { ipcRenderer, remote } = require("electron");
+const { ipcRenderer, remote, webContents } = require("electron");
+const DarkReader = require("darkreader");
 
 const { setOSTheme } = require("./preload-theme");
 
 const currentWindow = remote.getCurrentWindow();
 const currentView = currentWindow.getBrowserViews()[0];
+
+
 
 /* Title reply and request */
 window.addEventListener("DOMContentLoaded", () => {
