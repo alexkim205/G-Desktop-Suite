@@ -8,7 +8,7 @@ const { TITLE_BAR_HEIGHT, openUrlInBrowser } = require("../helpers/util");
 const { checkForUpdates } = require("../helpers/updater");
 const { createChildWindow } = require("./childwindow");
 const { template } = require("./menu");
-const store = require('../helpers/store');
+const store = require("../helpers/store");
 
 const createMainWindow = () => {
   // Get information about the screen size.
@@ -100,7 +100,7 @@ const createMainWindow = () => {
   view.webContents.on(
     "new-window",
     (event, url, frameName, disposition, options) => {
-      const shouldOpenLinkInBrowser = store.get('openLinksInBrowser');
+      const shouldOpenLinkInBrowser = store.get("openLinksInBrowser");
 
       if (shouldOpenLinkInBrowser) {
         openUrlInBrowser({ event, url });

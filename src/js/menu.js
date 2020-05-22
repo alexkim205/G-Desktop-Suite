@@ -47,10 +47,10 @@ const toggleDarkMode = () => {
 
 const toggleOpenLinksInBrowser = () => {
   store.set("openLinksInBrowser", !store.get("openLinksInBrowser"));
-}
+};
 
 const openAppRepoUrlInBrowser = async () => {
-  openUrlInBrowser({ url: appInfo.repository.url, });
+  openUrlInBrowser({ url: appInfo.repository.url });
 };
 
 const template = [
@@ -108,9 +108,9 @@ const template = [
       { role: "zoom" },
       {
         label: "Open links in browser",
-        type: 'checkbox',
+        type: "checkbox",
         click: toggleOpenLinksInBrowser,
-        checked: store.get("openLinksInBrowser")
+        checked: store.get("openLinksInBrowser"),
       },
       ...(config.osPlatform === OS_PLATFORMS.MAC_OS
         ? [{ role: "front" }]

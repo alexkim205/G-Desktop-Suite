@@ -1,4 +1,4 @@
-const { shell } = require('electron')
+const { shell } = require("electron")
 
 const config = require("./config");
 
@@ -23,14 +23,11 @@ const CONSTANTS = {
 const TITLE_BAR_HEIGHT =
   config.osPlatform === CONSTANTS.OS_PLATFORMS.MAC_OS ? 20 : 0;
 
-const openUrlInBrowser = ({
-  event = null,
-  url
-}) => {
+const openUrlInBrowser = ({ event = null, url }) => {
   if (event) {
     event.preventDefault();
   }
-  shell.openExternal(url)
-}
+  shell.openExternal(url);
+};
 
 module.exports = { TITLE_BAR_HEIGHT, CONSTANTS, openUrlInBrowser };
