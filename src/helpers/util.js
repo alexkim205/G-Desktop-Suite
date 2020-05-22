@@ -21,4 +21,8 @@ const CONSTANTS = {
 const TITLE_BAR_HEIGHT =
   config.osPlatform === CONSTANTS.OS_PLATFORMS.MAC_OS ? 20 : 0;
 
+// Get os theme util
+// const getNativeTheme = () =>
+//   nativeTheme.shouldUseDarkColors ? THEME_OPTIONS.DARK : THEME_OPTIONS.LIGHT;
+
 module.exports = { TITLE_BAR_HEIGHT, CONSTANTS };

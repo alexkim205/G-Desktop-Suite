@@ -1,30 +1,34 @@
 const DarkReader = require("darkreader");
 
-// const { store } = require("../../app");
-const { CONSTANTS } = require("./util");
+const {
+  CONSTANTS: { THEME_OPTIONS },
+} = require("./util");
 
-const { THEME_OPTIONS } = CONSTANTS;
+DarkReader.setFetchMethod(window.fetch)
+
+// Save enable and disable dark theme functions in view.
+const enableDark = () => {
+  // Enable dark theme if userTheme is dark
+  DarkReader.enable({
+    brightness: 100,
+    contrast: 90,
+    sepia: 10,
+  });
+};
+
+const enableLight = () => {
+  // Otherwise default to light.
+  DarkReader.disable();
+};
 
 // Set OS theme. This script will be run in the respective
 // document contexts provided by preload.js.
 const setOSTheme = async (toThemeStyle) => {
-  DarkReader.setFetchMethod(window.fetch);
-
   if (toThemeStyle === THEME_OPTIONS.DARK) {
-    // Enable dark theme if userTheme is dark
-    DarkReader.enable({
-      brightness: 100,
-      contrast: 90,
-      sepia: 10,
-    });
+    enableDark();
   } else {
-    // Otherwise default to light.
-    DarkReader.disable();
+    enableLight();
   }
 };
 
-const toggleDarkMode = () => {
-
-}
-
-module.exports = { setOSTheme, toggleDarkMode };
+module.exports = { setOSTheme };

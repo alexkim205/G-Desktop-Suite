@@ -49,6 +49,14 @@ nativeTheme.on("updated", () => {
   Promise.all(allWebContents.map((wc) => wc.send("theme-reply", toThemeStyle)));
 });
 
+// Listen for changes in store
+store.onDidChange("theme", () => {  
+  const toThemeStyle = selectTheme();
+  // Send to all webcontents at once. This triggers an appwide theme change.
+  const allWebContents = webContents.getAllWebContents();
+  Promise.all(allWebContents.map((wc) => wc.send("theme-reply", toThemeStyle)));
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.

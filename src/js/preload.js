@@ -1,4 +1,5 @@
 const { ipcRenderer, remote } = require("electron");
+const DarkReader = require("darkreader");
 
 const { setOSTheme } = require("../helpers/theme");
 
@@ -27,4 +28,5 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   ipcRenderer.send("theme-request", currentWindow.webContents.id);
+
 });
