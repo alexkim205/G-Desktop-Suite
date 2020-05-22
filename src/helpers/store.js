@@ -6,7 +6,7 @@ const schema = {
     enum: ["auto", "light", "dark"],
     default: "auto",
   },
-  openLinkInBrowser: {
+  openLinksInBrowser: {
     type: "boolean",
     default: true,
   },

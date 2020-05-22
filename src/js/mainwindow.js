@@ -96,7 +96,7 @@ const createMainWindow = () => {
   view.webContents.on(
     "new-window",
     (event, url, frameName, disposition, options) => {
-      const shouldOpenLinkInBrowser = store.get('openLinkInBrowser');
+      const shouldOpenLinkInBrowser = store.get('openLinksInBrowser');
 
       if (shouldOpenLinkInBrowser) {
         openUrlInBrowser({ event, url });
