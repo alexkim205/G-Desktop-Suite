@@ -1,6 +1,6 @@
 cask 'g-desktop-suite' do
-  version '0.2.2'
-  sha256 '63b593b1e669cf7da91a74999dd75323b481112b9d0d5e821e5d8fe429d933f7'
+  version '0.3.0'
+  sha256 '61ec58243304678ea9c6e224af4fb0654fe671651bc3bc16ab12da497333da44'
 
   url "https://github.com/alexkim205/G-Desktop-Suite/releases/latest/download/G-Desktop-Suite-#{version}.dmg"
   appcast 'https://github.com/alexkim205/G-Desktop-Suite/releases.atom'
