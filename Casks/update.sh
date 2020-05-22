@@ -20,9 +20,9 @@ VERSION="$1"
 
 echo "Update formula to version ${VERSION}"
 
-DMG="../dist/G Desktop Suite-${VERSION}.dmg"
+DMG="../dist/G-Desktop-Suite-${VERSION}.dmg"
 if [ ! -f "$DMG" ]; then
-    echo "dist/G Desktop Suite-${VERSION}.dmg does not exist" 2>&1
+    echo "dist/G-Desktop-Suite-${VERSION}.dmg does not exist" 2>&1
     exit 1
 fi
 
