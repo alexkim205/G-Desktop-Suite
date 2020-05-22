@@ -1,6 +1,12 @@
+const { nativeTheme } = require("electron");
 const openAboutWindow = require("about-window").default;
 
 const appInfo = require("../../package.json");
+const config = require("../helpers/config");
+const store = require("../helpers/store")
+const {
+  CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS },
+} = require("../helpers/util");
 
 const about = () => {
   openAboutWindow({
@@ -16,6 +22,26 @@ const about = () => {
       open_devtools: true,
     },
   });
+};
+
+const toggleDarkMode = () => {
+  // Code can probably be a lot cleaner than this.
+  const currentTheme = store.get("theme");
+  let toTheme;
+
+  if (currentTheme === THEME_OPTIONS.AUTO) {
+    // If auto, set theme to opposite of os theme and go manual
+    toTheme = nativeTheme.shouldUseDarkColors
+      ? THEME_OPTIONS.LIGHT
+      : THEME_OPTIONS.DARK;
+  } else if (currentTheme === THEME_OPTIONS.DARK) {
+    toTheme = THEME_OPTIONS.LIGHT;
+  } else {
+    toTheme = THEME_OPTIONS.DARK;
+  }
+
+  // Set theme store to manual, and trigger style change
+  store.set("theme", toTheme);
 };
 
 const template = [
@@ -34,7 +60,10 @@ const template = [
       { role: "close" },
       {
         label: "Toggle Full Screen",
-        accelerator: "Cmd+Ctrl+F",
+        accelerator:
+          config.osPlatform === OS_PLATFORMS.MAC_OS
+            ? "Cmd+Ctrl+F"
+            : "Ctrl+Alt+F",
         role: "toggleFullScreen",
       },
     ],
@@ -45,11 +74,20 @@ const template = [
   },
   {
     label: "View",
-    submenu: [{ role: "zoomIn" }, { role: "zoomOut" }, { role: "resetZoom" }],
+    submenu: [
+      { role: "zoomIn" },
+      { role: "zoomOut" },
+      { role: "resetZoom" },
+      {
+        label: "Toggle Dark Mode",
+        accelerator: "CmdOrCtrl+T",
+        click: toggleDarkMode,
+      },
+    ],
   },
 ];
 
-if (process.env.NODE_ENV === "development") {
+if (config.isDev) {
   template.push({
     label: "Debug",
     submenu: [
