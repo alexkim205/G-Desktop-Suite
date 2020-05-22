@@ -5,6 +5,7 @@ const path = require("path");
 
 const { signInURL, userAgent, isDev } = require("../helpers/config");
 const { TITLE_BAR_HEIGHT, openUrlInBrowser } = require("../helpers/util");
+const { checkForUpdates } = require("../helpers/updater");
 const { createChildWindow } = require("./childwindow");
 const { template } = require("./menu");
 const store = require('../helpers/store');
@@ -90,6 +91,9 @@ const createMainWindow = () => {
   view.webContents.once("did-finish-load", () => {
     win.show();
     view.webContents.focus();
+
+    // Check for updates when main window is ready
+    checkForUpdates();
   });
 
   // On new window, create child window

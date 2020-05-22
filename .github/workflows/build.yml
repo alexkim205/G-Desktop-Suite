@@ -36,5 +36,28 @@ jobs:
     
       - name: Build with electron-builder
         run: |
+          export GH_TOKEN=${{ secrets.GH_TOKEN }}
           yarn --frozen-lockfile
-          yarn dist --publish=never
+          yarn deploy
+
+  style:
+  
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+    
+      - name: Check style
+        run: |
+          yarn --frozen-lockfile
+          yarn clean-check

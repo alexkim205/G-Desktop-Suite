@@ -1,4 +1,3 @@
-// Modules to control application life and create native browser window
 const { BrowserWindow, ipcMain, nativeTheme, app } = require("electron");
 
 const store = require("./src/helpers/store");

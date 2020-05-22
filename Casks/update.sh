@@ -20,16 +20,16 @@ VERSION="$1"
 
 echo "Update formula to version ${VERSION}"
 
-DMG="../dist/G Desktop Suite-${VERSION}.dmg"
+DMG="../dist/G-Desktop-Suite-${VERSION}.dmg"
 if [ ! -f "$DMG" ]; then
-    echo "dist/G Desktop Suite-${VERSION}.dmg does not exist" 2>&1
+    echo "dist/G-Desktop-Suite-${VERSION}.dmg does not exist" 2>&1
     exit 1
 fi
 
 SHA="$(shasum -a 256 "$DMG" | cut -f 1 -d ' ')"
 echo "Mac sha256: ${SHA}"
-sed -i '' -E "s/  sha256 '[0-9a-f]*'/  sha256 '${SHA}'/" gsuite.rb
+sed -i '' -E "s/  sha256 '[0-9a-f]*'/  sha256 '${SHA}'/" g-desktop-suite.rb
 echo "Version: ${VERSION}"
-sed -i '' -E "s/  version '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*'/  version '${VERSION}'/" gsuite.rb
+sed -i '' -E "s/  version '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*'/  version '${VERSION}'/" g-desktop-suite.rb
 
 echo 'Done.'
