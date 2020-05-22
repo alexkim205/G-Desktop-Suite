@@ -37,4 +37,4 @@ jobs:
       - name: Build with electron-builder
         run: |
           yarn --frozen-lockfile
-          yarn dist --publish=never
+          yarn deploy

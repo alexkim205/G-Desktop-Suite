@@ -9,7 +9,8 @@
     "start": "electron .",
     "dev": "cross-env NODE_ENV=development electron .",
     "pack": "electron-builder --dir && yarn update-cask",
-    "dist": "electron-builder -mwl",
+    "build": "electron-builder -mwl -p never",
+    "deploy": "electron-builder -mwl -p onTagOrDraft",
     "update-cask": "./Casks/update.sh $npm_package_version"
   },
   "keywords": [
@@ -32,6 +33,12 @@
   "build": {
     "appId": "com.alexgyujinkim.GDesktopSuite",
     "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
+    "publish": [
+      {
+        "provider": "github",
+        "token": "${{ secrets.GITHUB_TOKEN }}"
+      }
+    ],
     "files": [
       "./build/**/*",
       "./src/**/*",
@@ -68,13 +75,15 @@
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
     "electron": "^8.2.5",
-    "electron-builder": "^22.6.0"
+    "electron-builder": "^22.6.0",
+    "electron-log": "^4.1.4"
   },
   "dependencies": {
     "about-window": "^1.12.1",
     "darkreader": "^4.9.2",
     "electron-localshortcut": "https://github.com/alexkim205/electron-localshortcut/tarball/master",
     "electron-store": "^5.1.1",
+    "electron-updater": "^4.3.1",
     "electron-window-state": "^5.0.1",
     "file-system": "^2.2.2"
   }
