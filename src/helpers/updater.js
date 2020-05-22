@@ -21,15 +21,15 @@ autoUpdater.on("update-available", () => {
     }
   );
 });
-autoUpdater.on("update-not-available", () => {
-  console.log("update not avaliable");
-  dialog.showMessageBox({
-    title: "No Updates",
-    message: "Current version is up-to-date.",
-  });
-  updater.enabled = true;
-  updater = null;
-});
+// autoUpdater.on("update-not-available", () => {
+//   console.log("update not avaliable");
+//   dialog.showMessageBox({
+//     title: "No Updates",
+//     message: "Current version is up-to-date.",
+//   });
+//   updater.enabled = true;
+//   updater = null;
+// });
 
 autoUpdater.on("update-downloaded", () => {
   dialog.showMessageBox(
