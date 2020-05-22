@@ -69,8 +69,8 @@ var createMainWindow = () => {
   win.setBrowserView(view);
   view.setBounds({
     x: 0,
-    y: 800,
-    // y: TITLE_BAR_HEIGHT,
+    // y: 800,
+    y: TITLE_BAR_HEIGHT,
     width: win.getContentBounds().width,
     height: win.getContentBounds().height - TITLE_BAR_HEIGHT,
   });
