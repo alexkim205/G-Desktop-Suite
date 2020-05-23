@@ -56,7 +56,7 @@ yay -S g-desktop-suite-git
 
 ### 🎶 Versions
 
-- v.0.3.0 // mr-finish-line
+- v.0.3.0-0.3.1 // mr-finish-line
 - v.0.2.0-0.2.1 // conscious-club
 - v.0.1.0 // fugue-state
 - v.0.0.3 // dean-town
