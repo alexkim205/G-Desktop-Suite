@@ -18,6 +18,10 @@ const CONSTANTS = {
     LIGHT: "light",
     AUTO: "auto",
   },
+  USER_PREF_KEYS: {
+    THEME: "theme",
+    EXTERNAL_LINKS: "openLinksInBrowser",
+  },
 };
 
 // Use frameless title shift only on MacOS.Use os specific titlebar for other OS's.
@@ -36,7 +40,10 @@ const isGoogleRelatedLink = (url) => {
 };
 
 const shouldOpenLinkInBrowser = (url) => {
-  return store.get("openLinksInBrowser") && !isGoogleRelatedLink(url);
+  const {
+    USER_PREF_KEYS: { EXTERNAL_LINKS },
+  } = CONSTANTS;
+  return store.get(EXTERNAL_LINKS) && !isGoogleRelatedLink(url);
 };
 
 module.exports = {

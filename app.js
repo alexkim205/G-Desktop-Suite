@@ -4,7 +4,7 @@ const store = require("./src/helpers/store");
 const config = require("./src/helpers/config");
 const { setThemeOnAllWindows } = require("./src/helpers/theme");
 const {
-  CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS },
+  CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS, USER_PREF_KEYS },
 } = require("./src/helpers/util");
 
 const { createMainWindow } = require("./src/js/mainwindow");
@@ -17,14 +17,14 @@ ipcMain.on("theme-request", function (_, webContentsId) {
 // Listen for changes in native os theme to set theme
 nativeTheme.on("updated", () => {
   // Don't change theme if not set to auto.
-  if (store.get("theme") !== THEME_OPTIONS.AUTO) {
+  if (store.get(USER_PREF_KEYS.THEME) !== THEME_OPTIONS.AUTO) {
     return;
   }
   setThemeOnAllWindows();
 });
 
 // Listen for changes in store
-const unsubscribeStoreWatch = store.onDidChange("theme", () => {
+const unsubscribeStoreWatch = store.onDidChange(USER_PREF_KEYS.THEME, () => {
   setThemeOnAllWindows();
 });
 

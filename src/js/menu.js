@@ -5,7 +5,7 @@ const appInfo = require("../../package.json");
 const config = require("../helpers/config");
 const store = require("../helpers/store");
 const {
-  CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS },
+  CONSTANTS: { OS_PLATFORMS, THEME_OPTIONS, USER_PREF_KEYS },
   openUrlInBrowser,
 } = require("../helpers/util");
 
@@ -27,7 +27,7 @@ const about = () => {
 
 const toggleDarkMode = () => {
   // Code can probably be a lot cleaner than this.
-  const currentTheme = store.get("theme");
+  const currentTheme = store.get(USER_PREF_KEYS.THEME);
   let toTheme;
 
   if (currentTheme === THEME_OPTIONS.AUTO) {
@@ -42,11 +42,12 @@ const toggleDarkMode = () => {
   }
 
   // Set theme store to manual, and trigger style change
-  store.set("theme", toTheme);
+  store.set(USER_PREF_KEYS.THEME, toTheme);
 };
 
 const toggleOpenLinksInBrowser = () => {
-  store.set("openLinksInBrowser", !store.get("openLinksInBrowser"));
+  const { EXTERNAL_LINKS } = USER_PREF_KEYS;
+  store.set(EXTERNAL_LINKS, !store.get(EXTERNAL_LINKS));
 };
 
 const openAppRepoUrlInBrowser = async () => {
@@ -110,7 +111,7 @@ const template = [
         label: "Open external links in browser",
         type: "checkbox",
         click: toggleOpenLinksInBrowser,
-        checked: store.get("openLinksInBrowser"),
+        checked: store.get(USER_PREF_KEYS.EXTERNAL_LINKS),
       },
       ...(config.osPlatform === OS_PLATFORMS.MAC_OS
         ? [{ role: "front" }]
