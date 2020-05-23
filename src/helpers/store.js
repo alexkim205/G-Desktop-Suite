@@ -6,6 +6,10 @@ const schema = {
     enum: ["auto", "light", "dark"],
     default: "auto",
   },
+  openLinksInBrowser: {
+    type: "boolean",
+    default: true,
+  },
 };
 
 module.exports = new Store({ schema });

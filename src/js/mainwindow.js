@@ -4,12 +4,16 @@ const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
 
 const { signInURL, userAgent, isDev } = require("../helpers/config");
-const { TITLE_BAR_HEIGHT } = require("../helpers/util");
 const { checkForUpdates } = require("../helpers/updater");
 const { createChildWindow } = require("./childwindow");
-var { template } = require("./menu");
+const { template } = require("./menu");
+const {
+  TITLE_BAR_HEIGHT,
+  openUrlInBrowser,
+  shouldOpenLinkInBrowser,
+} = require("../helpers/util");
 
-var createMainWindow = () => {
+const createMainWindow = () => {
   // Get information about the screen size.
   const workAreaSize = screen.getPrimaryDisplay().workAreaSize;
   // Load the previous state with fall-back to defaults
@@ -99,11 +103,15 @@ var createMainWindow = () => {
   view.webContents.on(
     "new-window",
     (event, url, frameName, disposition, options) => {
-      createChildWindow(event, url, frameName, disposition, {
-        ...options,
-        pos: win.getPosition(),
-        size: win.getSize(),
-      });
+      if (shouldOpenLinkInBrowser(url)) {
+        openUrlInBrowser({ event, url });
+      } else {
+        createChildWindow(event, url, frameName, disposition, {
+          ...options,
+          pos: win.getPosition(),
+          size: win.getSize(),
+        });
+      }
     }
   );
 

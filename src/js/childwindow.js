@@ -4,7 +4,11 @@ const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
 
 const { isDev } = require("../helpers/config");
-const { TITLE_BAR_HEIGHT } = require("../helpers/util");
+const {
+  TITLE_BAR_HEIGHT,
+  openUrlInBrowser,
+  shouldOpenLinkInBrowser,
+} = require("../helpers/util");
 
 var createChildWindow = function (event, url, frameName, disposition, options) {
   event.preventDefault();
@@ -79,6 +83,22 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
     childwin.show();
     childview.focus();
   });
+
+  // On new window, create another window
+  childview.webContents.on(
+    "new-window",
+    (event, url, frameName, disposition, options) => {
+      if (shouldOpenLinkInBrowser(url)) {
+        openUrlInBrowser({ event, url });
+      } else {
+        createChildWindow(event, url, frameName, disposition, {
+          ...options,
+          pos: childwin.getPosition(),
+          size: childwin.getSize(),
+        });
+      }
+    }
+  );
 
   childwin.on("close", (e) => {
     if (childwin?.webContents) {

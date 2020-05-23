@@ -2,12 +2,12 @@ const { webContents, nativeTheme } = require("electron");
 
 const store = require("./store");
 const {
-  CONSTANTS: { THEME_OPTIONS },
+  CONSTANTS: { THEME_OPTIONS, USER_PREF_KEYS },
 } = require("./util");
 
 // Select which theme to change to
 const selectTheme = () => {
-  const userTheme = store.get("theme");
+  const userTheme = store.get(USER_PREF_KEYS.THEME);
   const OSTheme = nativeTheme.shouldUseDarkColors
     ? THEME_OPTIONS.DARK
     : THEME_OPTIONS.LIGHT;
