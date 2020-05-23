@@ -107,7 +107,7 @@ const template = [
       { role: "minimize" },
       { role: "zoom" },
       {
-        label: "Open links in browser",
+        label: "Open external links in browser",
         type: "checkbox",
         click: toggleOpenLinksInBrowser,
         checked: store.get("openLinksInBrowser"),
