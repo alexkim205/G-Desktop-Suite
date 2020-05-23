@@ -1,6 +1,7 @@
 const { shell } = require("electron");
 
 const config = require("./config");
+const store = require("./store");
 
 const CONSTANTS = {
   OS_PLATFORMS: {
@@ -34,9 +35,13 @@ const isGoogleRelatedLink = (url) => {
   return /google.com/.test(url);
 };
 
+const shouldOpenLinkInBrowser = (url) => {
+  return store.get("openLinksInBrowser") && !isGoogleRelatedLink(url);
+};
+
 module.exports = {
   TITLE_BAR_HEIGHT,
   CONSTANTS,
   openUrlInBrowser,
-  isGoogleRelatedLink,
+  shouldOpenLinkInBrowser,
 };

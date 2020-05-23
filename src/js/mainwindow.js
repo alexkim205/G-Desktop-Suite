@@ -11,7 +11,7 @@ const store = require("../helpers/store");
 const {
   TITLE_BAR_HEIGHT,
   openUrlInBrowser,
-  isGoogleRelatedLink,
+  shouldOpenLinkInBrowser,
 } = require("../helpers/util");
 
 const createMainWindow = () => {
@@ -104,10 +104,7 @@ const createMainWindow = () => {
   view.webContents.on(
     "new-window",
     (event, url, frameName, disposition, options) => {
-      const shouldOpenLinkInBrowser =
-        store.get("openLinksInBrowser") && !isGoogleRelatedLink(url);
-
-      if (shouldOpenLinkInBrowser) {
+      if (shouldOpenLinkInBrowser(url)) {
         openUrlInBrowser({ event, url });
       } else {
         createChildWindow(event, url, frameName, disposition, {
