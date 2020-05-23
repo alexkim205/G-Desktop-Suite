@@ -79,7 +79,7 @@ const createMainWindow = () => {
     width: true,
     height: true,
   });
-  view.webContents.loadURL(windowSettings.url, { userAgent });
+  view.webContents.loadURL(windowSettings.url, { userAgent: "Chrome" });
 
   // Menu
   const menu = Menu.buildFromTemplate(template);
