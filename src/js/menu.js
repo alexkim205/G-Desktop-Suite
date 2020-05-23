@@ -107,15 +107,15 @@ const template = [
     submenu: [
       { role: "minimize" },
       { role: "zoom" },
+      ...(config.osPlatform === OS_PLATFORMS.MAC_OS
+        ? [{ role: "front" }]
+        : [{ role: "close" }]),
       {
         label: "Open external links in browser",
         type: "checkbox",
         click: toggleOpenLinksInBrowser,
         checked: store.get(USER_PREF_KEYS.EXTERNAL_LINKS),
       },
-      ...(config.osPlatform === OS_PLATFORMS.MAC_OS
-        ? [{ role: "front" }]
-        : [{ role: "close" }]),
     ],
   },
   {
