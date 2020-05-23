@@ -30,4 +30,13 @@ const openUrlInBrowser = ({ event = null, url }) => {
   shell.openExternal(url);
 };
 
-module.exports = { TITLE_BAR_HEIGHT, CONSTANTS, openUrlInBrowser };
+const isGoogleRelatedLink = (url) => {
+  return /google.com/.test(url);
+};
+
+module.exports = {
+  TITLE_BAR_HEIGHT,
+  CONSTANTS,
+  openUrlInBrowser,
+  isGoogleRelatedLink,
+};

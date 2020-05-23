@@ -4,11 +4,15 @@ const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
 
 const { signInURL, userAgent, isDev } = require("../helpers/config");
-const { TITLE_BAR_HEIGHT, openUrlInBrowser } = require("../helpers/util");
 const { checkForUpdates } = require("../helpers/updater");
 const { createChildWindow } = require("./childwindow");
 const { template } = require("./menu");
 const store = require("../helpers/store");
+const {
+  TITLE_BAR_HEIGHT,
+  openUrlInBrowser,
+  isGoogleRelatedLink,
+} = require("../helpers/util");
 
 const createMainWindow = () => {
   // Get information about the screen size.
@@ -100,7 +104,8 @@ const createMainWindow = () => {
   view.webContents.on(
     "new-window",
     (event, url, frameName, disposition, options) => {
-      const shouldOpenLinkInBrowser = store.get("openLinksInBrowser");
+      const shouldOpenLinkInBrowser =
+        store.get("openLinksInBrowser") && !isGoogleRelatedLink(url);
 
       if (shouldOpenLinkInBrowser) {
         openUrlInBrowser({ event, url });
