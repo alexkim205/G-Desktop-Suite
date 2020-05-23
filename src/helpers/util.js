@@ -1,4 +1,4 @@
-const { shell } = require("electron")
+const { shell } = require("electron");
 
 const config = require("./config");
 
