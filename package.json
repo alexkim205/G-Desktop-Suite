@@ -46,7 +46,8 @@
       {
         "provider": "github",
         "repo": "G-Desktop-Suite",
-        "owner": "alexkim205"
+        "owner": "alexkim205",
+        "releaseType": "release"
       }
     ],
     "files": [
