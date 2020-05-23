@@ -34,7 +34,7 @@ As of `v.conscious-club/0.2.0`, the app will automatically adjust to your OS's d
 
 Download the [latest releases](https://github.com/alexkim205/G-Desktop-Suite/releases) for **Windows**, **Linux**, or **MacOS**.
 
-### For MacOS/Linux users with Homebrew + Homebrew Cask
+### For MacOS/Linux users with Homebrew
 
 This method is highly recommended for users who want the latest release without the hassle of downloading the executable each time. Learn more about how to get [`homebrew`](https://brew.sh/) and [`homebrew-cask`](https://github.com/Homebrew/homebrew-cask).
 
