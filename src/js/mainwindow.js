@@ -7,7 +7,6 @@ const { signInURL, userAgent, isDev } = require("../helpers/config");
 const { checkForUpdates } = require("../helpers/updater");
 const { createChildWindow } = require("./childwindow");
 const { template } = require("./menu");
-const store = require("../helpers/store");
 const {
   TITLE_BAR_HEIGHT,
   openUrlInBrowser,
