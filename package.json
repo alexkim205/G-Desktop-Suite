@@ -1,6 +1,6 @@
 {
   "name": "gdesktopsuite",
-  "productName": "G-Desktop-Suite",
+  "productName": "G Desktop Suite",
   "version": "0.3.1",
   "description": "A Google Suite desktop app made with Electron",
   "copyright": "Copyright © 2018-2020 Alex Gyujin Kim",
@@ -56,12 +56,12 @@
       "./package.json"
     ],
     "mac": {
-      "artifactName": "${productName}-${version}.${ext}",
+      "artifactName": "G-Desktop-Suite-${version}.${ext}",
       "category": "public.app-category.productivity",
       "darkModeSupport": true
     },
     "win": {
-      "artifactName": "${productName}-${version}.${ext}",
+      "artifactName": "G-Desktop-Suite-${version}.${ext}",
       "target": [
         {
           "target": "nsis",
@@ -73,7 +73,7 @@
       ]
     },
     "linux": {
-      "artifactName": "${productName}-${version}.${ext}",
+      "artifactName": "G-Desktop-Suite-${version}.${ext}",
       "target": [
         "deb",
         "rpm",
@@ -83,16 +83,16 @@
       "category": "Development"
     },
     "dmg": {
-      "artifactName": "${productName}-${version}.${ext}"
+      "artifactName": "G-Desktop-Suite-${version}.${ext}"
     },
     "pkg": {
-      "artifactName": "${productName}-${version}.${ext}"
+      "artifactName": "G-Desktop-Suite-${version}.${ext}"
     },
     "nsis": {
-      "artifactName": "${productName}-${version}.${ext}"
+      "artifactName": "G-Desktop-Suite-${version}.${ext}"
     },
     "appImage": {
-      "artifactName": "${productName}-${version}.${ext}"
+      "artifactName": "G-Desktop-Suite-${version}.${ext}"
     }
   },
   "devDependencies": {
