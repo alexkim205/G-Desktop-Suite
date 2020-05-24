@@ -3,7 +3,7 @@ name: Code Quality issue
 about: Code can be cleaned up
 title: "[\U0001F9F9 CODE QUALITY] - {Descriptive title here}"
 labels: code quality
-assignees: alexkim205
+assignees: ''
 
 ---
 
