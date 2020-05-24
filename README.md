@@ -5,7 +5,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/alexkim205/G-Desktop-Suite?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/alexkim205/G-Desktop-Suite?style=social)
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/alexkim205/G-Desktop-Suite/Project Build with Node.js?style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/alexkim205/G-Desktop-Suite/Project%20Build%20with%20Node.js?style=flat-square)
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/alexkim205/G-Desktop-Suite/dev/electron?style=flat-square)
 ![David](https://img.shields.io/david/alexkim205/G-Desktop-Suite?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/alexkim205/G-Desktop-Suite?style=flat-square)
