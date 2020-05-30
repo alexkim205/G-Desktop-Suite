@@ -1,4 +1,4 @@
-const { screen, BrowserView, BrowserWindow } = require("electron");
+const { screen, BrowserView, BrowserWindow, clipboard } = require("electron");
 const windowState = require("electron-window-state");
 const electronLocalshortcut = require("electron-localshortcut");
 const path = require("path");
@@ -126,6 +126,17 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
     childview.webContents.loadURL(windowSettings.url);
   });
   electronLocalshortcut.register(childwin, ["CmdOrCtrl+R", "F5"], () => {
+    childview.webContents.loadURL(windowSettings.url);
+  });
+
+  //support for copying current file URL to clipboard
+  electronLocalshortcut.register(childview, ["F8"], ()=>{
+    clipboard.writeText(windowSettings.url, 'selection');
+    childview.webContents.loadURL(windowSettings.url);
+  });
+
+  electronLocalshortcut.register(childwin, ["F8"], ()=>{
+    clipboard.writeText(windowSettings.url, 'selection');
     childview.webContents.loadURL(windowSettings.url);
   });
 
