@@ -130,13 +130,13 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   });
 
   //support for copying current file URL to clipboard
-  electronLocalshortcut.register(childview, ["F8"], ()=>{
-    clipboard.writeText(windowSettings.url, 'selection');
+  electronLocalshortcut.register(childview, ["F8"], () => {
+    clipboard.writeText(windowSettings.url, "selection");
     childview.webContents.loadURL(windowSettings.url);
   });
 
-  electronLocalshortcut.register(childwin, ["F8"], ()=>{
-    clipboard.writeText(windowSettings.url, 'selection');
+  electronLocalshortcut.register(childwin, ["F8"], () => {
+    clipboard.writeText(windowSettings.url, "selection");
     childview.webContents.loadURL(windowSettings.url);
   });
 
