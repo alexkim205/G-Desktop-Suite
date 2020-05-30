@@ -4,7 +4,7 @@
 name: Project Build with Node.js
 
 on:
-  push:
+  pull_request:
     branches: [ master ]
 
 jobs:
@@ -32,11 +32,10 @@ jobs:
           brew cask install wine-stable
           brew install rpm
     
-      - name: Deploy with electron-builder
+      - name: Build with electron-builder
         run: |
-          export GH_TOKEN=${{ secrets.GH_TOKEN }}
           yarn --frozen-lockfile
-          yarn deploy
+          yarn build
 
   style:
   
