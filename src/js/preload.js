@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Receive title from child preload view
   ipcRenderer.on("title-reply", function (_, title) {
     titleBar.innerHTML = title;
+    document.title = title;
   });
 
   ipcRenderer.send("title-request");
