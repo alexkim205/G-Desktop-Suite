@@ -86,7 +86,18 @@ const template = [
   },
   {
     label: "Edit",
-    role: "editMenu",
+    submenu: [
+      { role: "undo" },
+      { role: "redo" },
+      { type: "seperator" },
+      { role: "cut" },
+      { role: "copy" },
+      { role: "paste" },
+      { role: "pasteAndMatchStyle" },
+      { role: "delete" },
+      { type: "seperator" },
+      { type: "selectAll"},
+    ],
   },
   {
     label: "View",
