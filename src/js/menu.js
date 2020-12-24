@@ -96,7 +96,7 @@ const template = [
       { role: "pasteAndMatchStyle" },
       { role: "delete" },
       { type: "seperator" },
-      { type: "selectAll"},
+      { type: "selectAll" },
     ],
   },
   {
