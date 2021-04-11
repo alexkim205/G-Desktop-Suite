@@ -42,7 +42,7 @@ This method is highly recommended for users who want the latest release without 
 The following script will install `G Desktop Suite.app` into your `Applications/` folder.
 
 ```sh
-brew cask install g-desktop-suite
+brew install --cask g-desktop-suite
 ```
 
 Run `brew cask upgrade` to get the latest version of the app.
