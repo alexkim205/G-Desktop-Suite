@@ -5,6 +5,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/alexkim205/G-Desktop-Suite?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/alexkim205/G-Desktop-Suite?style=social)
 
+[![Maintainers Wanted](https://img.shields.io/badge/maintainers-wanted-red.svg?style=flat-square)](mailto:alexgkim205@gmail.com)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/alexkim205/G-Desktop-Suite/Project%20Build%20with%20Node.js?style=flat-square)
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/alexkim205/G-Desktop-Suite/dev/electron?style=flat-square)
 ![David](https://img.shields.io/david/alexkim205/G-Desktop-Suite?style=flat-square)
@@ -14,6 +15,12 @@
 ![GitHub All Releases](https://img.shields.io/github/downloads/alexkim205/G-Desktop-Suite/total?style=flat-square)
 ![Platforms](https://img.shields.io/badge/platform-macos%20%7C%20windows%20%7C%20linux-blue?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/alexkim205/G-Desktop-Suite?style=flat-square)
+
+---
+
+### [04/16/2021]
+#### Thank you everyone who gave this app a shot, it's been a great learning opportunity for me!
+#### Unfortunately, I won't be able to continue maintaining G-Desktop-Suite due to time constraints. However, this repository is open to new lead maintainers! If you're interested, shoot me an email at alexgkim205@gmail.com.
 
 ---
 
