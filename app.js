@@ -37,7 +37,8 @@ const unsubscribeStoreWatch = store.onDidChange(USER_PREF_KEYS.THEME, () => {
 app.whenReady().then(async () => {
 
   // Assumes that you put the unpacked extension in the project folder and called the folder "offline"
-  const offlineToolsPath = path.join(path.resolve(isPackaged ? ".." : "."), "offline");
+  const appPackagedPath = `${isPackaged ? ".." : "."}/offline`;
+  const offlineToolsPath = path.join(path.dirname(process.execPath), appPackagedPath);
   await session.defaultSession.loadExtension(offlineToolsPath).then(() => createMainWindow()).catch((e) => console.error(e));
   // Check the urls and pass the weird User-Agent to let google sign you in.
   session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
