@@ -100,6 +100,7 @@
     }
   },
   "devDependencies": {
+    "@electron/remote": "^2.0.1",
     "babel-eslint": "^10.1.0",
     "concurrently": "^5.2.0",
     "cross-env": "^7.0.2",
@@ -115,7 +116,7 @@
   },
   "dependencies": {
     "about-window": "^1.12.1",
-    "darkreader": "^4.9.2",
+    "darkreader": "^4.9.40",
     "electron-is-packaged": "^1.0.2",
     "electron-localshortcut": "^3.2.1",
     "electron-store": "^5.1.1",

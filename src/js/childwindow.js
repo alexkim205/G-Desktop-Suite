@@ -40,8 +40,8 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
     scrollBounce: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: false,
-      contextIsolation: true,
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
@@ -58,8 +58,8 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   let childview = new BrowserView({
     webPreferences: {
       preload: path.join(__dirname, "preload-view.js"),
-      nodeIntegration: false,
-      contextIsolation: true,
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
   childwin.setBrowserView(childview);

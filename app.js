@@ -1,4 +1,5 @@
 const { BrowserWindow, ipcMain, nativeTheme, app, session } = require("electron");
+require("@electron/remote/main").initialize();
 
 const store = require("./src/helpers/store");
 const config = require("./src/helpers/config");
