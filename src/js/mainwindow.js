@@ -100,9 +100,7 @@ const createMainWindow = () => {
   });
 
   // On new window, create child window
-  view.webContents.on(
-    "new-window",
-    (event, url, frameName, disposition, options) => {
+  view.webContents.setWindowOpenHandler((event, url, frameName, disposition, options) => {
       if (shouldOpenLinkInBrowser(url)) {
         openUrlInBrowser({ event, url });
       } else {
