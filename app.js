@@ -1,4 +1,4 @@
-const { BrowserWindow, ipcMain, nativeTheme, app } = require("electron");
+const { BrowserWindow, ipcMain, nativeTheme, app, session } = require("electron");
 
 const store = require("./src/helpers/store");
 const config = require("./src/helpers/config");
@@ -8,6 +8,8 @@ const {
 } = require("./src/helpers/util");
 
 const { createMainWindow } = require("./src/js/mainwindow");
+const path = require("path");
+const {userAgent, signInURL} = require("./src/helpers/config");
 
 // Listen for theme requests from windows to set theme
 ipcMain.on("theme-request", function (_, webContentsId) {
@@ -31,8 +33,20 @@ const unsubscribeStoreWatch = store.onDidChange(USER_PREF_KEYS.THEME, () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
-  createMainWindow();
+app.whenReady().then(async () => {
+
+  // Assumes that you put the unpacked extension in the project folder and called the folder "offline"
+  const offlineToolsPath = path.join(path.resolve("."), "offline");
+  await session.defaultSession.loadExtension(offlineToolsPath).then(() => createMainWindow()).catch((e) => console.error(e));
+  // Check the urls and pass the weird User-Agent to let google sign you in.
+  session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+    if (details.url.includes("accounts.google")){
+      details.requestHeaders['User-Agent'] = "Chrome";
+    } else {
+      details.requestHeaders['User-Agent'] = userAgent;
+    }
+    callback({ cancel: false, requestHeaders: details.requestHeaders });
+  });
 
   app.on("activate", function () {
     // On macOS it's common to re-create a window in the app when the
@@ -45,7 +59,7 @@ app.whenReady().then(() => {
 app.on("window-all-closed", function () {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (config.osPlatform !== OS_PLATFORMS.MAC_OS) app.quit();
+  if (config.osPlatform === OS_PLATFORMS.MAC_OS) app.quit();
 
   unsubscribeStoreWatch();
 });

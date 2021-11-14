@@ -27,7 +27,7 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
 
   // Create the browser window.
   // Load options defined from parent window, or set defaults
-  childwin = new BrowserWindow({
+  let childwin = new BrowserWindow({
     x: options.pos ? options.pos[0] + 20 : childWindowState.x,
     y: options.pos ? options.pos[1] + 20 : childWindowState.x,
     width: options.size ? options.size[0] : childWindowState.width,
@@ -81,37 +81,29 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
 
   childview.webContents.once("ready-to-show", () => {
     childwin.show();
-    childview.focus();
+    childview.webContents.focus();
   });
 
   // On new window, create another window
-  childview.webContents.on(
-    "new-window",
-    (event, url, frameName, disposition, options) => {
-      if (shouldOpenLinkInBrowser(url)) {
-        openUrlInBrowser({ event, url });
-      } else {
-        createChildWindow(event, url, frameName, disposition, {
-          ...options,
-          pos: childwin.getPosition(),
-          size: childwin.getSize(),
-        });
-      }
+  childview.webContents.setWindowOpenHandler((event, url, frameName, disposition, options) => {
+    if (shouldOpenLinkInBrowser(url)) {
+      openUrlInBrowser({event, url});
+    } else {
+      createChildWindow(event, url, frameName, disposition, {
+        ...options,
+        pos: childwin.getPosition(),
+        size: childwin.getSize(),
+      });
     }
-  );
+  });
 
-  childwin.on("close", (e) => {
-    if (childwin?.webContents) {
-      electronLocalshortcut.unregister(childwin, ["CmdOrCtrl+R", "F5"]);
-    }
-    if (childview?.webContents) {
-      electronLocalshortcut.unregister(childview, ["CmdOrCtrl+R", "F5"]);
-    }
+  childwin.on("close", async (e) => {
+    childwin.setBrowserView(null);
   });
 
   childwin.on("closed", () => {
     childwin = null;
-    childview.destroy();
+    childview.webContents.destroy();
     childview = null;
   });
 
@@ -123,10 +115,10 @@ var createChildWindow = function (event, url, frameName, disposition, options) {
   });
 
   electronLocalshortcut.register(childview, ["CmdOrCtrl+R", "F5"], () => {
-    childview.webContents.loadURL(windowSettings.url);
+    childview.webContents.reload();
   });
   electronLocalshortcut.register(childwin, ["CmdOrCtrl+R", "F5"], () => {
-    childview.webContents.loadURL(windowSettings.url);
+    childview.webContents.reload();
   });
 
   if (isDev) {
