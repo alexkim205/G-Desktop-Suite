@@ -23,7 +23,7 @@ const createMainWindow = () => {
   });
 
   // Create the browser window.
-  win = new BrowserWindow({
+  let win = new BrowserWindow({
     x: mainWindowState.x,
     y: mainWindowState.y,
     width: mainWindowState.width,
@@ -36,8 +36,8 @@ const createMainWindow = () => {
     scrollBounce: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: false,
-      contextIsolation: true,
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
@@ -66,8 +66,8 @@ const createMainWindow = () => {
   let view = new BrowserView({
     webPreferences: {
       preload: path.join(__dirname, "preload-view.js"),
-      nodeIntegration: false,
-      contextIsolation: true,
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
   win.setBrowserView(view);
@@ -82,7 +82,7 @@ const createMainWindow = () => {
     width: true,
     height: true,
   });
-  view.webContents.loadURL(windowSettings.url, { userAgent: "Chrome" });
+  view.webContents.loadURL(windowSettings.url);
 
   // Menu
   const menu = Menu.buildFromTemplate(template);
@@ -119,18 +119,13 @@ const createMainWindow = () => {
     if (BrowserWindow.getAllWindows().length > 1) {
       e.preventDefault();
     }
-    if (win?.webContents) {
-      electronLocalshortcut.unregister(win, ["CmdOrCtrl+R", "F5"]);
-    }
-    if (view?.webContents) {
-      electronLocalshortcut.unregister(view, ["CmdOrCtrl+R", "F5"]);
-    }
+    win.setBrowserView(null);
   });
 
   // Emitted when the window is closed.
   win.on("closed", () => {
     win = null;
-    view.destroy();
+    view.webContents.destroy();
     view = null;
   });
 
@@ -142,12 +137,10 @@ const createMainWindow = () => {
   });
 
   electronLocalshortcut.register(view, ["CmdOrCtrl+R", "F5"], () => {
-    // No reload API for browserview yet.
-    view.webContents.loadURL(windowSettings.url, { userAgent });
+    view.webContents.reload();
   });
   electronLocalshortcut.register(win, ["CmdOrCtrl+R", "F5"], () => {
-    // No reload API for browserview yet.
-    view.webContents.loadURL(windowSettings.url, { userAgent });
+    view.webContents.reload();
   });
 
   if (isDev) {
