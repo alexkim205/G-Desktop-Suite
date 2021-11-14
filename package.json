@@ -50,6 +50,9 @@
         "releaseType": "release"
       }
     ],
+    "extraFiles": [
+      "offline"
+    ],
     "files": [
       "./build/**/*",
       "./src/**/*",
@@ -113,6 +116,7 @@
   "dependencies": {
     "about-window": "^1.12.1",
     "darkreader": "^4.9.2",
+    "electron-is-packaged": "^1.0.2",
     "electron-localshortcut": "^3.2.1",
     "electron-store": "^5.1.1",
     "electron-updater": "^4.3.1",

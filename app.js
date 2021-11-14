@@ -10,6 +10,7 @@ const {
 const { createMainWindow } = require("./src/js/mainwindow");
 const path = require("path");
 const {userAgent, signInURL} = require("./src/helpers/config");
+const isPackaged = require('electron-is-packaged').isPackaged;
 
 // Listen for theme requests from windows to set theme
 ipcMain.on("theme-request", function (_, webContentsId) {
@@ -36,7 +37,7 @@ const unsubscribeStoreWatch = store.onDidChange(USER_PREF_KEYS.THEME, () => {
 app.whenReady().then(async () => {
 
   // Assumes that you put the unpacked extension in the project folder and called the folder "offline"
-  const offlineToolsPath = path.join(path.resolve("."), "offline");
+  const offlineToolsPath = path.join(path.resolve(isPackaged ? ".." : "."), "offline");
   await session.defaultSession.loadExtension(offlineToolsPath).then(() => createMainWindow()).catch((e) => console.error(e));
   // Check the urls and pass the weird User-Agent to let google sign you in.
   session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
