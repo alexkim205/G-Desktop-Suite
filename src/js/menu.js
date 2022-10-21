@@ -1,5 +1,5 @@
-import { nativeTheme } from "electron";
-import { default as openAboutWindow } from "about-window";
+const { nativeTheme } = require("electron");
+const openAboutWindow = require("about-window").default;
 
 const appInfo = require("../../package.json");
 const config = require("../helpers/config");
